@@ -117,7 +117,6 @@ public class GamePanel extends JPanel implements Runnable{
                 lastTime = currentTime;
             }
         }
-		
 	}
 	
 	public void update() {

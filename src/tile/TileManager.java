@@ -100,16 +100,21 @@ public class TileManager {
 		int worldCol =0;
 		int worldRow = 0;
 		
+		int worldX = 0;
+		int worldY = 0;
+		
+		int screenX = -gamePanel.player.worldX + gamePanel.player.screenX;
+		int screenY = -gamePanel.player.worldY + gamePanel.player.screenY;
 		
 		while(worldCol<gamePanel.maxWorldCOL && worldRow<gamePanel.maxWorldCOL) {
 			
 			int tileNum = mapTileNum[worldCol][worldRow];
 			
-			int worldX = worldCol*gamePanel.tileSize;
-			int worldY = worldRow*gamePanel.tileSize;
+			worldX = worldCol*gamePanel.tileSize;
+			worldY = worldRow*gamePanel.tileSize;
 			
-			int screenX = worldX - gamePanel.player.worldX + gamePanel.player.screenX;
-			int screenY = worldY - gamePanel.player.worldY + gamePanel.player.screenY;
+			screenX = worldX - gamePanel.player.worldX + gamePanel.player.screenX;
+			screenY = worldY - gamePanel.player.worldY + gamePanel.player.screenY;
 			
 			if(worldX+gamePanel.tileSize>gamePanel.player.worldX-gamePanel.player.screenX
 					&&worldX-gamePanel.tileSize<gamePanel.player.worldX+gamePanel.player.screenX
