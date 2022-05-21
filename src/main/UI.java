@@ -266,6 +266,7 @@ public class UI {
 		int x=gamePanel.screenWidth/2-textlength/2;
 		return x;
 	}
+	int dddd=100;
 	
 
 }
