@@ -26,3 +26,8 @@ replay_pid*
 
 # special file on mac
 .DS_Store
+
+# special file on Windows
+thumbs
+thumbs.db
+Thumbs.db
