@@ -56,7 +56,7 @@ public class KeyHandler implements KeyListener{
 	
 	public void titleState(int code) {
 		
-		if(gamePanel.ui.titlescreenState==0) {
+		if(gamePanel.ui.titleScreenState==0) {
 			
 			if (code==KeyEvent.VK_W) {
 				gamePanel.ui.commandNum--;
@@ -72,7 +72,7 @@ public class KeyHandler implements KeyListener{
 			}
 			if (code==KeyEvent.VK_ENTER) {
 				if(gamePanel.ui.commandNum==0) {
-					gamePanel.ui.titlescreenState=1;
+					gamePanel.ui.titleScreenState=1;
 				}
 				if(gamePanel.ui.commandNum==1) {
 					//add later
@@ -83,7 +83,29 @@ public class KeyHandler implements KeyListener{
 				
 			}
 		}
-		else if(gamePanel.ui.titlescreenState==1) {
+		else if(gamePanel.ui.titleScreenState==1) {
+			if (code==KeyEvent.VK_W) {
+				gamePanel.ui.commandNum--;
+				if(gamePanel.ui.commandNum<0) {
+					gamePanel.ui.commandNum=1;
+				}
+			}
+			if (code==KeyEvent.VK_S) {
+				gamePanel.ui.commandNum++;
+				if(gamePanel.ui.commandNum>1) {
+					gamePanel.ui.commandNum=0;
+				}
+			}
+			if (code==KeyEvent.VK_ENTER) {
+				if(gamePanel.ui.commandNum==0) {
+					gamePanel.ui.titleScreenState=2;
+				}
+				if(gamePanel.ui.commandNum==1) {
+					gamePanel.ui.titleScreenState=0;
+				}
+			}
+		}
+		else if(gamePanel.ui.titleScreenState==2) {
 			if (code==KeyEvent.VK_W) {
 				gamePanel.ui.commandNum--;
 				if(gamePanel.ui.commandNum<0) {
@@ -99,10 +121,9 @@ public class KeyHandler implements KeyListener{
 			if (code==KeyEvent.VK_ENTER) {
 				if(gamePanel.ui.commandNum==0) {
 					gamePanel.gameState=gamePanel.playState;
-					//gamePanel.ui.titlecreenState=2;
 				}
 				if(gamePanel.ui.commandNum==1) {
-					gamePanel.ui.titlescreenState=0;
+					gamePanel.ui.titleScreenState=1;
 				}
 			}
 		}

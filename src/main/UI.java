@@ -17,14 +17,14 @@ public class UI {
 	GamePanel gamePanel;
 	Font arial_40,arial_80B;
 	Graphics2D g2;
-	//BufferedImage  money;
+	BufferedImage  money,honey,task;
 	public boolean messageOn;
 	public String message ="" ;
 	//int messageCounter=0;
 	public boolean gameFinished=false;
 	public String currentDialogue="";
 	public int commandNum=0;
-	public int titlescreenState=0;
+	public int titleScreenState=0;
 	
 	
 	public UI(GamePanel gp) {
@@ -32,13 +32,15 @@ public class UI {
 		this.gamePanel=gp;
 		arial_40 = new Font("Arial", Font.PLAIN, 40);
 		arial_80B=new Font("Arial", Font.BOLD, 80);
-		/*try {
-			money= ImageIO.read(getClass().getResourceAsStream("/object/money.png"));
-			
+		
+		try {
+			honey = ImageIO.read(getClass().getResourceAsStream("/object/honey.png"));
+			task = ImageIO.read(getClass().getResourceAsStream("/monster/task.front2.png"));
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		
 	}
 	public void showMessage(String text) {
@@ -122,7 +124,7 @@ public class UI {
 	}
 	public void drawTitleScreen() {
 		
-		if(titlescreenState==0) {
+		if(titleScreenState==0) {
 			g2.setColor(new Color(255,249,248));
 			g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
 			
@@ -162,7 +164,7 @@ public class UI {
 				g2.drawString(">", x-gamePanel.tileSize, y);
 			}
 			
-			text="Quit";
+			text="離開";
 			x=getXForCenterText(text);
 			y+=gamePanel.tileSize;
 			g2.drawString(text, x, y);
@@ -170,7 +172,7 @@ public class UI {
 				g2.drawString(">", x-gamePanel.tileSize, y);
 			}
 		}
-		else if (titlescreenState==1) {
+		else if (titleScreenState==1) {
 			g2.setColor(new Color(255,249,248));
 			g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
 			
@@ -195,7 +197,7 @@ public class UI {
 			inputName.setSize(inputName.getPreferredSize());
 			gamePanel.add(inputName);
 			
-			text="How to play";
+			text="遊戲解說";
 			x=getXForCenterText(text);
 			y+=gamePanel.tileSize;
 			g2.drawString(text, x, y);
@@ -203,7 +205,7 @@ public class UI {
 				g2.drawString(">", x-gamePanel.tileSize, y);
 			}
 			
-			text="Back";
+			text="回上一頁";
 			x=getXForCenterText(text);
 			y+=gamePanel.tileSize;
 			g2.drawString(text, x, y);
@@ -212,17 +214,56 @@ public class UI {
 			}
 	
 		}
-		else if(titlescreenState==2) {
+		else if(titleScreenState==2) {
 			g2.setColor(new Color(255,249,248));
 			g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
 			
 			g2.setColor(Color.black);
-			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,18));
-			String text="早上好。";
-			int x=gamePanel.tileSize*1;
-			int y=gamePanel.tileSize;
+			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,20));
+			String text="早上好。 現在你有初始基金1000元";
+			int x=gamePanel.tileSize;
+			int y=gamePanel.tileSize*2;
 			g2.drawString(text, x, y);
+			text="你可以透過Ｗ、Ｓ、Ａ、Ｄ鍵在地圖中移動。";
+			y+=gamePanel.tileSize;
+			g2.drawString(text, x, y);
+			text="按下Enter鍵可以與場上人物對話。Ｐ鍵可以暫停遊戲。";
+			y+=gamePanel.tileSize;
+			g2.drawString(text, x, y);
+			text="Ｃ鍵可以獲得你目前的遊戲資訊。";
+			y+=gamePanel.tileSize;
+			g2.drawString(text, x, y);
+			text="而作為一隻美食熊熊，口袋裡有足夠的錢是必須的。";
+			y+=gamePanel.tileSize;
+			g2.drawString(text, x, y);
+			text="地圖中有隱藏熊熊最愛的";
+			y+=gamePanel.tileSize;
+			g2.drawString(text, x, y);
+			g2.drawImage(honey, x+gamePanel.tileSize*5-15, y-20,gamePanel.tileSize/2,gamePanel.tileSize/2,null);
+			text="吃下它會增加你的錢錢。";
+			g2.drawString(text, x+gamePanel.tileSize*5+15, y);
+			text="還可以按下Ｋ鍵來打死綿羊";
+			y+=gamePanel.tileSize;
+			g2.drawString(text, x, y);
+			g2.drawImage(task, x+gamePanel.tileSize*5+5, y-20,gamePanel.tileSize/2,gamePanel.tileSize/2,null);
+			text="獲得錢錢！";
+			g2.drawString(text, x+gamePanel.tileSize*5+35, y);
 			
+			text="開始遊戲";
+			x=getXForCenterText(text);
+			y+=gamePanel.tileSize*2;
+			g2.drawString(text, x, y);
+			if(commandNum==0) {
+				g2.drawString(">", x-gamePanel.tileSize, y);
+			}
+			
+			text="回上一頁";
+			x=getXForCenterText(text);
+			y+=gamePanel.tileSize;
+			g2.drawString(text, x, y);
+			if(commandNum==1) {
+				g2.drawString(">", x-gamePanel.tileSize, y);
+			}
 			
 			
 		}
