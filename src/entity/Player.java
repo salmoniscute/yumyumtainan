@@ -136,7 +136,7 @@ public class Player extends Entity{
 			
 			//
 			
-			if(collisionOn==false&&keyHandler.enterPressed==false) {
+			if(collisionOn == false && keyHandler.enterPressed == false) {
 				switch (direction) {
 					case "up": {
 						worldY-=speed;
@@ -236,12 +236,12 @@ public class Player extends Entity{
 		if (index!=999) {
 			String objectName = gamePanel.objects[index].name;
 			switch (objectName) {
-			case "honey": {
-				hasMoney+=100;
-				gamePanel.objects[index]=null;
-				gamePanel.ui.showMessage("You got some food!");
-				break;
-			}
+				case "honey": {
+					hasMoney+=100;
+					gamePanel.objects[index]=null;
+					gamePanel.ui.showMessage("You got some food!");
+					break;
+				}
 				
 			}
 			/*if (hasMoney<0) {
