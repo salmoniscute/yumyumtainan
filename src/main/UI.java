@@ -66,6 +66,10 @@ public class UI {
 		if(gamePanel.gameState==gamePanel.dialogueState) {
 			drawDialogueScreen();
 		}
+		//character screen
+		if(gamePanel.gameState==gamePanel.characterState) {
+			drawCharacterScreen();
+		}
 		
 		/*if (gameFinished==true) {
 			g2.setFont(arial_40);
@@ -187,6 +191,9 @@ public class UI {
 			JTextField inputName = new JTextField(50);
 			x+=gamePanel.tileSize*5;
 			y+=gamePanel.tileSize/2;
+			inputName.setLocation(x, y);
+			inputName.setSize(inputName.getPreferredSize());
+			gamePanel.add(inputName);
 			
 			text="How to play";
 			x=getXForCenterText(text);
@@ -231,6 +238,7 @@ public class UI {
 	}
 	public void drawDialogueScreen() {
 		
+		
 		//window
 		int x=gamePanel.tileSize*2;
 		int y=gamePanel.tileSize/2;
@@ -249,9 +257,29 @@ public class UI {
 		}
 		
 	}
+	public void drawCharacterScreen() {
+		
+		//create a frame
+		final int frameX=gamePanel.tileSize;
+		final int frameY=gamePanel.tileSize;
+		final int frameWidth=gamePanel.tileSize*6;
+		final int frameHeight=gamePanel.tileSize*5;
+		drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+		//text
+		g2.setColor(Color.white);
+		g2.setFont(g2.getFont().deriveFont(25F));
+		
+		int textX=frameX+20;
+		int textY=frameY+gamePanel.tileSize;
+		final int lineHeight=32;
+		
+		//information
+		g2.drawString("持有金額：", textX, textY);
+		
+	}
 	public void drawSubWindow(int x,int y,int width,int height) {
 		
-		Color color=new Color(0,0,0,150);
+		Color color=new Color(0,0,0,180);
 		g2.setColor(color);
 		g2.fillRoundRect(x, y, width, height,35,35);
 		
@@ -266,7 +294,6 @@ public class UI {
 		int x=gamePanel.screenWidth/2-textlength/2;
 		return x;
 	}
-	
 	
 
 }

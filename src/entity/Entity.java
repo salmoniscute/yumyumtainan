@@ -30,7 +30,7 @@ public class Entity {
 	public String direction="down";
 	public int spriteNum=1;
 	int dialogueIndex=0;
-	boolean attacking =false;
+	public boolean attacking =false;
 	public boolean collisionOn = false;
 	public boolean invincible=false;
 	public boolean alive=true;

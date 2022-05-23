@@ -17,11 +17,13 @@ public class Player extends Entity{
 	
 	KeyHandler keyHandler;
 	
-	String playerName="";
+	//player state
+	public String playerName="";
+	public int hasMoney=0;
 	
 	public final int screenX;
 	public final int screenY;
-	public int hasMoney=0;
+	
 	
 	public Player(GamePanel gp,KeyHandler keyH) {
 		
@@ -54,6 +56,8 @@ public class Player extends Entity{
 		worldY=gamePanel.tileSize*21;
 		speed = 4;
 		direction="down";
+		
+		hasMoney=1000;
 		
 	}
 	
@@ -230,23 +234,17 @@ public class Player extends Entity{
 	public void pickUpObject(int index) {
 		
 		if (index!=999) {
-			/*String objectName = gamePanel.objects[index].name;
+			String objectName = gamePanel.objects[index].name;
 			switch (objectName) {
-			case "food": {
+			case "honey": {
 				hasMoney+=100;
 				gamePanel.objects[index]=null;
 				gamePanel.ui.showMessage("You got some food!");
 				break;
 			}
-			case "jar":{
-				hasMoney-=150;
-				gamePanel.objects[index]=null;
-				gamePanel.ui.showMessage("You got a jar!");
-				break;
-			}
 				
 			}
-			if (hasMoney<0) {
+			/*if (hasMoney<0) {
 				gamePanel.ui.gameFinished=true;
 				
 			}*/
@@ -264,9 +262,9 @@ public class Player extends Entity{
 					gamePanel.npc[i].speak();
 				
 			}
-			else {
+			/*else {
 					attacking=true;
-			}
+			}*/
 		}
 		gamePanel.keyHandler.enterPressed=false;
 	}

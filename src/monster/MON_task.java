@@ -14,7 +14,7 @@ public class MON_task extends Entity{
 		this.gamePanel=gamePanel;
 		
 		name = "task";
-		speed=1;
+		speed=3;
 		type=2;
 		
 		solidArea.x=3;
@@ -30,14 +30,14 @@ public class MON_task extends Entity{
 		setAction();
 	}
 	public void getMONImage() {
-		up2=setup("/monster/greenslime_down_1",gamePanel.tileSize,gamePanel.tileSize);
-		up3=setup("/monster/greenslime_down_2",gamePanel.tileSize,gamePanel.tileSize);
-		down2=setup("/monster/greenslime_down_1",gamePanel.tileSize,gamePanel.tileSize);
-		down3=setup("/monster/greenslime_down_2",gamePanel.tileSize,gamePanel.tileSize);
-		left2=setup("/monster/greenslime_down_1",gamePanel.tileSize,gamePanel.tileSize);
-		left3=setup("/monster/greenslime_down_2",gamePanel.tileSize,gamePanel.tileSize);
-		right2=setup("/monster/greenslime_down_1",gamePanel.tileSize,gamePanel.tileSize);
-		right3=setup("/monster/greenslime_down_2",gamePanel.tileSize,gamePanel.tileSize);
+		up2=setup("/monster/task.back2",gamePanel.tileSize,gamePanel.tileSize);
+		up3=setup("/monster/task.back3",gamePanel.tileSize,gamePanel.tileSize);
+		down2=setup("/monster/task.front2",gamePanel.tileSize,gamePanel.tileSize);
+		down3=setup("/monster/task.front3",gamePanel.tileSize,gamePanel.tileSize);
+		left2=setup("/monster/task.left2",gamePanel.tileSize,gamePanel.tileSize);
+		left3=setup("/monster/task.left3",gamePanel.tileSize,gamePanel.tileSize);
+		right2=setup("/monster/task.right2",gamePanel.tileSize,gamePanel.tileSize);
+		right3=setup("/monster/task.right3",gamePanel.tileSize,gamePanel.tileSize);
 	}
 	public void setAction() {
 			actionLockCounter++;

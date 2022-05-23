@@ -21,8 +21,8 @@ public class OBJ_food extends Entity{
 		solidArea.width=32;
 		solidArea.height=32;
 		
-		name="food";
-		down2=setup("/object/food",gamePanel.tileSize,gamePanel.tileSize);
+		name="honey";
+		down2=setup("/object/honey",gamePanel.tileSize,gamePanel.tileSize);
 		
 		collision=true;
 		
