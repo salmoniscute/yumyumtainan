@@ -33,4 +33,9 @@ thumbs.db
 Thumbs.db
 
 # for eclipse 
-.settings
+.settings/*
+bin/*
+.classpath
+.project
+
+
