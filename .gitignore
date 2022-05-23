@@ -31,3 +31,6 @@ replay_pid*
 thumbs
 thumbs.db
 Thumbs.db
+
+# for eclipse 
+.settings
