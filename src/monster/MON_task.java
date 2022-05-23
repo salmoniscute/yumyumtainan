@@ -48,7 +48,7 @@ public class MON_task extends Entity{
 				if (i<=25) {
 					direction="up";
 				}
-				if (i>25&&i<-50) {
+				if (i>25&&i<=50) {
 					direction="down";
 				}
 				if (i>50&&i<=75) {

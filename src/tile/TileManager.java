@@ -33,9 +33,10 @@ public class TileManager {
 			setup(0, "ground", false);
 			setup(1, "flower", true);
 			setup(2, "water", true);
-			setup(3, "grass", true);
+			setup(3, "grass", false);
 			setup(4, "flower2", true);
 			setup(5, "bridge", false);
+			setup(6, "brush", true);
 		
 			
 	}
@@ -98,26 +99,28 @@ public class TileManager {
 	public void draw(Graphics2D g2) {
 		
 		int worldCol =0;
-		int worldRow = 0;
-		
-		int worldX = 0;
-		int worldY = 0;
-		
-		int screenX = -gamePanel.player.worldX + gamePanel.player.screenX;
-		int screenY = -gamePanel.player.worldY + gamePanel.player.screenY;
-		
-		while(worldCol<gamePanel.maxWorldCOL && worldRow<gamePanel.maxWorldCOL) {
-			
-			int tileNum = mapTileNum[worldCol][worldRow];
-			
-			worldX = worldCol*gamePanel.tileSize;
-			worldY = worldRow*gamePanel.tileSize;
-			
-			screenX = worldX - gamePanel.player.worldX + gamePanel.player.screenX;
-			screenY = worldY - gamePanel.player.worldY + gamePanel.player.screenY;
-			
-			if(worldX+gamePanel.tileSize>gamePanel.player.worldX-gamePanel.player.screenX
-					&&worldX-gamePanel.tileSize<gamePanel.player.worldX+gamePanel.player.screenX
+ 		int worldRow = 0;
+
+ 		int worldX = 0;
+ 		int worldY = 0;
+
+ 		int screenX = -gamePanel.player.worldX + gamePanel.player.screenX;
+ 		int screenY = -gamePanel.player.worldY + gamePanel.player.screenY;
+
+ 		while(worldCol<gamePanel.maxWorldCOL && worldRow<gamePanel.maxWorldCOL) {
+
+ 			int tileNum = mapTileNum[worldCol][worldRow];
+
+ 			
+ 			worldX = worldCol*gamePanel.tileSize;
+ 			worldY = worldRow*gamePanel.tileSize;
+
+
+ 			screenX = worldX - gamePanel.player.worldX + gamePanel.player.screenX;
+ 			screenY = worldY - gamePanel.player.worldY + gamePanel.player.screenY;
+
+ 			if(worldX+gamePanel.tileSize>gamePanel.player.worldX-gamePanel.player.screenX
+ 					&&worldX-gamePanel.tileSize<gamePanel.player.worldX+gamePanel.player.screenX
 					&&worldY+gamePanel.tileSize>gamePanel.player.worldY-gamePanel.player.screenY
 					&&worldY-gamePanel.tileSize<gamePanel.player.worldY+gamePanel.player.screenY) {
 				

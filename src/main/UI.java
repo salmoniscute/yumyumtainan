@@ -17,7 +17,7 @@ public class UI {
 	GamePanel gamePanel;
 	Font arial_40,arial_80B;
 	Graphics2D g2;
-	BufferedImage  money,honey,task;
+	BufferedImage  money,honey,task,ig;
 	public boolean messageOn;
 	public String message ="" ;
 	//int messageCounter=0;
@@ -36,6 +36,7 @@ public class UI {
 		try {
 			honey = ImageIO.read(getClass().getResourceAsStream("/object/honey.png"));
 			task = ImageIO.read(getClass().getResourceAsStream("/monster/task.front2.png"));
+			ig=ImageIO.read(getClass().getResourceAsStream("/maps/ig.png"));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -131,7 +132,7 @@ public class UI {
 			g2.setFont(g2.getFont().deriveFont(Font.BOLD));
 			String text="按下Enter鍵以開始遊戲。";
 			int x=getXForCenterText(text);
-			int y=gamePanel.tileSize*3;
+			int y=gamePanel.tileSize*2;
 			
 			//shadow
 			g2.setColor(Color.PINK);
@@ -143,14 +144,14 @@ public class UI {
 			
 			//logo image
 			x=gamePanel.screenWidth/2-gamePanel.tileSize;
-			y+=gamePanel.tileSize*2;
+			y+=gamePanel.tileSize;
 			g2.drawImage(gamePanel.player.down1, x, y,gamePanel.tileSize*2,gamePanel.tileSize*2,null);
 			
 			//menu
-			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30));
+			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,22));
 			text="New Game";
 			x=getXForCenterText(text);
-			y+=gamePanel.tileSize*4;
+			y+=gamePanel.tileSize*3;
 			g2.drawString(text, x, y);
 			if(commandNum==0) {
 				g2.drawString(">", x-gamePanel.tileSize, y);
@@ -171,6 +172,19 @@ public class UI {
 			if(commandNum==2) {
 				g2.drawString(">", x-gamePanel.tileSize, y);
 			}
+			
+			x=gamePanel.tileSize;
+			y+=gamePanel.tileSize;
+			g2.drawImage(ig, x, y, gamePanel.tileSize,gamePanel.tileSize, null);
+			
+			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,16));
+			text="yumyum_tb";
+			y+=gamePanel.tileSize;
+			g2.drawString(text, x+gamePanel.tileSize, y-18);
+			text="此遊戲的店家資訊皆是來自這個美食帳，歡迎前去看看！";
+			y+=gamePanel.tileSize/2;
+			g2.drawString(text, x+5, y);
+			
 		}
 		else if (titleScreenState==1) {
 			g2.setColor(new Color(255,249,248));
