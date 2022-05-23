@@ -6,4 +6,7 @@ public class Super_Store {
 	String storeName;
 	int cost;
 	
+	///////////////////// 測試一下啦 /////////////////
+	
+	
 }
