@@ -14,7 +14,7 @@ public class MON_task extends Entity{
 		this.gamePanel=gamePanel;
 		
 		name = "task";
-		speed=5;
+		speed=6;
 		type=2;
 		
 		solidArea.x=3;
