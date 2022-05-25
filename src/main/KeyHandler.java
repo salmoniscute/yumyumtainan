@@ -7,7 +7,7 @@ public class KeyHandler implements KeyListener{
 	
 	GamePanel gamePanel;
 	
-	public boolean upPressed,downPressed,rightPresed,leftPressed,enterPressed,attackPressed;
+	public boolean upPressed,downPressed, rightPressed,leftPressed,enterPressed,attackPressed;
 	
 	public KeyHandler(GamePanel gPanel) {
 		
@@ -146,7 +146,7 @@ public class KeyHandler implements KeyListener{
 			
 		}
 		if (code==KeyEvent.VK_D) {
-			rightPresed = true;
+			rightPressed = true;
 			
 		}
 		if (code==KeyEvent.VK_P) {
@@ -248,7 +248,7 @@ public class KeyHandler implements KeyListener{
 			
 		}
 		if (code==KeyEvent.VK_D) {
-			rightPresed = false;
+			rightPressed = false;
 			
 		}
 	}
