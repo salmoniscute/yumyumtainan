@@ -380,6 +380,8 @@ public class UI {
 			final int frameWidth=gamePanel.tileSize*14+48;
 			final int frameHeight=gamePanel.tileSize*10+48;
 			drawSubWindow(frameX, frameY, frameWidth, frameHeight,255,232,236,250,2);
+			
+			
 		}
 		
 		
