@@ -1,17 +1,11 @@
 package entity;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.time.LocalDate;
-
-import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
-import main.UtilityTool;
 
 public class Player extends Entity{
 	
@@ -98,7 +92,7 @@ public class Player extends Entity{
 		}
 		
 		else if(keyHandler.downPressed==true||keyHandler.upPressed==true||
-				keyHandler.leftPressed==true||keyHandler.rightPresed==true||keyHandler.enterPressed==true) {
+				keyHandler.leftPressed==true||keyHandler.rightPressed ==true||keyHandler.enterPressed==true) {
 			if(keyHandler.upPressed == true) {
 				direction="up";
 				
@@ -107,7 +101,7 @@ public class Player extends Entity{
 				direction="down";
 				
 			}
-			else if(keyHandler.rightPresed == true) {
+			else if(keyHandler.rightPressed == true) {
 				direction="right";		
 				
 			}
