@@ -39,4 +39,9 @@ bin/*
 .classpath
 .project
 
+# for intelliJ 我竟然會忘記加
+.idea/*
+out/*
+*.iml
+
 
