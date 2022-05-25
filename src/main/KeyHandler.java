@@ -61,13 +61,13 @@ public class KeyHandler implements KeyListener{
 		
 		if(gamePanel.ui.titleScreenState==0) {
 			
-			if (code==KeyEvent.VK_W) {
+			if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP ) {
 				gamePanel.ui.commandNum--;
 				if(gamePanel.ui.commandNum<0) {
 					gamePanel.ui.commandNum=2;
 				}
 			}
-			if (code==KeyEvent.VK_S) {
+			if (code==KeyEvent.VK_S || code==KeyEvent.VK_DOWN) {
 				gamePanel.ui.commandNum++;
 				if(gamePanel.ui.commandNum>2) {
 					gamePanel.ui.commandNum=0;
@@ -87,13 +87,13 @@ public class KeyHandler implements KeyListener{
 			}
 		}
 		else if(gamePanel.ui.titleScreenState==1) {
-			if (code==KeyEvent.VK_W) {
+			if (code==KeyEvent.VK_W || code==KeyEvent.VK_UP) {
 				gamePanel.ui.commandNum--;
 				if(gamePanel.ui.commandNum<0) {
 					gamePanel.ui.commandNum=1;
 				}
 			}
-			if (code==KeyEvent.VK_S) {
+			if (code==KeyEvent.VK_S || code==KeyEvent.VK_DOWN) {
 				gamePanel.ui.commandNum++;
 				if(gamePanel.ui.commandNum>1) {
 					gamePanel.ui.commandNum=0;
@@ -109,13 +109,13 @@ public class KeyHandler implements KeyListener{
 			}
 		}
 		else if(gamePanel.ui.titleScreenState==2) {
-			if (code==KeyEvent.VK_W) {
+			if (code==KeyEvent.VK_W || code==KeyEvent.VK_UP) {
 				gamePanel.ui.commandNum--;
 				if(gamePanel.ui.commandNum<0) {
 					gamePanel.ui.commandNum=1;
 				}
 			}
-			if (code==KeyEvent.VK_S) {
+			if (code==KeyEvent.VK_S || code==KeyEvent.VK_DOWN) {
 				gamePanel.ui.commandNum++;
 				if(gamePanel.ui.commandNum>1) {
 					gamePanel.ui.commandNum=0;
@@ -134,18 +134,18 @@ public class KeyHandler implements KeyListener{
 	
 	public void playState(int code) {
 		
-		if (code==KeyEvent.VK_W) {
+		if (code==KeyEvent.VK_W || code==KeyEvent.VK_UP) {
 			upPressed = true;
 		}
-		if (code==KeyEvent.VK_S) {
+		if (code==KeyEvent.VK_S || code==KeyEvent.VK_DOWN) {
 			downPressed = true;
 					
 		}
-		if (code==KeyEvent.VK_A) {
+		if (code==KeyEvent.VK_A || code==KeyEvent.VK_LEFT) {
 			leftPressed = true;
 			
 		}
-		if (code==KeyEvent.VK_D) {
+		if (code==KeyEvent.VK_D || code==KeyEvent.VK_RIGHT) {
 			rightPressed = true;
 			
 		}
@@ -199,13 +199,13 @@ public class KeyHandler implements KeyListener{
 		
 		if(gamePanel.ui.storeScreenState==0) {
 					
-				if (code==KeyEvent.VK_W) {
+				if (code==KeyEvent.VK_W || code==KeyEvent.VK_UP) {
 					gamePanel.ui.commandNum--;
 					if(gamePanel.ui.commandNum<0) {
 						gamePanel.ui.commandNum=1;
 					}					
 				}
-				if (code==KeyEvent.VK_S) {
+				if (code==KeyEvent.VK_S || code==KeyEvent.VK_DOWN) {
 					gamePanel.ui.commandNum++;
 					if(gamePanel.ui.commandNum>1) {
 						gamePanel.ui.commandNum=0;
@@ -236,18 +236,18 @@ public class KeyHandler implements KeyListener{
 	public void keyReleased(KeyEvent e) {
 		
 		int code =e.getKeyCode();
-		if (code==KeyEvent.VK_W) {
+		if (code==KeyEvent.VK_W || code==KeyEvent.VK_UP) {
 			upPressed = false;
 		}
-		if (code==KeyEvent.VK_S) {
+		if (code==KeyEvent.VK_S || code==KeyEvent.VK_DOWN) {
 			downPressed = false;
 					
 		}
-		if (code==KeyEvent.VK_A) {
+		if (code==KeyEvent.VK_A || code==KeyEvent.VK_LEFT) {
 			leftPressed = false;
 			
 		}
-		if (code==KeyEvent.VK_D) {
+		if (code==KeyEvent.VK_D || code==KeyEvent.VK_RIGHT) {
 			rightPressed = false;
 			
 		}
