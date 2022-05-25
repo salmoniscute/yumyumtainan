@@ -97,6 +97,8 @@ public class Entity {
 		gamePanel.collisionChecker.checkEntity(this, gamePanel.npc);
 		gamePanel.collisionChecker.checkEntity(this, gamePanel.monster);
 		gamePanel.collisionChecker.checkPlayer(this);
+		gamePanel.collisionChecker.checkStore(this, false);
+		gamePanel.collisionChecker.checkObject(this, false);
 		
 		if(collisionOn==false) {
 			switch (direction) {

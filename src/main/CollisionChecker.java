@@ -1,6 +1,7 @@
 package main;
 
 import entity.Entity;
+import store.Store_super;
 
 public class CollisionChecker {
 	
@@ -114,6 +115,57 @@ public class CollisionChecker {
 				entity.solidArea.y = entity.solidAreaDefaultY;
 				gamePanel.objects[i].solidArea.x = gamePanel.objects[i].solidAreaDefaultX;
 				gamePanel.objects[i].solidArea.y = gamePanel.objects[i].solidAreaDefaultY;
+			
+			}
+		
+		
+		
+		}
+		return index;
+	}
+	public int checkStore(Entity entity,boolean player) {
+		
+		int index=999;
+		
+		for(int i=0;i<gamePanel.store.length;i++) {
+			if(gamePanel.store[i]!=null) {
+				entity.solidArea.x = entity.worldX+entity.solidArea.x;
+				entity.solidArea.y = entity.worldY+entity.solidArea.y;
+				//get object's solid area position
+				gamePanel.store[i].solidArea.x+=gamePanel.store[i].worldX;
+				gamePanel.store[i].solidArea.y+=gamePanel.store[i].worldY;
+				
+				switch (entity.direction) {
+					case "up": {
+						entity.solidArea.y-=entity.speed;
+						break; 
+					}
+					case "down": {
+						entity.solidArea.y+=entity.speed;
+						break;
+					}
+					case "left": {
+						entity.solidArea.x-=entity.speed;
+						break;
+					}
+					case "right": {
+						entity.solidArea.x+=entity.speed;
+						break;
+					}
+				
+				}
+				if(entity.solidArea.intersects(gamePanel.store[i].solidArea)) {
+					if(gamePanel.store[i].collision==true) {
+						entity.collisionOn=true;
+					}
+					if(player==true) {
+						index=i;
+					}
+				}
+				entity.solidArea.x = entity.solidAreaDefaultX;
+				entity.solidArea.y = entity.solidAreaDefaultY;
+				gamePanel.store[i].solidArea.x = gamePanel.store[i].solidAreaDefaultX;
+				gamePanel.store[i].solidArea.y = gamePanel.store[i].solidAreaDefaultY;
 			
 			}
 		

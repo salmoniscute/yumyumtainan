@@ -14,9 +14,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
+import javax.swing.JTextField;
 
 import entity.Entity;
 import entity.Player;
+import store.Store_super;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -65,6 +67,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public Entity objects[]= new Entity[10];
 	public Entity monster[]=new Entity[10];
 	ArrayList<Entity> entityList=new ArrayList<>();
+	public Store_super store[]=new Store_super[10];
 	
 	//game state
 	public int gameState;
@@ -73,6 +76,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int pauseState=2;
 	public final int dialogueState=3;
 	public final int characterState=4;
+	public final int storeState=5;
 	
 	///////////
 	
@@ -83,12 +87,14 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyHandler);
 		this.setFocusable(true);
+		
 	}
 	
 	public void setUpGame() {
 		assetsetter.setObject();
 		assetsetter.setNPC();
 		assetsetter.setMonster();
+		assetsetter.setStore();
 		playMusic(0);
 		
 		gameState =titleState;
@@ -168,6 +174,13 @@ public class GamePanel extends JPanel implements Runnable{
 			///tile
 			
 			tileManager.draw(g2);
+			
+			//store
+			for(int i=0;i<store.length;i++) {
+				if(store[i]!=null) {
+					store[i].draw(g2);
+				}
+			}
 			
 			//entity
 			entityList.add(player);

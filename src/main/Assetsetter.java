@@ -3,6 +3,7 @@ package main;
 import entity.NPC_cadre;
 import monster.MON_task;
 import object.OBJ_food;
+import store.Store_1;
 
 public class Assetsetter {
 	
@@ -37,6 +38,10 @@ public class Assetsetter {
 		gamePanel.monster[1]=new MON_task(gamePanel);
 		gamePanel.monster[1].worldX=gamePanel.tileSize*35;
 		gamePanel.monster[1].worldY=gamePanel.tileSize*42;
+		
+	}
+	public void setStore() {
+		gamePanel.store[0]=new Store_1(gamePanel);
 		
 	}
 

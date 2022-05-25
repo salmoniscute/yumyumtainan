@@ -51,6 +51,9 @@ public class KeyHandler implements KeyListener{
 			else if(gamePanel.gameState==gamePanel.characterState) {
 				characterState(code);
 			}	
+			else if(gamePanel.gameState==gamePanel.storeState) {
+				storeState(code);
+			}
 		
 	}
 	
@@ -189,6 +192,42 @@ public class KeyHandler implements KeyListener{
 		if (code==KeyEvent.VK_C) {
 			gamePanel.gameState=gamePanel.playState;
 			
+		}
+		
+	}
+	public void storeState(int code) {
+		
+		if(gamePanel.ui.storeScreenState==0) {
+					
+				if (code==KeyEvent.VK_W) {
+					gamePanel.ui.commandNum--;
+					if(gamePanel.ui.commandNum<0) {
+						gamePanel.ui.commandNum=1;
+					}					
+				}
+				if (code==KeyEvent.VK_S) {
+					gamePanel.ui.commandNum++;
+					if(gamePanel.ui.commandNum>1) {
+						gamePanel.ui.commandNum=0;
+					}
+				}
+				if (code==KeyEvent.VK_ENTER) {
+					if(gamePanel.ui.commandNum==0) {
+						gamePanel.ui.storeScreenState=1;
+					}
+					if(gamePanel.ui.commandNum==1) {
+						gamePanel.gameState=gamePanel.playState;
+					}			
+				
+						
+				}
+		}
+		else if(gamePanel.ui.storeScreenState==1) {
+				if (code==KeyEvent.VK_ENTER) {
+					gamePanel.gameState=gamePanel.playState;		
+					gamePanel.ui.commandNum=0;
+					gamePanel.ui.storeScreenState=0;
+				}
 		}
 		
 	}

@@ -127,6 +127,13 @@ public class Player extends Entity{
 			int objectIndex = gamePanel.collisionChecker.checkObject(this, true);
 			pickUpObject(objectIndex);
 			
+			//check store collision
+			int storeIndex=gamePanel.collisionChecker.checkStore(this, true);
+			if(keyHandler.enterPressed==true) {
+				openStore(storeIndex);
+			}
+			
+			
 			//check npc collision
 			int npcIndex = gamePanel.collisionChecker.checkEntity(this, gamePanel.npc);
 			interactNPC(npcIndex);
@@ -282,6 +289,14 @@ public class Player extends Entity{
 			}
 			
 			
+		}
+		
+	}
+	public void openStore(int i) {
+		
+		if(i!=999) {
+			gamePanel.gameState=gamePanel.storeState;
+			gamePanel.ui.storeNum=i;
 		}
 		
 	}

@@ -25,6 +25,8 @@ public class UI {
 	public String currentDialogue="";
 	public int commandNum=0;
 	public int titleScreenState=0;
+	public int storeScreenState=0;
+	public int storeNum=0;
 	
 	
 	public UI(GamePanel gp) {
@@ -72,6 +74,10 @@ public class UI {
 		//character screen
 		if(gamePanel.gameState==gamePanel.characterState) {
 			drawCharacterScreen();
+		}
+		//store screen
+		if(gamePanel.gameState==gamePanel.storeState) {
+			drawStoreScreen(storeNum);
 		}
 		
 		/*if (gameFinished==true) {
@@ -126,7 +132,7 @@ public class UI {
 	public void drawTitleScreen() {
 		
 		if(titleScreenState==0) {
-			g2.setColor(new Color(255,249,248));
+			g2.setColor(new Color(255,232,236));
 			g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
 			
 			g2.setFont(g2.getFont().deriveFont(Font.BOLD));
@@ -187,7 +193,7 @@ public class UI {
 			
 		}
 		else if (titleScreenState==1) {
-			g2.setColor(new Color(255,249,248));
+			g2.setColor(new Color(255,232,236));
 			g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
 			
 			g2.setColor(Color.black);
@@ -226,10 +232,12 @@ public class UI {
 			if(commandNum==1) {
 				g2.drawString(">", x-gamePanel.tileSize, y);
 			}
+			
+			
 	
 		}
 		else if(titleScreenState==2) {
-			g2.setColor(new Color(255,249,248));
+			g2.setColor(new Color(255,232,236));
 			g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
 			
 			g2.setColor(Color.black);
@@ -300,7 +308,7 @@ public class UI {
 		int width=gamePanel.screenWidth-gamePanel.tileSize*4;
 		int height=gamePanel.tileSize*3;
 		
-		drawSubWindow(x,y,width,height);
+		drawSubWindow(x,y,width,height,0,0,0,180,3);
 		
 		g2.setFont(g2.getFont().deriveFont(Font.PLAIN,28F));
 		x+=gamePanel.tileSize;
@@ -319,7 +327,7 @@ public class UI {
 		final int frameY=gamePanel.tileSize;
 		final int frameWidth=gamePanel.tileSize*6;
 		final int frameHeight=gamePanel.tileSize*5;
-		drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+		drawSubWindow(frameX, frameY, frameWidth, frameHeight,0,0,0,180,3);
 		//text
 		g2.setColor(Color.white);
 		g2.setFont(g2.getFont().deriveFont(25F));
@@ -332,15 +340,67 @@ public class UI {
 		g2.drawString("持有金額：", textX, textY);
 		
 	}
-	public void drawSubWindow(int x,int y,int width,int height) {
+	public void drawStoreScreen(int i) {
 		
-		Color color=new Color(0,0,0,180);
+		if(storeScreenState==0) {
+			//create a frame
+			final int frameX=gamePanel.tileSize*3+10;
+			final int frameY=gamePanel.tileSize*3;
+			final int frameWidth=gamePanel.tileSize*9;
+			final int frameHeight=gamePanel.tileSize*5;
+			drawSubWindow(frameX, frameY, frameWidth, frameHeight,255,232,236,250,2);
+			
+			g2.setColor(Color.BLACK);
+			g2.setFont(g2.getFont().deriveFont(18F));
+			int x=frameX+20;
+			int y=frameY+gamePanel.tileSize;
+			String text="歡迎光臨 "+gamePanel.store[i].name;
+			g2.drawString(text, x, y);
+			
+			text="好的，我要吃掉它";
+			x=getXForCenterText(text);
+			y+=gamePanel.tileSize*2;
+			g2.drawString(text, x, y);
+			if(commandNum==0) {
+				g2.drawString(">", x-gamePanel.tileSize, y);
+			}
+			
+			text="算了我要減肥";
+			x=getXForCenterText(text);
+			y+=gamePanel.tileSize;
+			g2.drawString(text, x, y);
+			if(commandNum==1) {
+				g2.drawString(">", x-gamePanel.tileSize, y);
+			}
+		}
+		else if(storeScreenState==1) {
+			//create a frame
+			final int frameX=gamePanel.tileSize/2;
+			final int frameY=gamePanel.tileSize/2;
+			final int frameWidth=gamePanel.tileSize*14+48;
+			final int frameHeight=gamePanel.tileSize*10+48;
+			drawSubWindow(frameX, frameY, frameWidth, frameHeight,255,232,236,250,2);
+		}
+		
+		
+		
+	}
+	public void drawSubWindow(int x,int y,int width,int height,int r,int g,int b,int transparency,int stroke) {
+		
+		Color color =new Color(r,g,b,transparency);
 		g2.setColor(color);
 		g2.fillRoundRect(x, y, width, height,35,35);
 		
-		color=new Color(255,255,255);
+		if(r>100) {r=0;}
+		else {r+=255;}
+		if(g>100) {g=0;}
+		else {g+=255;}
+		if(b>100) {b=0;}
+		else {b+=255;}
+		
+		color=new Color(r,g,b);
 		g2.setColor(color);
-		g2.setStroke(new BasicStroke(3));
+		g2.setStroke(new BasicStroke(stroke));
 		g2.drawRoundRect(x+5, y+5, width-10, height-10, 25, 25);
 		
 	}
