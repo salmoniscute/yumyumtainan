@@ -6,10 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.security.PublicKey;
-
 import javax.imageio.ImageIO;
-import javax.print.attribute.standard.MediaSize.Other;
 import javax.swing.JTextField;
 
 public class UI {
@@ -334,7 +331,7 @@ public class UI {
 		
 		int textX=frameX+20;
 		int textY=frameY+gamePanel.tileSize;
-		final int lineHeight=32;
+		//final int lineHeight=32;
 		
 		//information
 		g2.drawString("持有金額："+gamePanel.player.hasMoney+" 元", textX, textY);

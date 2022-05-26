@@ -4,8 +4,6 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.lang.invoke.StringConcatFactory;
-
 import javax.imageio.ImageIO;
 
 import main.GamePanel;

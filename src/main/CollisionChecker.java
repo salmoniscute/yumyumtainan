@@ -1,7 +1,6 @@
 package main;
 
 import entity.Entity;
-import store.Store_super;
 
 public class CollisionChecker {
 	

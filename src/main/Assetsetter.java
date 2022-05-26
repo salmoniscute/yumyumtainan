@@ -7,6 +7,9 @@ import store.Store_1;
 import store.Store_2;
 import store.Store_3;
 import store.Store_4;
+import store.Store_5;
+import store.Store_6;
+import store.Store_7;
 
 public class Assetsetter {
 	
@@ -42,12 +45,16 @@ public class Assetsetter {
 		gamePanel.monster[1].worldX=gamePanel.tileSize*35;
 		gamePanel.monster[1].worldY=gamePanel.tileSize*42;
 		
+		
 	}
 	public void setStore() {
 		gamePanel.store[0]=new Store_1(gamePanel);
 		gamePanel.store[1]=new Store_2(gamePanel);
 		gamePanel.store[2]=new Store_3(gamePanel);
 		gamePanel.store[3]=new Store_4(gamePanel);
+		gamePanel.store[4]=new Store_5(gamePanel);
+		gamePanel.store[5]=new Store_6(gamePanel);
+		gamePanel.store[6]=new Store_7(gamePanel);
 		
 	}
 
