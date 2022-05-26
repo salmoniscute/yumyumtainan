@@ -16,7 +16,7 @@ public class Entity {
 	
 	GamePanel gamePanel;
 	public BufferedImage up1,up2,up3,down1,down2,down3,right1,right2,right3,left1,left2,left3;
-	public BufferedImage attackUp1,attackUp2,attackDown1,attackDown2,attackLeft1,attackLeft2,attackRight1,attackRight2;
+	public BufferedImage attackUp1,attackDown1,attackLeft1,attackRight1;
 	public Rectangle solidArea=new Rectangle(0,0,48,48);
 	public Rectangle attackArea=new Rectangle(0,0,0,0);
 	public int solidAreaDefaultX,solidAreaDefaultY;

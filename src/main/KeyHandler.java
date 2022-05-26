@@ -219,6 +219,7 @@ public class KeyHandler implements KeyListener{
 					}
 					if(gamePanel.ui.commandNum==1) {
 						gamePanel.gameState=gamePanel.playState;
+						gamePanel.ui.commandNum=0;
 					}			
 				
 						

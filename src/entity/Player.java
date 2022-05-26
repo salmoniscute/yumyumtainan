@@ -73,14 +73,14 @@ public class Player extends Entity{
 	}
 	public void getPlayerAttackImage() {
 		
-		attackUp1=setup("/player/boy_attack_up_1",gamePanel.tileSize,gamePanel.tileSize*2);
-		attackUp2=setup("/player/boy_attack_up_2",gamePanel.tileSize,gamePanel.tileSize*2);
-		attackDown1=setup("/player/boy_attack_down_1",gamePanel.tileSize,gamePanel.tileSize*2);
-		attackDown2=setup("/player/boy_attack_down_2",gamePanel.tileSize,gamePanel.tileSize*2);
-		attackLeft1=setup("/player/boy_attack_left_1",gamePanel.tileSize*2,gamePanel.tileSize);
-		attackLeft2=setup("/player/boy_attack_left_2",gamePanel.tileSize*2,gamePanel.tileSize);
-		attackRight1=setup("/player/boy_attack_right_1",gamePanel.tileSize*2,gamePanel.tileSize);
-		attackRight2=setup("/player/boy_attack_right_2",gamePanel.tileSize*2,gamePanel.tileSize);
+		attackUp1=setup("/player/attack4",gamePanel.tileSize,gamePanel.tileSize+25);
+	
+		attackDown1=setup("/player/attack1",gamePanel.tileSize,gamePanel.tileSize+25);
+		
+		attackLeft1=setup("/player/attack3",gamePanel.tileSize+35,gamePanel.tileSize);
+		
+		attackRight1=setup("/player/attack2",gamePanel.tileSize+35,gamePanel.tileSize);
+		
 		
 	}
 
@@ -309,9 +309,8 @@ public class Player extends Entity{
 					if(spriteNum==2) {image=up3;}
 				}
 				if(attacking ==true){
-					tempScreenY-=gamePanel.tileSize;
-					if(spriteNum==1) {image=attackUp1;}
-					if(spriteNum==2) {image=attackUp2;}
+					tempScreenY-=gamePanel.tileSize-25;
+					image=attackUp1;
 				}
 				break;
 			}
@@ -321,8 +320,7 @@ public class Player extends Entity{
 					if(spriteNum==2) {image=down3;}
 				}
 				if(attacking ==true) {
-					if(spriteNum==1) {image=attackDown1;}
-					if(spriteNum==2) {image=attackDown2;}
+					image=attackDown1;
 				}
 				break;
 					}
@@ -332,9 +330,8 @@ public class Player extends Entity{
 					if(spriteNum==2) {image=left3;}
 				}
 				if(attacking ==true) {
-					tempScreenX-=gamePanel.tileSize;
-					if(spriteNum==1) {image=attackLeft1;}
-					if(spriteNum==2) {image=attackLeft2;}
+					tempScreenX-=gamePanel.tileSize-12;
+					image=attackLeft1;
 				}
 				break;
 			}
@@ -343,10 +340,7 @@ public class Player extends Entity{
 					if(spriteNum==1) {image=right2;}
 					if(spriteNum==2) {image=right3;}
 				}
-				if(attacking ==true) {
-					if(spriteNum==1) {image=attackRight1;}
-					if(spriteNum==2) {image=attackRight2;}
-				}
+				if(attacking ==true) {image=attackRight1;}
 				
 				break;
 			}
