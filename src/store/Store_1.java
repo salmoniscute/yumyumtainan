@@ -27,8 +27,7 @@ public class Store_1 extends Store_super {
 	}
 	public void setStoreInfo() {
 		
-		about="\n"
-				+ "隱身在巷內的超美麵鋪，屋內採天花板挑高、許多木製及金屬裝潢的歐式老工業風。\n"
+		about="隱身在巷內的超美麵鋪，屋內採天花板挑高、許多木製及金屬裝潢的歐式老工業風。\n"
 				+ "在如此漂亮的店裡吃著平價美味的麵實在是很特別的體驗，很推薦各位來看看～";
 		
 		item="\n"

@@ -27,8 +27,7 @@ public class Store_3 extends Store_super {
 	}
 	public void setStoreInfo() {
 		
-		about="\n"
-				+ "佇立在玉井老街盡頭的小店，店內牆上裝飾著滿滿從前顧客來店內用餐的老照片，空間雖小但很溫馨。\n"
+		about="佇立在玉井老街盡頭的小店，店內牆上裝飾著滿滿從前顧客來店內用餐的老照片，空間雖小但很溫馨。\n"
 				+ "來玉井別忘了來試試傳承五十年的眷村好滋味(˶‾᷄ ⁻̫ ‾᷅˵)";
 		
 		item="\n"

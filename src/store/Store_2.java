@@ -12,8 +12,8 @@ public class Store_2 extends Store_super{
 		worldX=gamePanel.tileSize*25;
 		worldY=gamePanel.tileSize*22;
 		
-		photoX=gamePanel.tileSize*7;
-		photoY=gamePanel.tileSize*7-20;
+		photoX=gamePanel.tileSize*8;
+		photoY=gamePanel.tileSize*6;
 		
 		
 		setStoreImage();
@@ -22,13 +22,12 @@ public class Store_2 extends Store_super{
 	}
 	
 	public void setStoreImage() {
-		photo1=setup("/store/store2",gamePanel.tileSize*3+20,gamePanel.tileSize*4+20);
+		photo1=setup("/store/store2",gamePanel.tileSize*4,gamePanel.tileSize*5);
 		
 	}
 	public void setStoreInfo() {
 		
-		about="\n"
-				+ "終於來踩點這家夯到不行的鴨肉飯了( ´▽` )ﾉ而且當天超幸運，排了超久的隊還好有排到鴨腿飯！\n"
+		about="終於來踩點這家夯到不行的鴨肉飯了( ´▽` )ﾉ而且當天超幸運，排了超久的隊還好有排到鴨腿飯！\n"
 				+ "（真的差一點就要向隅了）到底是否如傳聞中好吃呢～一起來看看吧！";
 		
 		item="\n"
@@ -39,7 +38,9 @@ public class Store_2 extends Store_super{
 				+ "\n"
 				+ "#鴨腿飯\n"
 				+ "鴨腿飯有額外附半顆滷蛋跟油豆腐，配料更豐富。\n"
-				+ "打開盒蓋根本是視覺衝擊，鴨腿幾乎整個覆蓋住底下的飯菜，刀功很好，切的粗細入口剛剛好。"
+				+ "打開盒蓋根本是視覺衝擊，\n"
+				+ "鴨腿幾乎整個覆蓋住底下的飯菜，\n"
+				+ "刀功很好，切的粗細入口剛剛好。"
 				+ "\n";
 				
 		info="\n"
