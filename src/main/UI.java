@@ -391,7 +391,7 @@ public class UI {
 			g2.setColor(Color.BLACK);
 			g2.setFont(g2.getFont().deriveFont(18F));
 			int x=frameX+20;
-			int y=frameY+gamePanel.tileSize-15;
+			int y=frameY+gamePanel.tileSize-10;
 			
 			g2.drawString(gamePanel.store[i].name, x, y);
 			y+=gamePanel.tileSize/2;
