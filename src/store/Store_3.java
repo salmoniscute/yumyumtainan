@@ -8,7 +8,7 @@ public class Store_3 extends Store_super {
 		
 		super(gp);
 		name="| 二空涼麵 |";
-		cost=150;
+		cost=120;
 		worldX=gamePanel.tileSize*25;
 		worldY=gamePanel.tileSize*24;
 		

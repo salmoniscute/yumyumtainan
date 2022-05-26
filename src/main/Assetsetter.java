@@ -4,6 +4,7 @@ import entity.NPC_cadre;
 import monster.MON_task;
 import object.OBJ_food;
 import store.Store_1;
+import store.Store_10;
 import store.Store_2;
 import store.Store_3;
 import store.Store_4;
@@ -59,6 +60,7 @@ public class Assetsetter {
 		gamePanel.store[6]=new Store_7(gamePanel);
 		gamePanel.store[7]=new Store_8(gamePanel);
 		gamePanel.store[8]=new Store_9(gamePanel);
+		gamePanel.store[9]=new Store_10(gamePanel);
 		
 	}
 

@@ -55,6 +55,7 @@ public class KeyHandler implements KeyListener{
 			else if(gamePanel.gameState==gamePanel.storeState) {
 				storeState(code,storeNum);
 			}
+			
 		
 	}
 	
@@ -167,6 +168,8 @@ public class KeyHandler implements KeyListener{
 		}
 		
 		
+		
+		
 	
 	}
 		
@@ -233,7 +236,7 @@ public class KeyHandler implements KeyListener{
 		}
 		
 	}
-
+	
 	@Override
 	public void keyReleased(KeyEvent e) {
 		

@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public Entity objects[]= new Entity[10];
 	public Entity monster[]=new Entity[10];
 	ArrayList<Entity> entityList=new ArrayList<>();
-	public Store_super store[]=new Store_super[10];
+	public Store_super store[]=new Store_super[15];
 	
 	//game state
 	public int gameState;
@@ -70,6 +70,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int dialogueState=3;
 	public final int characterState=4;
 	public final int storeState=5;
+	
 	
 	///////////
 	

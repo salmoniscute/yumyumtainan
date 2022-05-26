@@ -8,7 +8,7 @@ public class Store_4 extends Store_super {
 		
 		super(gp);
 		name="| 最初的地方 |";
-		cost=300;
+		cost=250;
 		worldX=gamePanel.tileSize*27;
 		worldY=gamePanel.tileSize*21;
 		

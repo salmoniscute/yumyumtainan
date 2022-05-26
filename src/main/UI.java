@@ -77,6 +77,7 @@ public class UI {
 		if(gamePanel.gameState==gamePanel.storeState) {
 			drawStoreScreen(storeNum);
 		}
+	
 		
 		/*if (gameFinished==true) {
 			g2.setFont(arial_40);
