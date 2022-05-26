@@ -396,7 +396,7 @@ public class UI {
 			g2.drawString(gamePanel.store[i].name, x, y);
 			y+=gamePanel.tileSize/2;
 			
-			g2.setFont(g2.getFont().deriveFont(15F));
+			g2.setFont(g2.getFont().deriveFont(16F));
 			for(String line:gamePanel.store[i].about.split("\n")) {
 				g2.drawString(line, x, y);
 				y+=20;
