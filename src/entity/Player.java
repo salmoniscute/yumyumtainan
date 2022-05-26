@@ -38,7 +38,7 @@ public class Player extends Entity{
 		
 		attackArea.width=36;
 		attackArea.height=36;
-		
+	
 		setDefaultValues();
 		getPlayerImage();
 		getPlayerAttackImage();

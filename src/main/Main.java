@@ -15,7 +15,7 @@ public class Main {
         
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(false);
-		window.setTitle("My 2D game");
+		window.setTitle("YUMYUM Tainan");
 		
 		GamePanel gamePanel = new GamePanel();
 		window.add(gamePanel);

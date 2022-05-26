@@ -337,7 +337,7 @@ public class UI {
 		final int lineHeight=32;
 		
 		//information
-		g2.drawString("持有金額：", textX, textY);
+		g2.drawString("持有金額："+gamePanel.player.hasMoney+" 元", textX, textY);
 		
 	}
 	public void drawStoreScreen(int i) {
@@ -357,9 +357,15 @@ public class UI {
 			String text="歡迎光臨 "+gamePanel.store[i].name;
 			g2.drawString(text, x, y);
 			
+			text="探索這間台南美食需要 "+gamePanel.store[i].cost+" 元";
+			y+=gamePanel.tileSize;
+			g2.drawString(text, x, y);
+			
+			
+			g2.setFont(g2.getFont().deriveFont(16F));
 			text="好的，我要吃掉它";
 			x=getXForCenterText(text);
-			y+=gamePanel.tileSize*2;
+			y+=gamePanel.tileSize+10;
 			g2.drawString(text, x, y);
 			if(commandNum==0) {
 				g2.drawString(">", x-gamePanel.tileSize, y);
@@ -367,7 +373,7 @@ public class UI {
 			
 			text="算了我要減肥";
 			x=getXForCenterText(text);
-			y+=gamePanel.tileSize;
+			y+=gamePanel.tileSize-5;
 			g2.drawString(text, x, y);
 			if(commandNum==1) {
 				g2.drawString(">", x-gamePanel.tileSize, y);
@@ -381,6 +387,36 @@ public class UI {
 			final int frameHeight=gamePanel.tileSize*10+48;
 			drawSubWindow(frameX, frameY, frameWidth, frameHeight,255,232,236,250,2);
 			
+			String text;
+			g2.setColor(Color.BLACK);
+			g2.setFont(g2.getFont().deriveFont(18F));
+			int x=frameX+20;
+			int y=frameY+gamePanel.tileSize-15;
+			
+			g2.drawString(gamePanel.store[i].name, x, y);
+			y+=gamePanel.tileSize/2;
+			
+			g2.setFont(g2.getFont().deriveFont(15F));
+			for(String line:gamePanel.store[i].about.split("\n")) {
+				g2.drawString(line, x, y);
+				y+=20;
+			}
+			for(String line:gamePanel.store[i].item.split("\n")) {
+				g2.drawString(line, x, y);
+				y+=20;
+			}
+			for(String line:gamePanel.store[i].info.split("\n")) {
+				g2.drawString(line, x, y);
+				y+=20;
+			}
+			g2.drawImage(gamePanel.store[i].photo1, gamePanel.store[i].photoX, gamePanel.store[i].photoY,null);
+			
+			g2.setFont(g2.getFont().deriveFont(17F));
+			text="謝謝光臨";
+			x=gamePanel.tileSize*13;
+			y=gamePanel.tileSize*10;
+			g2.drawString(text, x, y);
+
 			
 		}
 		
