@@ -65,12 +65,12 @@ public class KeyHandler implements KeyListener{
 			if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP ) {
 				gamePanel.ui.commandNum--;
 				if(gamePanel.ui.commandNum<0) {
-					gamePanel.ui.commandNum=2;
+					gamePanel.ui.commandNum=1;
 				}
 			}
 			if (code==KeyEvent.VK_S || code==KeyEvent.VK_DOWN) {
 				gamePanel.ui.commandNum++;
-				if(gamePanel.ui.commandNum>2) {
+				if(gamePanel.ui.commandNum>1) {
 					gamePanel.ui.commandNum=0;
 				}
 			}
@@ -79,9 +79,6 @@ public class KeyHandler implements KeyListener{
 					gamePanel.ui.titleScreenState=1;
 				}
 				if(gamePanel.ui.commandNum==1) {
-					//add later
-				}
-				if(gamePanel.ui.commandNum==2) {
 					System.exit(0);
 				}
 				
