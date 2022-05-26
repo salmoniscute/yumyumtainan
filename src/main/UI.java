@@ -332,11 +332,11 @@ public class UI {
 		int x=gamePanel.tileSize*2;
 		int y=gamePanel.tileSize/2;
 		int width=gamePanel.screenWidth-gamePanel.tileSize*4;
-		int height=gamePanel.tileSize*3;
+		int height=gamePanel.tileSize*4+5;
 		
 		drawSubWindow(x,y,width,height,0,0,0,180,3);
 		
-		g2.setFont(g2.getFont().deriveFont(Font.PLAIN,28F));
+		g2.setFont(g2.getFont().deriveFont(Font.PLAIN,20F));
 		x+=gamePanel.tileSize;
 		y+=gamePanel.tileSize;
 		
@@ -352,18 +352,25 @@ public class UI {
 		final int frameX=gamePanel.tileSize;
 		final int frameY=gamePanel.tileSize;
 		final int frameWidth=gamePanel.tileSize*6;
-		final int frameHeight=gamePanel.tileSize*5;
+		final int frameHeight=gamePanel.tileSize*6;
 		drawSubWindow(frameX, frameY, frameWidth, frameHeight,0,0,0,180,3);
 		//text
 		g2.setColor(Color.white);
-		g2.setFont(g2.getFont().deriveFont(25F));
+		g2.setFont(g2.getFont().deriveFont(23F));
 		
-		int textX=frameX+20;
-		int textY=frameY+gamePanel.tileSize;
-		//final int lineHeight=32;
+		int x=frameX+20;
+		int y=frameY+gamePanel.tileSize;
 		
 		//information
-		g2.drawString("持有金額："+gamePanel.player.hasMoney+" 元", textX, textY);
+		g2.drawString("持有金額："+gamePanel.player.hasMoney+" 元", x, y);
+		y+=gamePanel.tileSize;
+		g2.drawString("探索美食店家數："+gamePanel.player.enterStore+" 家", x, y);
+		y+=gamePanel.tileSize;
+		g2.drawString("拾獲蜂蜜數："+gamePanel.player.getHoney+" 罐", x, y);
+		y+=gamePanel.tileSize;
+		g2.drawString("擊死綿羊數："+gamePanel.player.killSheep+" 隻", x, y);
+
+
 		
 	}
 	public void drawStoreScreen(int i) {

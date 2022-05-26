@@ -213,6 +213,7 @@ public class KeyHandler implements KeyListener{
 					if(gamePanel.ui.commandNum==0) {
 						gamePanel.ui.storeScreenState=1;
 						gamePanel.player.hasMoney-=gamePanel.store[i].cost;
+						gamePanel.player.enterStore++;
 					}
 					if(gamePanel.ui.commandNum==1) {
 						gamePanel.gameState=gamePanel.playState;

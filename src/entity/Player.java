@@ -14,6 +14,9 @@ public class Player extends Entity{
 	//player state
 	public String playerName="";
 	public int hasMoney=0;
+	public int getHoney=0;
+	public int killSheep=0;
+	public int enterStore=0;
 	
 	public final int screenX;
 	public final int screenY;
@@ -240,15 +243,11 @@ public class Player extends Entity{
 				case "honey": {
 					hasMoney+=100;
 					gamePanel.objects[index]=null;
-					gamePanel.ui.showMessage("You got some food!");
+					getHoney++;
 					break;
 				}
 				
 			}
-			/*if (hasMoney<0) {
-				gamePanel.ui.gameFinished=true;
-				
-			}*/
 			
 		}
 		
@@ -279,6 +278,8 @@ public class Player extends Entity{
 				
 				if(gamePanel.monster[i].life<=0) {
 					gamePanel.monster[i].dying=true;
+					hasMoney+=200;
+					killSheep++;
 				}
 			}
 			
