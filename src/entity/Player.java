@@ -291,6 +291,7 @@ public class Player extends Entity{
 		if(i!=999) {
 			gamePanel.gameState=gamePanel.storeState;
 			gamePanel.ui.storeNum=i;
+			gamePanel.keyHandler.storeNum=i;
 		}
 		
 	}

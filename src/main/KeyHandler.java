@@ -8,6 +8,7 @@ public class KeyHandler implements KeyListener{
 	GamePanel gamePanel;
 	
 	public boolean upPressed,downPressed, rightPressed,leftPressed,enterPressed,attackPressed;
+	public int storeNum=0;
 	
 	public KeyHandler(GamePanel gPanel) {
 		
@@ -52,7 +53,7 @@ public class KeyHandler implements KeyListener{
 				characterState(code);
 			}	
 			else if(gamePanel.gameState==gamePanel.storeState) {
-				storeState(code);
+				storeState(code,storeNum);
 			}
 		
 	}
@@ -195,7 +196,7 @@ public class KeyHandler implements KeyListener{
 		}
 		
 	}
-	public void storeState(int code) {
+	public void storeState(int code,int i) {
 		
 		if(gamePanel.ui.storeScreenState==0) {
 					
@@ -214,6 +215,7 @@ public class KeyHandler implements KeyListener{
 				if (code==KeyEvent.VK_ENTER) {
 					if(gamePanel.ui.commandNum==0) {
 						gamePanel.ui.storeScreenState=1;
+						gamePanel.player.hasMoney-=gamePanel.store[i].cost;
 					}
 					if(gamePanel.ui.commandNum==1) {
 						gamePanel.gameState=gamePanel.playState;
@@ -227,6 +229,7 @@ public class KeyHandler implements KeyListener{
 					gamePanel.gameState=gamePanel.playState;		
 					gamePanel.ui.commandNum=0;
 					gamePanel.ui.storeScreenState=0;
+					
 				}
 		}
 		
