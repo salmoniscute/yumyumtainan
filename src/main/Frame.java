@@ -60,9 +60,9 @@ public class Frame extends JFrame implements ActionListener {
 		if(e.getSource() == button){
 			gamePanel.player.playerName = textField.getText();
 			if(gamePanel.player.playerName.length() == 0){
-				label.setText("   Name can't be empty");
+				label.setText("  Name can't be empty");
 			}
-			else if(gamePanel.player.playerName.length() > 0) {
+			else {
 				gamePanel.ui.titleScreenState = 1;
 				gamePanel.setVisible(true);
 				button.setEnabled(false);
