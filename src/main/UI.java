@@ -1,27 +1,29 @@
 package main;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class UI {
+	Main main;
 	
 	GamePanel gamePanel;
 	Font arial_40,arial_80B;
 	Graphics2D g2;
 	BufferedImage  logo,honey,task,ig,money;
+	JPanel textPanel;
+	JTextField textField;
+	JLabel textLabel  = new JLabel("Please Enter Your Name");
+	 Dimension dim = new Dimension(200, 24);
 	public boolean messageOn;
 	public String message ="" ;
 	//int messageCounter=0;
 	public boolean gameFinished=false;
 	public String currentDialogue="";
 	public int commandNum=0;
-	public int titleScreenState=0;
+	public int titleScreenState = 0;
 	public int storeScreenState=0;
 	public int storeNum=0;
 	
@@ -31,6 +33,7 @@ public class UI {
 		this.gamePanel=gp;
 		arial_40 = new Font("Arial", Font.PLAIN, 40);
 		arial_80B=new Font("Arial", Font.BOLD, 80);
+		textField = new JTextField();
 		
 		try {
 			honey = ImageIO.read(getClass().getResourceAsStream("/object/honey.png"));
@@ -57,9 +60,9 @@ public class UI {
 		if(gamePanel.gameState==gamePanel.titleState) {
 			drawTitleScreen();
 		}
-		if(gamePanel.gameState == gamePanel.getPlayerInfoState){
+		/*if(gamePanel.gameState == gamePanel.getPlayerInfoState){
 			displayTextField();
-		}
+		}*/
 		//play state
 		if(gamePanel.gameState==gamePanel.playState) {
 			//do play
@@ -205,7 +208,7 @@ public class UI {
 			g2.setColor(Color.black);
 			//引言
 			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,18));
-			text="從前從前，在遠的要命王國裡，住著一隻喜愛吃東西的泰迪熊。";
+			text="從前從前，在遠的要命王國裡，住著一隻喜愛吃東西的泰迪熊 " + gamePanel.player.playerName + " 。";
 			x=gamePanel.tileSize*1;
 			y+=gamePanel.tileSize;
 			g2.drawString(text, x, y);
@@ -219,13 +222,6 @@ public class UI {
 			x=gamePanel.tileSize*2;
 			y+=gamePanel.tileSize;
 			g2.drawImage(gamePanel.player.down1, x, y, gamePanel.tileSize*4,gamePanel.tileSize*4,null);
-			
-			/*JTextField inputName = new JTextField(50);
-			x+=gamePanel.tileSize*5;
-			y+=gamePanel.tileSize/2;
-			inputName.setLocation(x, y);
-			inputName.setSize(inputName.getPreferredSize());
-			gamePanel.add(inputName);*/
 			
 			text="遊戲解說";
 			x=getXForCenterText(text);
@@ -242,8 +238,18 @@ public class UI {
 			if(commandNum==1) {
 				g2.drawString(">", x-gamePanel.tileSize, y);
 			}
-			
-			
+
+			/*JTextField inputName = new JTextField();
+			x+=gamePanel.tileSize*5;
+			y+=gamePanel.tileSize/2;
+			inputName.setLocation(x, y);
+			inputName.setPreferredSize(new Dimension(200,24));//(inputName.getPreferredSize());//Size(inputName.getPreferredSize());
+			gamePanel.add(inputName);
+
+			JPanel displayPanel = new JPanel(new GridLayout(4, 2));
+			displayPanel.add(inputName);
+			gamePanel.add(displayPanel);
+			//displayPanel.add(titleText);*/
 	
 		}
 		else if(titleScreenState==2) {
@@ -315,6 +321,11 @@ public class UI {
 			
 			
 		}
+		else if(titleScreenState == 9){
+			// don't draw g2
+			displayTextField(container);
+		}
+
 	}
 	public void drawPauseScreen() {
 		int x=gamePanel.tileSize*5+gamePanel.tileSize/2;
@@ -479,8 +490,27 @@ public class UI {
 		
 	}
 
-	public void displayTextField(){
+	public void displayTextField(Container container) {
+		/*gamePanel.textLabel.setForeground(Color.BLACK);
+		gamePanel.textLabel.setFont(arial_80B);
+		gamePanel.add(gamePanel.textLabel);*/
 
+		//gamePanel.setVisible(true);
+		//textField.setPreferredSize(dim);
+		textPanel = new JPanel();
+		textPanel.setBounds(150, 250, 500, 100);
+		textPanel.setBackground(new Color(255,236,241));
+
+		textLabel = new JLabel("Please Enter Your Name");
+		textLabel.setForeground(Color.BLACK);
+		textLabel.setFont(arial_80B);
+
+		textPanel.add(textLabel);
+		.container.add(textPanel);
+		textLabel.setForeground(Color.WHITE);
+		textLabel.setFont(arial_80B);
+
+		gamePanel.add(textLabel);
 
 	}
 	public int getXForCenterText(String text) {

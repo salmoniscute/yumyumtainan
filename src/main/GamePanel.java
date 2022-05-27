@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import javax.swing.JPanel;
+import javax.swing.*;
+
 import entity.Entity;
 import entity.Player;
 import store.Store_super;
@@ -32,6 +33,8 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int maxWorldRow =50;
 	public final int worldWidth = tileSize*maxWorldCOL;
 	public final int worldHeight = tileSize*maxWorldRow;
+	//public JLabel textLabel = new JLabel("Please Enter Your Name");
+	//public JTextField textField;
 	
 	
 	//FPS
@@ -64,7 +67,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	//game state
 	public int gameState;
-	public final int getPlayerInfoState = -1;
+	//public final int getPlayerInfoState = -1;
 	public final int titleState=0;
 	public final int  playState=1;
 	public final int pauseState=2;
@@ -79,7 +82,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public GamePanel() {
 		
 		this.setPreferredSize(new Dimension(screenWidth,screenHeight));
-		this.setBackground(Color.BLACK);
+		this.setBackground(Color.black);//(new Color(255,236,241));
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyHandler);
 		this.setFocusable(true);

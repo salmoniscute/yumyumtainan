@@ -76,13 +76,17 @@ public class KeyHandler implements KeyListener{
 			}
 			if (code==KeyEvent.VK_ENTER) {
 				if(gamePanel.ui.commandNum==0) {
-					gamePanel.ui.titleScreenState=1;
+					//gamePanel.ui.titleScreenState=1;
+					gamePanel.ui.titleScreenState=9;
 				}
 				if(gamePanel.ui.commandNum==1) {
 					System.exit(0);
 				}
 				
 			}
+		}
+		else if(gamePanel.ui.titleScreenState == 9){
+			//do something, somehow titleScreenState = 1;
 		}
 		else if(gamePanel.ui.titleScreenState==1) {
 			if (code==KeyEvent.VK_W || code==KeyEvent.VK_UP) {
