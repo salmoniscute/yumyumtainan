@@ -138,7 +138,7 @@ public class UI {
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD));
 		String text="Loading...";
 		int x=getXForCenterText(text);
-		int y=gamePanel.tileSize*5;
+		int y=gamePanel.tileSize*5+20;
 		
 		//shadow
 		g2.setColor(Color.pink);
@@ -188,7 +188,7 @@ public class UI {
 			
 			//menu
 			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,22));
-			text="開始遊戲";
+			text="進入遊戲";
 			x=getXForCenterText(text);
 			y+=gamePanel.tileSize+20;
 			g2.drawString(text, x, y);
