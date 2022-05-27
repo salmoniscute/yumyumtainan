@@ -66,10 +66,10 @@ public class Entity {
 		if(dialogues[dialogueIndex]==null) {
 			dialogueIndex=0;
 		}
-		if(dialogueIndex==0) {
+		if(dialogueIndex==1) {
 			gamePanel.player.hasMoney-=550;
 		}
-		if(dialogueIndex==5) {
+		if(dialogueIndex==6) {
 			gamePanel.player.hasMoney+=100;
 		}
 		gamePanel.ui.currentDialogue=dialogues[dialogueIndex];
