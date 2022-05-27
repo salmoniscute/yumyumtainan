@@ -14,7 +14,7 @@ public class UI {
 	GamePanel gamePanel;
 	Font arial_40,arial_80B;
 	Graphics2D g2;
-	BufferedImage  logo,honey,task,ig,money;
+	BufferedImage  logo,ig,money;
 	public boolean messageOn;
 	public String message ="" ;
 	//int messageCounter=0;
@@ -33,10 +33,9 @@ public class UI {
 		arial_80B=new Font("Arial", Font.BOLD, 80);
 		
 		try {
-			honey = ImageIO.read(getClass().getResourceAsStream("/object/honey.png"));
-			task = ImageIO.read(getClass().getResourceAsStream("/monster/task.front2.png"));
 			ig=ImageIO.read(getClass().getResourceAsStream("/maps/ig.png"));
 			logo=ImageIO.read(getClass().getResourceAsStream("/maps/logo.png"));
+			
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -53,6 +52,10 @@ public class UI {
 		this.g2=g2;
 		g2.setFont(arial_40);
 		g2.setColor(Color.white);
+		//loading state
+		if(gamePanel.gameState==gamePanel.loadingState) {
+			drawLoadingScreen();
+		}
 		//title state
 		if(gamePanel.gameState==gamePanel.titleState) {
 			drawTitleScreen();
@@ -126,6 +129,37 @@ public class UI {
 		}*/
 		
 		
+		
+	}
+	public void drawLoadingScreen() {
+		g2.setColor(new Color(0,0,0));
+		g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
+		
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD));
+		String text="Loading...";
+		int x=getXForCenterText(text);
+		int y=gamePanel.tileSize*5;
+		
+		//shadow
+		g2.setColor(Color.pink);
+		g2.drawString(text, x+2, y+2);
+		
+		//main color
+		g2.setColor(Color.white);
+		g2.drawString(text, x, y);
+		
+		y+=gamePanel.tileSize;
+		x=gamePanel.tileSize*3+15;
+		
+		g2.drawImage(gamePanel.npc[0].down2, x, y, null);
+		x+=gamePanel.tileSize*2;
+		g2.drawImage(gamePanel.objects[0].down2, x, y, null);
+		x+=gamePanel.tileSize*2;
+		g2.drawImage(gamePanel.player.down1, x, y, null);
+		x+=gamePanel.tileSize*2;
+		g2.drawImage(gamePanel.objects[0].down2, x, y, null);
+		x+=gamePanel.tileSize*2;
+		g2.drawImage(gamePanel.monster[0].down2, x, y, null);
 		
 	}
 	public void drawTitleScreen() {
@@ -285,13 +319,13 @@ public class UI {
 			text="地圖中有隱藏熊熊最愛的";
 			y+=gamePanel.tileSize;
 			g2.drawString(text, x, y);
-			g2.drawImage(honey, x+gamePanel.tileSize*5-15, y-20,gamePanel.tileSize/2,gamePanel.tileSize/2,null);
+			g2.drawImage(gamePanel.objects[0].down2, x+gamePanel.tileSize*5-15, y-20,gamePanel.tileSize/2,gamePanel.tileSize/2,null);
 			text="吃下它會增加你的錢錢";
 			g2.drawString(text, x+gamePanel.tileSize*5+15, y);
 			text="還可以按下Ｋ鍵來噴出熊熊大火攻擊綿羊";
 			y+=gamePanel.tileSize;
 			g2.drawString(text, x, y);
-			g2.drawImage(task, x+gamePanel.tileSize*7+30, y-20,gamePanel.tileSize/2,gamePanel.tileSize/2,null);
+			g2.drawImage(gamePanel.monster[0].down2, x+gamePanel.tileSize*7+30, y-20,gamePanel.tileSize/2,gamePanel.tileSize/2,null);
 			text="獲得錢錢！";
 			g2.drawString(text, x+gamePanel.tileSize*8+14, y);
 			

@@ -64,6 +64,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	//game state
 	public int gameState;
+	public final int loadingState=-1;
 	public final int titleState=0;
 	public final int  playState=1;
 	public final int pauseState=2;
@@ -85,6 +86,7 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 	
 	public void setUpGame() {
+		gameState=loadingState;
 		assetsetter.setObject();
 		assetsetter.setNPC();
 		assetsetter.setMonster();
@@ -93,6 +95,7 @@ public class GamePanel extends JPanel implements Runnable{
 		playMusic(0);
 		
 		gameState =titleState;
+		
 	}
 	
 	public void startGameThread() {
