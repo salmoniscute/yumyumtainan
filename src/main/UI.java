@@ -15,8 +15,6 @@ public class UI {
 	BufferedImage  logo,honey,task,ig,money;
 	//JPanel textPanel;
 	JTextField textField;
-	JLabel textLabel  = new JLabel("Please Enter Your Name");
-	 Dimension dim = new Dimension(200, 24);
 	public boolean messageOn;
 	public String message ="" ;
 	//int messageCounter=0;
@@ -60,9 +58,6 @@ public class UI {
 		if(gamePanel.gameState==gamePanel.titleState) {
 			drawTitleScreen();
 		}
-		/*if(gamePanel.gameState == gamePanel.getPlayerInfoState){
-			displayTextField();
-		}*/
 		//play state
 		if(gamePanel.gameState==gamePanel.playState) {
 			//do play
@@ -244,12 +239,7 @@ public class UI {
 			y+=gamePanel.tileSize/2;
 			inputName.setLocation(x, y);
 			inputName.setPreferredSize(new Dimension(200,24));//(inputName.getPreferredSize());//Size(inputName.getPreferredSize());
-			gamePanel.add(inputName);
-
-			JPanel displayPanel = new JPanel(new GridLayout(4, 2));
-			displayPanel.add(inputName);
-			gamePanel.add(displayPanel);
-			//displayPanel.add(titleText);*/
+			gamePanel.add(inputName);*/
 	
 		}
 		else if(titleScreenState==2) {
@@ -323,7 +313,7 @@ public class UI {
 		}
 		else if(titleScreenState == 9){
 			// don't draw g2
-			displayTextField();
+			gamePanel.setVisible(false);
 		}
 
 	}
@@ -490,30 +480,6 @@ public class UI {
 		
 	}
 
-	public void displayTextField() {
-		/*gamePanel.textLabel.setForeground(Color.BLACK);
-		gamePanel.textLabel.setFont(arial_80B);
-		gamePanel.add(gamePanel.textLabel);*/
-
-		//gamePanel.setVisible(true);
-		//textField.setPreferredSize(dim);
-		gamePanel.setVisible(false);
-		textLabel = new JLabel("Please Enter Your Name");
-		textLabel.setForeground(Color.BLACK);
-		textLabel.setFont(arial_80B);
-		gamePanel.setLayout(null);
-		textLabel.setBounds(10,10,100,100);
-		gamePanel.add(textLabel);
-
-
-		//textPanel.add(textLabel);
-		//.container.add(textPanel);
-		//textLabel.setForeground(Color.WHITE);
-		//textLabel.setFont(arial_80B);
-
-		//gamePanel.add(textLabel);
-
-	}
 	public int getXForCenterText(String text) {
 		int textlength=(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
 		int x=gamePanel.screenWidth/2-textlength/2;

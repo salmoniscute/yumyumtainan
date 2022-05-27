@@ -33,8 +33,6 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int maxWorldRow =50;
 	public final int worldWidth = tileSize*maxWorldCOL;
 	public final int worldHeight = tileSize*maxWorldRow;
-	//public JLabel textLabel = new JLabel("Please Enter Your Name");
-	//public JTextField textField;
 	
 	
 	//FPS
@@ -67,7 +65,6 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	//game state
 	public int gameState;
-	//public final int getPlayerInfoState = -1;
 	public final int titleState=0;
 	public final int  playState=1;
 	public final int pauseState=2;
