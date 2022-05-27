@@ -13,7 +13,7 @@ public class UI {
 	Font arial_40,arial_80B;
 	Graphics2D g2;
 	BufferedImage  logo,honey,task,ig,money;
-	JPanel textPanel;
+	//JPanel textPanel;
 	JTextField textField;
 	JLabel textLabel  = new JLabel("Please Enter Your Name");
 	 Dimension dim = new Dimension(200, 24);
@@ -55,7 +55,7 @@ public class UI {
 	public void draw(Graphics2D g2) {
 		this.g2=g2;
 		g2.setFont(arial_40);
-		g2.setColor(Color.white);
+		//g2.setColor(Color.white);
 		//title state
 		if(gamePanel.gameState==gamePanel.titleState) {
 			drawTitleScreen();
@@ -323,7 +323,7 @@ public class UI {
 		}
 		else if(titleScreenState == 9){
 			// don't draw g2
-			displayTextField(container);
+			displayTextField();
 		}
 
 	}
@@ -490,27 +490,28 @@ public class UI {
 		
 	}
 
-	public void displayTextField(Container container) {
+	public void displayTextField() {
 		/*gamePanel.textLabel.setForeground(Color.BLACK);
 		gamePanel.textLabel.setFont(arial_80B);
 		gamePanel.add(gamePanel.textLabel);*/
 
 		//gamePanel.setVisible(true);
 		//textField.setPreferredSize(dim);
-		textPanel = new JPanel();
-		textPanel.setBounds(150, 250, 500, 100);
-		textPanel.setBackground(new Color(255,236,241));
-
+		gamePanel.setVisible(false);
 		textLabel = new JLabel("Please Enter Your Name");
 		textLabel.setForeground(Color.BLACK);
 		textLabel.setFont(arial_80B);
-
-		textPanel.add(textLabel);
-		.container.add(textPanel);
-		textLabel.setForeground(Color.WHITE);
-		textLabel.setFont(arial_80B);
-
+		gamePanel.setLayout(null);
+		textLabel.setBounds(10,10,100,100);
 		gamePanel.add(textLabel);
+
+
+		//textPanel.add(textLabel);
+		//.container.add(textPanel);
+		//textLabel.setForeground(Color.WHITE);
+		//textLabel.setFont(arial_80B);
+
+		//gamePanel.add(textLabel);
 
 	}
 	public int getXForCenterText(String text) {
