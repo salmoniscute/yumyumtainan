@@ -21,17 +21,17 @@ public class NPC_cadre extends Entity{
 	}
 	public void getNPCImage() {
 			
-			down2=setup("/cadre/oldman_down_1",gamePanel.tileSize,gamePanel.tileSize);
-			down3=setup("/cadre/oldman_down_2",gamePanel.tileSize,gamePanel.tileSize);
+			down2=setup("/cadre/r.front1",gamePanel.tileSize,gamePanel.tileSize);
+			down3=setup("/cadre/r.front2",gamePanel.tileSize,gamePanel.tileSize);
 			
-			up2=setup("/cadre/oldman_up_1",gamePanel.tileSize,gamePanel.tileSize);
-			up3=setup("/cadre/oldman_up_2",gamePanel.tileSize,gamePanel.tileSize);
+			up2=setup("/cadre/r.back1",gamePanel.tileSize,gamePanel.tileSize);
+			up3=setup("/cadre/r.back2",gamePanel.tileSize,gamePanel.tileSize);
 			
-			left2=setup("/cadre/oldman_left_1",gamePanel.tileSize,gamePanel.tileSize);
-			left3=setup("/cadre/oldman_left_2",gamePanel.tileSize,gamePanel.tileSize);
+			left2=setup("/cadre/r.left1",gamePanel.tileSize,gamePanel.tileSize);
+			left3=setup("/cadre/r.left2",gamePanel.tileSize,gamePanel.tileSize);
 		
-			right2=setup("/cadre/oldman_right_1",gamePanel.tileSize,gamePanel.tileSize);
-			right3=setup("/cadre/oldman_right_2",gamePanel.tileSize,gamePanel.tileSize);
+			right2=setup("/cadre/r.right1",gamePanel.tileSize,gamePanel.tileSize);
+			right3=setup("/cadre/r.right2",gamePanel.tileSize,gamePanel.tileSize);
 			
 			
 		}
