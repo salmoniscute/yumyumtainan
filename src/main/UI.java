@@ -1,13 +1,10 @@
 package main;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class UI {
 	
@@ -21,7 +18,7 @@ public class UI {
 	public boolean gameFinished=false;
 	public String currentDialogue="";
 	public int commandNum=0;
-	public int titleScreenState=0;
+	public int titleScreenState = 0;
 	public int storeScreenState=0;
 	public int storeNum=0;
 	
@@ -35,7 +32,7 @@ public class UI {
 		try {
 			ig=ImageIO.read(getClass().getResourceAsStream("/maps/ig.png"));
 			logo=ImageIO.read(getClass().getResourceAsStream("/maps/logo.png"));
-			
+
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -80,8 +77,8 @@ public class UI {
 		if(gamePanel.gameState==gamePanel.storeState) {
 			drawStoreScreen(storeNum);
 		}
-	
-		
+
+
 		/*if (gameFinished==true) {
 			g2.setFont(arial_40);
 			g2.setColor(Color.white);
@@ -134,23 +131,23 @@ public class UI {
 	public void drawLoadingScreen() {
 		g2.setColor(new Color(0,0,0));
 		g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
-		
+
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD));
 		String text="Loading...";
 		int x=getXForCenterText(text);
 		int y=gamePanel.tileSize*5+20;
-		
+
 		//shadow
 		g2.setColor(Color.pink);
 		g2.drawString(text, x+2, y+2);
-		
+
 		//main color
 		g2.setColor(Color.white);
 		g2.drawString(text, x, y);
-		
+
 		y+=gamePanel.tileSize;
 		x=gamePanel.tileSize*3+15;
-		
+
 		g2.drawImage(gamePanel.npc[0].down2, x, y, null);
 		x+=gamePanel.tileSize*2;
 		g2.drawImage(gamePanel.objects[0].down2, x, y, null);
@@ -160,7 +157,7 @@ public class UI {
 		g2.drawImage(gamePanel.objects[0].down2, x, y, null);
 		x+=gamePanel.tileSize*2;
 		g2.drawImage(gamePanel.monster[0].down2, x, y, null);
-		
+
 	}
 	public void drawTitleScreen() {
 		
@@ -237,7 +234,7 @@ public class UI {
 			g2.setColor(Color.black);
 			//引言
 			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,18));
-			text="從前從前，在遠的要命王國裡，住著一隻喜愛吃東西的泰迪熊。";
+			text="從前從前，在遠的要命王國裡，住著一隻喜愛吃東西的泰迪熊 " + gamePanel.player.playerName + " 。";
 			x=gamePanel.tileSize*1;
 			y+=gamePanel.tileSize;
 			g2.drawString(text, x, y);
@@ -347,6 +344,11 @@ public class UI {
 			
 			
 		}
+		else if(titleScreenState == 9){
+			// don't draw g2
+			gamePanel.setVisible(false);
+		}
+
 	}
 	public void drawPauseScreen() {
 		int x=gamePanel.tileSize*5+gamePanel.tileSize/2;

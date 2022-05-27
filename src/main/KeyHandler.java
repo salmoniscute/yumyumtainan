@@ -55,7 +55,6 @@ public class KeyHandler implements KeyListener{
 			else if(gamePanel.gameState==gamePanel.storeState) {
 				storeState(code,storeNum);
 			}
-			
 		
 	}
 	
@@ -77,8 +76,8 @@ public class KeyHandler implements KeyListener{
 			}
 			if (code==KeyEvent.VK_ENTER) {
 				if(gamePanel.ui.commandNum==0) {
-					gamePanel.ui.titleScreenState=1;
-					
+					//gamePanel.ui.titleScreenState=1;
+					gamePanel.ui.titleScreenState=9;
 				}
 				if(gamePanel.ui.commandNum==1) {
 					System.exit(0);
@@ -102,7 +101,7 @@ public class KeyHandler implements KeyListener{
 			if (code==KeyEvent.VK_ENTER) {
 				if(gamePanel.ui.commandNum==0) {
 					gamePanel.ui.titleScreenState=2;
-					
+
 				}
 				if(gamePanel.ui.commandNum==1) {
 					gamePanel.ui.titleScreenState=0;
@@ -172,8 +171,6 @@ public class KeyHandler implements KeyListener{
 		}
 		
 		
-		
-		
 	
 	}
 		
@@ -240,7 +237,7 @@ public class KeyHandler implements KeyListener{
 		}
 		
 	}
-	
+
 	@Override
 	public void keyReleased(KeyEvent e) {
 		

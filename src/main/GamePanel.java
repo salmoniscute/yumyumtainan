@@ -72,13 +72,13 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int characterState=4;
 	public final int storeState=5;
 	
-	
+
 	///////////
 	
 	public GamePanel() {
 		
 		this.setPreferredSize(new Dimension(screenWidth,screenHeight));
-		this.setBackground(Color.BLACK);
+		this.setBackground(new Color(255,236,241));
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyHandler);
 		this.setFocusable(true);
@@ -94,8 +94,8 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		playMusic(0);
 		
-		gameState =titleState;
-		
+		gameState = titleState;
+
 	}
 	
 	public void startGameThread() {
@@ -105,7 +105,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 	public void run() {
 		
-		double drawInterval = 1000000000/FPS;
+		int drawInterval = 1000000000/FPS;
 		long lastTime = System.nanoTime();
 		long currentTime;
 		
@@ -235,12 +235,5 @@ public class GamePanel extends JPanel implements Runnable{
 	public void stopMusic() {
 		sound.stop();
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }

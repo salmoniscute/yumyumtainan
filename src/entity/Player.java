@@ -12,7 +12,7 @@ public class Player extends Entity{
 	KeyHandler keyHandler;
 	
 	//player state
-	public String playerName="";
+	public String playerName;
 	public int hasMoney=0;
 	public int getHoney=0;
 	public int killSheep=0;
