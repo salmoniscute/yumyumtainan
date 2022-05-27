@@ -57,6 +57,9 @@ public class UI {
 		if(gamePanel.gameState==gamePanel.titleState) {
 			drawTitleScreen();
 		}
+		if(gamePanel.gameState == gamePanel.getPlayerInfoState){
+			displayTextField();
+		}
 		//play state
 		if(gamePanel.gameState==gamePanel.playState) {
 			//do play
@@ -474,6 +477,11 @@ public class UI {
 		g2.setStroke(new BasicStroke(stroke));
 		g2.drawRoundRect(x+5, y+5, width-10, height-10, 25, 25);
 		
+	}
+
+	public void displayTextField(){
+
+
 	}
 	public int getXForCenterText(String text) {
 		int textlength=(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();

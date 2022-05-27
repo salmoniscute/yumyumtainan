@@ -64,12 +64,15 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	//game state
 	public int gameState;
+	public final int getPlayerInfoState = -1;
 	public final int titleState=0;
 	public final int  playState=1;
 	public final int pauseState=2;
 	public final int dialogueState=3;
 	public final int characterState=4;
 	public final int storeState=5;
+
+
 	
 	///////////
 	
@@ -91,7 +94,7 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		playMusic(0);
 		
-		gameState =titleState;
+		gameState = titleState;
 	}
 	
 	public void startGameThread() {
@@ -101,7 +104,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 	public void run() {
 		
-		double drawInterval = 1000000000/FPS;
+		int drawInterval = 1000000000/FPS;
 		long lastTime = System.nanoTime();
 		long currentTime;
 		
@@ -231,12 +234,5 @@ public class GamePanel extends JPanel implements Runnable{
 	public void stopMusic() {
 		sound.stop();
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }

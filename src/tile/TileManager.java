@@ -100,11 +100,11 @@ public class TileManager {
 		int worldCol =0;
  		int worldRow = 0;
 
- 		int worldX = 0;
- 		int worldY = 0;
+ 		int worldX;
+ 		int worldY;
 
- 		int screenX = -gamePanel.player.worldX + gamePanel.player.screenX;
- 		int screenY = -gamePanel.player.worldY + gamePanel.player.screenY;
+ 		int screenX;
+ 		int screenY;
 
  		while(worldCol<gamePanel.maxWorldCOL && worldRow<gamePanel.maxWorldCOL) {
 
