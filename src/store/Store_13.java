@@ -12,7 +12,7 @@ public class Store_13 extends Store_super{
 		worldY=gamePanel.tileSize*22;
 		
 		photoX=gamePanel.tileSize*8;
-		photoY=gamePanel.tileSize*5;
+		photoY=gamePanel.tileSize*6;
 		
 		
 		setStoreImage();
