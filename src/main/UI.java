@@ -20,6 +20,8 @@ public class UI {
 	public int titleScreenState = 0;
 	public int storeScreenState=0;
 	public int storeNum=0;
+	public int timeStoper = 0;
+	private String header = "Enter Your Name";
 	
 	
 	public UI(GamePanel gp) {
@@ -58,8 +60,7 @@ public class UI {
 		}
 		//play state
 		if(gamePanel.gameState==gamePanel.playState) {
-			//do play
-			
+			//play
 		}
 		//pause state
 		if (gamePanel.gameState==gamePanel.pauseState) {
@@ -212,7 +213,7 @@ public class UI {
 			text="此遊戲的店家資訊皆是來自這個美食帳，歡迎前去看看！";
 			y+=gamePanel.tileSize/3;
 			g2.drawString(text, x+5, y);
-			
+
 		}
 		else if (titleScreenState==1) {
 			g2.setColor(new Color(255,236,241));
@@ -234,7 +235,7 @@ public class UI {
 			g2.setColor(Color.black);
 			//引言
 			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,18));
-			text="從前從前，在遠的要命王國裡，住著一隻喜愛吃東西的泰迪熊 " + gamePanel.player.playerName + " ";
+			text="從前從前，在遠的要命王國裡，住著一隻喜愛吃東西的泰迪熊 " + gamePanel.player.getPlayerName() + " ";
 			x=gamePanel.tileSize*1;
 			y+=gamePanel.tileSize;
 			g2.drawString(text, x, y);
@@ -247,7 +248,7 @@ public class UI {
 			text= "即便它明白，再吃下去，它就要逃脫不了大二的聖誕節魔咒了...";
 			y+=gamePanel.tileSize/2;
 			g2.drawString(text, x, y);
-			text="究竟把美食當作靈魂伴侶的"+gamePanel.player.playerName+"會在這裡遇到什麼冒險呢.......";
+			text="究竟把美食當作靈魂伴侶的"+gamePanel.player.getPlayerName()+"會在這裡遇到什麼冒險呢.......";
 			y+=gamePanel.tileSize/2;
 			g2.drawString(text, x, y);
 			
@@ -293,7 +294,7 @@ public class UI {
 			
 			g2.setColor(Color.black);
 			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,20));
-			text="早上好 "+gamePanel.player.playerName+" 現在你有初始基金1000元";
+			text="早上好 "+gamePanel.player.getPlayerName()+" 現在你有初始基金1000元";
 			x=gamePanel.tileSize;
 			y+=gamePanel.tileSize;
 			g2.drawString(text, x, y);
@@ -344,9 +345,58 @@ public class UI {
 			
 		}
 		else if(titleScreenState == 9){
-			// don't draw g2
-			gamePanel.setVisible(false);
+
+			timeStoper++;
 			
+			g2.setColor(Color.WHITE);
+			g2.fillRect(gamePanel.tileSize * 3, gamePanel.tileSize * 5, gamePanel.tileSize * 10, gamePanel.tileSize *3/2);
+			
+			g2.setColor(Color.BLACK);
+			g2.setFont(g2.getFont().deriveFont(Font.BOLD,50));
+			int x = getXForCenterText(header);
+			int y = gamePanel.tileSize * 4;
+			g2.drawString(header, x, y);
+
+
+			String text = gamePanel.player.getPlayerName();
+			int textWidth = getTextWidth(text);
+
+			if(textWidth >= gamePanel.tileSize * 10 ){
+				gamePanel.player.addPlayerName(false);
+				String hint = "名字太長囉!!";
+				g2.setFont(g2.getFont().deriveFont(Font.PLAIN,15));
+				x = gamePanel.tileSize * 5;
+				y = gamePanel.tileSize * 7;
+				g2.drawString(hint, x, y);
+			} else { gamePanel.player.addPlayerName(true);}
+
+			g2.setFont(g2.getFont().deriveFont(Font.BOLD,30));
+			x = gamePanel.tileSize * 3 + 10;
+			y = gamePanel.tileSize * 6;
+			g2.drawString(text, x, y);
+			if(timeStoper <= 30){
+				g2.drawString(text + "|", x, y);
+			} else if ( timeStoper >= 60 ){ timeStoper = 0; }
+
+			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,20));
+			text = "確認";
+			x = getXForCenterText(text);
+			y = gamePanel.tileSize * 9;
+			g2.drawString(text, x, y);
+			if(commandNum == 0) {
+				g2.drawString(">", x-gamePanel.tileSize, y);
+			}
+
+
+			text = "上一頁";
+			x = getXForCenterText(text);
+			y += gamePanel.tileSize;
+			g2.drawString(text, x, y);
+			if(commandNum == 1) {
+				g2.drawString(">", x-gamePanel.tileSize, y);
+			}
+
+
 		}
 
 	}
@@ -399,7 +449,7 @@ public class UI {
 		int y=frameY+gamePanel.tileSize;
 		
 		//information
-		g2.drawString("玩家 "+gamePanel.player.playerName, x, y);
+		g2.drawString("玩家 "+gamePanel.player.getPlayerName(), x, y);
 		y+=gamePanel.tileSize;
 		g2.drawString("持有金額："+gamePanel.player.hasMoney+" 元", x, y);
 		y+=gamePanel.tileSize;
@@ -515,11 +565,18 @@ public class UI {
 		
 	}
 	public int getXForCenterText(String text) {
-		int textlength=(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+		int textlength = getTextWidth(text);
 		int x=gamePanel.screenWidth/2-textlength/2;
 		return x;
 	}
-	
+
+	public int getTextWidth(String text){
+		return (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+	}
+
+	public void changeHeaderTo(String str){
+		header = str;
+	}
 
 }
 

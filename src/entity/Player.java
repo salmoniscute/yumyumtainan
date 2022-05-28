@@ -8,11 +8,13 @@ import main.GamePanel;
 import main.KeyHandler;
 
 public class Player extends Entity{
+
+	//////////////////////////////////////////////// Attribute ////////////////////////////////////////////////
 	
 	KeyHandler keyHandler;
 	
 	//player state
-	public String playerName;
+	private String playerName = "";
 	public int hasMoney=0;
 	public int getHoney=0;
 	public int killSheep=0;
@@ -20,8 +22,11 @@ public class Player extends Entity{
 	
 	public final int screenX;
 	public final int screenY;
+	private boolean canAddPlayerName = true;
 	
-	
+
+
+	//////////////////////////////////////////////// constructor ///////////////////////////////////////////////
 	public Player(GamePanel gp,KeyHandler keyH) {
 		
 		super(gp);
@@ -363,6 +368,39 @@ public class Player extends Entity{
 		}
 		
 		g2.drawImage(image, tempScreenX, tempScreenY,  null);
+	}
+
+
+	////////////////////////// 封裝 /////////////////////////////
+	public String getPlayerName(){
+		return playerName;
+	}
+
+	public void addPlayerName(String str){
+		if(!canAddPlayerName) return;
+		gamePanel.ui.timeStoper = 0;
+		playerName += str;
+		playerName = playerName.substring(0,1).toUpperCase() + playerName.substring(1);
+		for(int i = 0; i < playerName.length(); i++) {
+			int whiteSpaceIndex = playerName.indexOf(" ", i);
+			if(whiteSpaceIndex + 2 >= playerName.length()) break;
+			playerName = playerName.substring(0, whiteSpaceIndex + 1) + playerName.substring(whiteSpaceIndex + 1, whiteSpaceIndex + 2).toUpperCase() + playerName.substring(whiteSpaceIndex + 2);
+		}
+	}
+
+	public void addPlayerName(boolean b){
+		canAddPlayerName = b;
+	}
+
+	public void clearPlayerName(){
+		playerName = "";
+	}
+
+	public void backSpaceName(){
+		if(playerName.length() == 0) return;
+		gamePanel.ui.timeStoper = 0;
+		playerName = playerName.substring(0, playerName.length() - 1);
+
 	}
 
 }

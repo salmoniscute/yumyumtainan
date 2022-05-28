@@ -1,14 +1,12 @@
 package main;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import javax.swing.JPanel;
+import javax.swing.*;
+
 import entity.Entity;
 import entity.Player;
 import store.Store_super;
@@ -38,7 +36,6 @@ public class GamePanel extends JPanel implements Runnable{
 	int FPS = 60;
 	
 	////system
-	
 	TileManager tileManager = new TileManager(this);
 	
 	public KeyHandler keyHandler = new KeyHandler(this);
@@ -76,18 +73,16 @@ public class GamePanel extends JPanel implements Runnable{
 	///////////
 	
 	public GamePanel() {
-		
 		this.setPreferredSize(new Dimension(screenWidth,screenHeight));
 		this.setBackground(new Color(255,236,241));
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyHandler);
 		this.setFocusable(true);
-		
 	}
 	
 	public void setUpGame() {
 		
-		gameState=loadingState;
+		gameState = loadingState;
 		
 		assetsetter.setObject();
 		assetsetter.setNPC();
