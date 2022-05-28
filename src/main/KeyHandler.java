@@ -104,7 +104,7 @@ public class KeyHandler implements KeyListener{
 
 				}
 				if(gamePanel.ui.commandNum==1) {
-					gamePanel.ui.titleScreenState=0;
+					gamePanel.ui.titleScreenState=9;
 					gamePanel.ui.commandNum=0;
 				}
 			}
@@ -125,9 +125,11 @@ public class KeyHandler implements KeyListener{
 			if (code==KeyEvent.VK_ENTER) {
 				if(gamePanel.ui.commandNum==0) {
 					gamePanel.gameState=gamePanel.playState;
+					gamePanel.npc[0].setDialogue();
 				}
 				if(gamePanel.ui.commandNum==1) {
 					gamePanel.ui.titleScreenState=1;
+					
 					gamePanel.ui.commandNum=0;
 				}
 			}

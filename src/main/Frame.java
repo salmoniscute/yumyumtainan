@@ -30,18 +30,19 @@ public class Frame extends JFrame implements ActionListener {
 		panel.setBounds(0, 0, 48 * 16, 48 * 12);
 		panel.setLayout(null);
 
-		String str = "Please Enter your name";
+		String str = "在遊戲開始之前，請先設定玩家名稱吧！";
+		
 		label = new JLabel(str);
-		label.setFont(new Font("Arial", Font.BOLD, 50));
-		label.setForeground(Color.BLACK);
-		label.setBounds(100, 200, 1000, 100);
+		label.setFont(new Font("Arial", Font.BOLD,30));
+		label.setForeground(Color.black);
+		label.setBounds(108, 200, 1000, 100);
 
 		textField = new JTextField();
 		//textField.setPreferredSize(new Dimension(250, 40));
-		textField.setBounds(48*16/2 - 500/2 - 50/2,390,500,70);
+		textField.setBounds(48*16/2 - 500/2 - 50/2,280,400,50);
 
 		button = new JButton();
-		button.setBounds(48*16/2 - 50/2 + 500/2, 390, 50, 70);
+		button.setBounds(48*16/2+120, 280, 50,50);
 		button.addActionListener(this);
 
 		panel.add(textField);
@@ -60,7 +61,7 @@ public class Frame extends JFrame implements ActionListener {
 		if(e.getSource() == button){
 			gamePanel.player.playerName = textField.getText();
 			if(gamePanel.player.playerName.length() == 0){
-				label.setText("  Name can't be empty");
+				label.setText(" 姓名欄不能是空的ㄛ！");
 			}
 			else {
 				gamePanel.ui.titleScreenState = 1;

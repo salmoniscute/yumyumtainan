@@ -60,6 +60,7 @@ public class UI {
 		//play state
 		if(gamePanel.gameState==gamePanel.playState) {
 			//do play
+			
 		}
 		//pause state
 		if (gamePanel.gameState==gamePanel.pauseState) {
@@ -234,31 +235,30 @@ public class UI {
 			g2.setColor(Color.black);
 			//引言
 			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,18));
-			text="從前從前，在遠的要命王國裡，住著一隻喜愛吃東西的泰迪熊 " + gamePanel.player.playerName + " 。";
+			text="從前從前，在遠的要命王國裡，住著一隻喜愛吃東西的泰迪熊 " + gamePanel.player.playerName + " ";
 			x=gamePanel.tileSize*1;
 			y+=gamePanel.tileSize;
 			g2.drawString(text, x, y);
-			text= "它聽說台南有著很多很多的美食，於是它決定來到這個傳說中的美食之都。";
+			text= "它聽說台南有著很多很多的美食，於是它決定來到這個傳說中的美食之都";
 			y+=gamePanel.tileSize/2;
 			g2.drawString(text, x, y);
-			text="究竟它會在這裡遇到什麼冒險呢.......";
+			text= "比起當coding熊熊，它更喜歡當一隻美食熊熊";
+			y+=gamePanel.tileSize/2;
+			g2.drawString(text, x, y);
+			text= "即便它明白，再吃下去，它就要逃脫不了大二的聖誕節魔咒了...";
+			y+=gamePanel.tileSize/2;
+			g2.drawString(text, x, y);
+			text="究竟把食物當作靈魂伴侶的"+gamePanel.player.playerName+"會在這裡遇到什麼冒險呢.......";
 			y+=gamePanel.tileSize/2;
 			g2.drawString(text, x, y);
 			
-			x=gamePanel.tileSize*2;
-			y+=gamePanel.tileSize;
+			x=gamePanel.tileSize*5+45;
+			y+=gamePanel.tileSize-20;
 			g2.drawImage(gamePanel.player.down1, x, y, gamePanel.tileSize*4,gamePanel.tileSize*4,null);
-			
-			/*JTextField inputName = new JTextField(50);
-			x+=gamePanel.tileSize*5;
-			y+=gamePanel.tileSize/2;
-			inputName.setLocation(x, y);
-			inputName.setSize(inputName.getPreferredSize());
-			gamePanel.add(inputName);*/
 			
 			text="遊戲解說";
 			x=getXForCenterText(text);
-			y+=gamePanel.tileSize;
+			y+=gamePanel.tileSize*5+20;
 			g2.drawString(text, x, y);
 			if(commandNum==0) {
 				g2.drawString(">", x-gamePanel.tileSize, y);
@@ -266,7 +266,7 @@ public class UI {
 			
 			text="回上一頁";
 			x=getXForCenterText(text);
-			y+=gamePanel.tileSize;
+			y+=gamePanel.tileSize/2+15;
 			g2.drawString(text, x, y);
 			if(commandNum==1) {
 				g2.drawString(">", x-gamePanel.tileSize, y);
@@ -294,14 +294,14 @@ public class UI {
 			
 			g2.setColor(Color.black);
 			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,20));
-			text="早上好。 現在你有初始基金1000元";
+			text="早上好 "+gamePanel.player.playerName+" 現在你有初始基金1000元";
 			x=gamePanel.tileSize;
 			y+=gamePanel.tileSize;
 			g2.drawString(text, x, y);
 			text="你可以透過Ｗ、Ｓ、Ａ、Ｄ鍵或上、下、左、右鍵在地圖中移動";
 			y+=gamePanel.tileSize;
 			g2.drawString(text, x, y);
-			text="按下Enter鍵可以與場上人物對話";
+			text="按下Enter鍵可以與場上人物對話以及進入店面";
 			y+=gamePanel.tileSize;
 			g2.drawString(text, x, y);
 			text="Ｐ鍵可以暫停遊戲";
@@ -347,6 +347,7 @@ public class UI {
 		else if(titleScreenState == 9){
 			// don't draw g2
 			gamePanel.setVisible(false);
+			
 		}
 
 	}
@@ -399,6 +400,8 @@ public class UI {
 		int y=frameY+gamePanel.tileSize;
 		
 		//information
+		g2.drawString("玩家 "+gamePanel.player.playerName, x, y);
+		y+=gamePanel.tileSize;
 		g2.drawString("持有金額："+gamePanel.player.hasMoney+" 元", x, y);
 		y+=gamePanel.tileSize;
 		g2.drawString("探索美食店家數："+gamePanel.player.enterStore+" 家", x, y);

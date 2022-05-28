@@ -56,12 +56,9 @@ public class Entity {
 		this.gamePanel=gp;
 	}
 	
-	public void setAction() {
-		
-	}
-	public void damageReaction() {
-		
-	}
+	public void setAction() {	}
+	public void damageReaction() {	}
+	public void setDialogue() {}
 	public void speak() {
 		if(dialogues[dialogueIndex]==null) {
 			dialogueIndex=0;
