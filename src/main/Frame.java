@@ -18,9 +18,11 @@ public class Frame extends JFrame implements ActionListener {
 		this.setTitle("YUMYUM Tainan");
 		this.getContentPane().setBackground(new Color(255, 236, 241));
 
+
 		gamePanel = new GamePanel();
 		this.add(gamePanel);
 		this.pack();
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 
 		gamePanel.setUpGame();
@@ -50,9 +52,6 @@ public class Frame extends JFrame implements ActionListener {
 		panel.add(button);
 		this.add(panel);
 
-		this.setLocationRelativeTo(null);
-
-
 		gamePanel.startGameThread();
 	}
 
@@ -60,6 +59,7 @@ public class Frame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == button){
 			gamePanel.player.playerName = textField.getText();
+
 			if(gamePanel.player.playerName.length() == 0){
 				label.setText(" 姓名欄不能是空的ㄛ！");
 			}
