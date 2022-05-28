@@ -16,7 +16,6 @@ public class Frame extends JFrame implements ActionListener{
 
     Frame() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocation(336,153);
 		this.setResizable(false);
 		this.setTitle("YUMYUM Tainan");
 		this.getContentPane().setBackground(new Color(255, 236, 241));
