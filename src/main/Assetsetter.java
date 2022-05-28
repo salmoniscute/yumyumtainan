@@ -5,6 +5,11 @@ import monster.MON_task;
 import object.OBJ_food;
 import store.Store_1;
 import store.Store_10;
+import store.Store_11;
+import store.Store_12;
+import store.Store_13;
+import store.Store_14;
+import store.Store_15;
 import store.Store_2;
 import store.Store_3;
 import store.Store_4;
@@ -61,6 +66,11 @@ public class Assetsetter {
 		gamePanel.store[7]=new Store_8(gamePanel);
 		gamePanel.store[8]=new Store_9(gamePanel);
 		gamePanel.store[9]=new Store_10(gamePanel);
+		gamePanel.store[10]=new Store_11(gamePanel);
+		gamePanel.store[11]=new Store_12(gamePanel);
+		gamePanel.store[12]=new Store_13(gamePanel);
+		gamePanel.store[13]=new Store_14(gamePanel);
+		gamePanel.store[14]=new Store_15(gamePanel);
 		
 	}
 

@@ -248,17 +248,17 @@ public class UI {
 			text= "即便它明白，再吃下去，它就要逃脫不了大二的聖誕節魔咒了...";
 			y+=gamePanel.tileSize/2;
 			g2.drawString(text, x, y);
-			text="究竟把食物當作靈魂伴侶的"+gamePanel.player.playerName+"會在這裡遇到什麼冒險呢.......";
+			text="究竟把美食當作靈魂伴侶的"+gamePanel.player.playerName+"會在這裡遇到什麼冒險呢.......";
 			y+=gamePanel.tileSize/2;
 			g2.drawString(text, x, y);
 			
 			x=gamePanel.tileSize*5+45;
-			y+=gamePanel.tileSize-20;
+			y+=gamePanel.tileSize-10;
 			g2.drawImage(gamePanel.player.down1, x, y, gamePanel.tileSize*4,gamePanel.tileSize*4,null);
 			
 			text="遊戲解說";
 			x=getXForCenterText(text);
-			y+=gamePanel.tileSize*5+20;
+			y+=gamePanel.tileSize*5+10;
 			g2.drawString(text, x, y);
 			if(commandNum==0) {
 				g2.drawString(">", x-gamePanel.tileSize, y);
@@ -266,7 +266,7 @@ public class UI {
 			
 			text="回上一頁";
 			x=getXForCenterText(text);
-			y+=gamePanel.tileSize/2+15;
+			y+=gamePanel.tileSize/2+10;
 			g2.drawString(text, x, y);
 			if(commandNum==1) {
 				g2.drawString(">", x-gamePanel.tileSize, y);

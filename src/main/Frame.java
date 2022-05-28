@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Frame extends JFrame implements ActionListener {
+public class Frame extends JFrame implements ActionListener{
 	public JPanel panel;
 	public JButton button;
 	public JLabel label;
@@ -14,9 +16,11 @@ public class Frame extends JFrame implements ActionListener {
 
     Frame() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocation(336,153);
 		this.setResizable(false);
 		this.setTitle("YUMYUM Tainan");
 		this.getContentPane().setBackground(new Color(255, 236, 241));
+		
 
 		gamePanel = new GamePanel();
 		this.add(gamePanel);
@@ -56,7 +60,7 @@ public class Frame extends JFrame implements ActionListener {
 		gamePanel.startGameThread();
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == button){
 			gamePanel.player.playerName = textField.getText();
@@ -72,4 +76,5 @@ public class Frame extends JFrame implements ActionListener {
 			}
 		}
 	}
+
 }
