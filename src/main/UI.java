@@ -361,7 +361,7 @@ public class UI {
 			String text = gamePanel.player.getPlayerName();
 			int textWidth = getTextWidth(text);
 
-			if(textWidth >= gamePanel.tileSize * 10 ){
+			if(textWidth >= gamePanel.tileSize * 9 ){
 				gamePanel.player.addPlayerName(false);
 				String hint = "名字太長囉!!";
 				g2.setFont(g2.getFont().deriveFont(Font.PLAIN,15));
