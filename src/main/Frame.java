@@ -54,20 +54,21 @@ public class Frame extends JFrame implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == button){
-			gamePanel.player.playerName = textField.getText();
+	public void actionPerformed (ActionEvent e) {
+		if(e.getSource() != button) return;
 
-			if(gamePanel.player.playerName.length() == 0){
-				label.setText(" 姓名欄不能是空的ㄛ！");
-			}
-			else {
-				gamePanel.ui.titleScreenState = 1;
-				gamePanel.setVisible(true);
-				button.setEnabled(false);
-				textField.setEnabled(false);
-				panel.setEnabled(false);
-			}
+		gamePanel.player.playerName = textField.getText();
+
+		if(gamePanel.player.playerName.length() == 0){
+			label.setText("    姓名欄不能是空的ㄛ！");
+			return;
 		}
+
+		gamePanel.ui.titleScreenState = 1;
+		gamePanel.setVisible(true);
+		button.setEnabled(false);
+		textField.setEnabled(false);
+		panel.setEnabled(false);
+
 	}
 }
