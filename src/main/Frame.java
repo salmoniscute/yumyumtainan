@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Frame extends JFrame implements ActionListener {
+public class Frame extends JFrame implements ActionListener{
 	public JPanel panel;
 	public JButton button;
 	public JLabel label;
