@@ -185,7 +185,7 @@ public class KeyHandler implements KeyListener{
 
 				if(gamePanel.ui.commandNum == 0) {
 					if(gamePanel.player.getPlayerName().length() == 0){
-						gamePanel.ui.changeHeaderTo("名字不能空");
+						gamePanel.ui.changeHeaderTo("姓名欄不能是空的喔！");
 					}
 					if(gamePanel.player.getPlayerName().length() > 0){
 						gamePanel.ui.titleScreenState = 1;
