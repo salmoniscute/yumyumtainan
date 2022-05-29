@@ -21,7 +21,7 @@ public class UI {
 	public int storeScreenState=0;
 	public int storeNum=0;
 	public int timeStoper = 0;
-	private String header = "Enter Your Name";
+	private String header = "在遊戲開始之前，先設定玩家名稱吧！";
 	
 	
 	public UI(GamePanel gp) {
@@ -365,7 +365,7 @@ public class UI {
 				gamePanel.player.addPlayerName(false);
 				String hint = "名字太長囉!!";
 				g2.setFont(g2.getFont().deriveFont(Font.PLAIN,15));
-				x = gamePanel.tileSize * 5;
+				x = gamePanel.tileSize * 10;
 				y = gamePanel.tileSize * 7;
 				g2.drawString(hint, x, y);
 			} else { gamePanel.player.addPlayerName(true);}
