@@ -353,16 +353,17 @@ public class UI {
             g2.setColor(Color.WHITE);
             g2.fillRoundRect(gamePanel.tileSize * 3 + 5, gamePanel.tileSize * 5 + 5, gamePanel.tileSize * 10 - 10, gamePanel.tileSize * 3 / 2 - 10, 20, 20);
 
-            g2.setColor(new Color(203, 67, 53, 100));
+            /*g2.setColor(new Color(203, 67, 53, 100));
             g2.setStroke(new BasicStroke(3));
             g2.drawRoundRect(gamePanel.tileSize * 3 + 5, gamePanel.tileSize * 5 + 5, gamePanel.tileSize * 10 - 10, gamePanel.tileSize * 3 / 2 - 10, 20, 20);
+*/
 
+            //new Color(203, 67, 53, 100)
 
-            //new Color(255, 218, 220)
-			/*g2.setColor(new Color(203, 67, 53, 100));
+			g2.setColor(   new Color(255, 218, 220));
 			g2.setStroke(new BasicStroke(3));
 			g2.drawRoundRect(gamePanel.tileSize * 3, gamePanel.tileSize * 5, gamePanel.tileSize * 10, gamePanel.tileSize *3/2, 20, 20);
-*/
+
 
 
             if (gamePanel.player.getPlayerName().length() > 1) {
@@ -378,7 +379,7 @@ public class UI {
             String text = gamePanel.player.getPlayerName();
             int textWidth = getTextWidth(text);
 
-            if (textWidth >= gamePanel.tileSize * 9) {
+            if (textWidth >= gamePanel.tileSize * 7) {
                 gamePanel.player.addPlayerName(false);
                 g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 15));
                 x = gamePanel.tileSize * 10;
