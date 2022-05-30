@@ -11,9 +11,6 @@ public class UI {
 	Font arial_40,arial_80B;
 	Graphics2D g2;
 	BufferedImage  logo,ig,money;
-	public boolean messageOn;
-	public String message ="" ;
-	//int messageCounter=0;
 	public boolean gameFinished=false;
 	public String currentDialogue="";
 	public int commandNum=0;
@@ -38,10 +35,6 @@ public class UI {
 			e.printStackTrace();
 		}
 		
-	}
-	public void showMessage(String text) {
-		message = text;
-		messageOn=true;
 	}
 	
 	public void draw(Graphics2D g2) {
@@ -79,51 +72,14 @@ public class UI {
 		}
 
 
-		/*if (gameFinished==true) {
-			g2.setFont(arial_40);
-			g2.setColor(Color.white);
-			String text;
-			int textlength;
-			int x,y;
-			
-			text= "You have no money!";
-			textlength=(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-			x=gamePanel.screenWidth/2-textlength/2;
-			y=gamePanel.screenHeight/2-gamePanel.tileSize*3;
-			g2.drawString(text, x, y);
-			
-			g2.setFont(arial_80B);
-			g2.setColor(Color.yellow);
 
-			text= "Oh no!!!";
-			textlength=(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-			x=gamePanel.screenWidth/2-textlength/2;
-			y=gamePanel.screenHeight/2+gamePanel.tileSize*3;
-			g2.drawString(text, x, y);
-			
-			gamePanel.gameThread=null;
-			
+		if(gamePanel.player.hasMoney<0) {
+			gamePanel.ui.gameFinished=true;
+			gamePanel.gameState=gamePanel.finishState;
+			drawFinishScreen();
+
 		}
 		
-		else{
-			g2.setFont(arial_40);
-			g2.setColor(Color.white);
-			g2.drawImage(money, gamePanel.tileSize/2, gamePanel.tileSize/2, gamePanel.tileSize, gamePanel.tileSize,null);
-			g2.drawString(" X "+gamePanel.player.hasMoney, 70, 60);
-			
-			//message
-			if (messageOn==true) {
-				g2.setFont(g2.getFont().deriveFont(30F));
-				g2.drawString(message, gamePanel.tileSize/2, gamePanel.tileSize*5);
-				
-				messageCounter++;
-				
-				if (messageCounter>120) {
-					messageCounter=0;
-					messageOn=false;
-				}
-			}
-		}*/
 		
 		
 		
@@ -135,7 +91,7 @@ public class UI {
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD));
 		String text="Loading...";
 		int x=getXForCenterText(text);
-		int y=gamePanel.tileSize*5+20;
+		int y=gamePanel.tileSize*5-10;
 
 		//shadow
 		g2.setColor(Color.pink);
@@ -144,8 +100,14 @@ public class UI {
 		//main color
 		g2.setColor(Color.white);
 		g2.drawString(text, x, y);
+		
+		g2.setFont(g2.getFont().deriveFont(25F));
+		text="鍵盤記得切換到英文輸入！";
+		x=getXForCenterText(text);
+		y+=gamePanel.tileSize+15;
+		g2.drawString(text, x, y);
 
-		y+=gamePanel.tileSize;
+		y+=gamePanel.tileSize-5;
 		x=gamePanel.tileSize*3+15;
 
 		g2.drawImage(gamePanel.npc[0].down2, x, y, null);
@@ -403,7 +365,7 @@ public class UI {
 		y+=gamePanel.tileSize;
 		g2.drawString("持有金額："+gamePanel.player.hasMoney+" 元", x, y);
 		y+=gamePanel.tileSize;
-		g2.drawString("探索美食店家數："+gamePanel.player.enterStore+" 家", x, y);
+		g2.drawString("探索美食次數："+gamePanel.player.enterStore+" 次", x, y);
 		y+=gamePanel.tileSize;
 		g2.drawString("拾獲蜂蜜數："+gamePanel.player.getHoney+" 罐", x, y);
 		y+=gamePanel.tileSize;
@@ -493,6 +455,62 @@ public class UI {
 		}
 		
 		
+		
+	}
+	public void drawFinishScreen() {
+		g2.setColor(new Color(255,236,241));
+		g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
+		
+		
+		int x=gamePanel.tileSize*4;
+		int y=gamePanel.tileSize-10;
+		g2.drawImage(logo, x, y,gamePanel.tileSize*5/2,gamePanel.tileSize*3/2,null);
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD,35));
+		String text="台南美食地圖";
+		x=getXForCenterText(text)+60;
+		y=gamePanel.tileSize+30;
+		
+		//shadow
+		g2.setColor(Color.PINK);
+		g2.drawString(text, x+2, y+2);
+		
+		//main color
+		g2.setColor(Color.black);
+		g2.drawString(text, x, y);
+		
+		
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD,55));
+		text="遊戲結束";
+		x=getXForCenterText(text);
+		y+=gamePanel.tileSize*3;
+		g2.drawString(text, x, y);
+		
+		
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD,22));
+		text="哎呀！你怎麼可以讓熊熊口袋空空呢";
+		x=getXForCenterText(text);
+		y+=gamePanel.tileSize+15;
+		g2.drawString(text, x, y);
+		
+		x=gamePanel.tileSize;
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD,18));
+		y+=gamePanel.tileSize+20;
+		g2.drawString("玩家 "+gamePanel.player.playerName, x, y);
+		y+=gamePanel.tileSize;
+		g2.drawString("持有金額："+gamePanel.player.hasMoney+" 元", x, y);
+		y+=gamePanel.tileSize;
+		g2.drawString("探索美食次數："+gamePanel.player.enterStore+" 次", x, y);
+		y+=gamePanel.tileSize;
+		g2.drawString("拾獲蜂蜜數："+gamePanel.player.getHoney+" 罐", x, y);
+		y+=gamePanel.tileSize;
+		g2.drawString("擊死綿羊數："+gamePanel.player.killSheep+" 隻", x, y);
+		
+		
+		g2.drawImage(gamePanel.player.down1, gamePanel.tileSize*8, gamePanel.tileSize*8, gamePanel.tileSize*3, gamePanel.tileSize*3,  null);
+	//	g2.drawImage(, gamePanel.tileSize*9, gamePanel.tileSize*8, gamePanel.tileSize*3, gamePanel.tileSize*3,  null);
+		
+		
+		gamePanel.gameThread=null;
 		
 	}
 	public void drawSubWindow(int x,int y,int width,int height,int r,int g,int b,int transparency,int stroke) {

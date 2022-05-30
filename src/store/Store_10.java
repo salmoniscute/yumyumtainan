@@ -23,7 +23,8 @@ public Store_10(GamePanel gp) {
 	
 	public void setStoreImage() {
 		photo1=setup("/store/store10",gamePanel.tileSize*4,gamePanel.tileSize*5);
-		
+		storeImage=setup("/store/house2",gamePanel.tileSize*2,gamePanel.tileSize*2);
+
 	}
 	public void setStoreInfo() {
 		

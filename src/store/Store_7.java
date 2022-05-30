@@ -22,7 +22,8 @@ public class Store_7 extends Store_super{
 	
 	public void setStoreImage() {
 		photo1=setup("/store/store7",gamePanel.tileSize*4,gamePanel.tileSize*5);
-		
+		storeImage=setup("/store/house2",gamePanel.tileSize*2,gamePanel.tileSize*2);
+
 	}
 	public void setStoreInfo() {
 		

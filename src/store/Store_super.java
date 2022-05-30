@@ -17,7 +17,7 @@ public class Store_super {
 	public int cost=0;
 	
 	public BufferedImage storeImage;
-	public BufferedImage photo1,photo2;
+	public BufferedImage photo1;
 	public int photoX,photoY;
 	
 	public boolean collision=false;
@@ -32,18 +32,20 @@ public class Store_super {
 	
 	public Store_super(GamePanel gp) {
 		this.gamePanel=gp;
-		storeImage=setup("/object/door", gamePanel.tileSize, gamePanel.tileSize);
 		
-		solidArea.x=8;
-		solidArea.y=0;
+		solidArea.x=10;
+		solidArea.y=10;
 		solidAreaDefaultX=solidArea.x;
 		solidAreaDefaultY=solidArea.y;
-		solidArea.width=32;
-		solidArea.height=32;
+		solidArea.width=76;
+		solidArea.height=70;
 		
 		collision=true;
 	}
 	public void setStoreInfo() {
+		
+	}
+	public void setStoreImage() {
 		
 	}
 
