@@ -46,4 +46,5 @@ public class Store_12 extends Store_super{
 				+ "評分：🌕🌕🌕🌕🌗";
 		
 	}
+
 }

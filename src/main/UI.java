@@ -7,72 +7,75 @@ import javax.imageio.ImageIO;
 
 public class UI {
 	
-	GamePanel gamePanel;
-	Font arial_40,arial_80B;
-	Graphics2D g2;
-	BufferedImage  logo,ig,money;
-	public boolean gameFinished=false;
-	public String currentDialogue="";
-	public int commandNum=0;
-	public int titleScreenState = 0;
-	public int storeScreenState=0;
-	public int storeNum=0;
+GamePanel gamePanel;
+Font arial_40, arial_80B;
+Graphics2D g2;
+BufferedImage logo, ig, money;
+public boolean messageOn;
+public String message = "";
+//int messageCounter=0;
+public boolean gameFinished = false;
+public String currentDialogue = "";
+public int commandNum = 0;
+public int titleScreenState = 0;
+public int storeScreenState = 0;
+public int storeNum = 0;
+public int timeStoper = 0;
+private String header = "在遊戲開始之前，先設定玩家名稱吧！";
+private String LengthLimitHint = "名字太長囉!!";
 	
-	
-	public UI(GamePanel gp) {
-		
-		this.gamePanel=gp;
-		arial_40 = new Font("Arial", Font.PLAIN, 40);
-		arial_80B=new Font("Arial", Font.BOLD, 80);
-		
-		try {
-			ig=ImageIO.read(getClass().getResourceAsStream("/maps/ig.png"));
-			logo=ImageIO.read(getClass().getResourceAsStream("/maps/logo.png"));
+////////////////////////////////////////////// Constructor /////////////////////////////////////////////
+    public UI(GamePanel gp) {
+
+        this.gamePanel = gp;
+        arial_40 = new Font("Arial", Font.PLAIN, 40);
+        arial_80B = new Font("Arial", Font.BOLD, 80);
+
+        try {
+            ig = ImageIO.read(getClass().getResourceAsStream("/maps/ig.png"));
+            logo = ImageIO.read(getClass().getResourceAsStream("/maps/logo.png"));
 
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
-	public void draw(Graphics2D g2) {
-		this.g2=g2;
-		g2.setFont(arial_40);
-		g2.setColor(Color.white);
-		//loading state
-		if(gamePanel.gameState==gamePanel.loadingState) {
-			drawLoadingScreen();
-		}
-		//title state
-		if(gamePanel.gameState==gamePanel.titleState) {
-			drawTitleScreen();
-		}
-		//play state
-		if(gamePanel.gameState==gamePanel.playState) {
-			//do play
-			
-		}
-		//pause state
-		if (gamePanel.gameState==gamePanel.pauseState) {
-			drawPauseScreen();
-		}
-		//dialogue
-		if(gamePanel.gameState==gamePanel.dialogueState) {
-			drawDialogueScreen();
-		}
-		//character screen
-		if(gamePanel.gameState==gamePanel.characterState) {
-			drawCharacterScreen();
-		}
-		//store screen
-		if(gamePanel.gameState==gamePanel.storeState) {
-			drawStoreScreen(storeNum);
-		}
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
 
 
-
+    public void draw(Graphics2D g2) {
+        this.g2 = g2;
+        g2.setFont(arial_40);
+        g2.setColor(Color.white);
+        //loading state
+        if (gamePanel.gameState == gamePanel.loadingState) {
+            drawLoadingScreen();
+        }
+        //title state
+        if (gamePanel.gameState == gamePanel.titleState) {
+            drawTitleScreen();
+        }
+        //play state
+        if (gamePanel.gameState == gamePanel.playState) {
+            //play
+        }
+        //pause state
+        if (gamePanel.gameState == gamePanel.pauseState) {
+            drawPauseScreen();
+        }
+        //dialogue
+        if (gamePanel.gameState == gamePanel.dialogueState) {
+            drawDialogueScreen();
+        }
+        //character screen
+        if (gamePanel.gameState == gamePanel.characterState) {
+            drawCharacterScreen();
+        }
+        //store screen
+        if (gamePanel.gameState == gamePanel.storeState) {
+            drawStoreScreen(storeNum);
+        }
 		if(gamePanel.player.hasMoney<0) {
 			gamePanel.ui.gameFinished=true;
 			gamePanel.gameState=gamePanel.finishState;
@@ -80,7 +83,7 @@ public class UI {
 
 		}
 		
-		
+/////////////////////////////////////// Drawing Different State ///////////////////////////////////////////
 		
 		
 	}
@@ -121,197 +124,7 @@ public class UI {
 		g2.drawImage(gamePanel.monster[0].down2, x, y, null);
 
 	}
-	public void drawTitleScreen() {
-		
-		if(titleScreenState==0) {
-			g2.setColor(new Color(255,236,241));
-			g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
-			
-			//logo image
-			int x=gamePanel.tileSize*3;
-			int y=gamePanel.tileSize;
-			g2.drawImage(logo, x, y,gamePanel.tileSize*10,gamePanel.tileSize*6,null);
-			
-			g2.setFont(g2.getFont().deriveFont(Font.BOLD));
-			String text="台南美食地圖";
-			x=getXForCenterText(text);
-			y+=gamePanel.tileSize*7+15;
-			
-			//shadow
-			g2.setColor(Color.PINK);
-			g2.drawString(text, x+2, y+2);
-			
-			//main color
-			g2.setColor(Color.black);
-			g2.drawString(text, x, y);
-			
-			//menu
-			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,22));
-			text="進入遊戲";
-			x=getXForCenterText(text);
-			y+=gamePanel.tileSize+20;
-			g2.drawString(text, x, y);
-			if(commandNum==0) {
-				g2.drawString(">", x-gamePanel.tileSize, y);
-			}
-			
-			text="離開";
-			x=getXForCenterText(text);
-			y+=gamePanel.tileSize/2+10;
-			g2.drawString(text, x, y);
-			if(commandNum==1) {
-				g2.drawString(">", x-gamePanel.tileSize, y);
-			}
-			
-			x=gamePanel.tileSize;
-			y-=gamePanel.tileSize/2;
-			g2.drawImage(ig, x, y, gamePanel.tileSize,gamePanel.tileSize, null);
-			
-			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,16));
-			text="yumyum_tb";
-			y+=gamePanel.tileSize;
-			g2.drawString(text, x+gamePanel.tileSize, y-18);
-			text="此遊戲的店家資訊皆是來自這個美食帳，歡迎前去看看！";
-			y+=gamePanel.tileSize/3;
-			g2.drawString(text, x+5, y);
-			
-		}
-		else if (titleScreenState==1) {
-			g2.setColor(new Color(255,236,241));
-			g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
-			
-			g2.setFont(g2.getFont().deriveFont(Font.BOLD,35));
-			String text="台南美食地圖";
-			int x=getXForCenterText(text);
-			int y=gamePanel.tileSize+20;
-			
-			//shadow
-			g2.setColor(Color.PINK);
-			g2.drawString(text, x+2, y+2);
-			
-			//main color
-			g2.setColor(Color.black);
-			g2.drawString(text, x, y);
-			
-			g2.setColor(Color.black);
-			//引言
-			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,18));
-			text="從前從前，在遠的要命王國裡，住著一隻喜愛吃東西的泰迪熊 " + gamePanel.player.playerName + " ";
-			x=gamePanel.tileSize*1;
-			y+=gamePanel.tileSize;
-			g2.drawString(text, x, y);
-			text= "它聽說台南有著很多很多的美食，於是它決定來到這個傳說中的美食之都";
-			y+=gamePanel.tileSize/2;
-			g2.drawString(text, x, y);
-			text= "比起當coding熊熊，它更喜歡當一隻美食熊熊";
-			y+=gamePanel.tileSize/2;
-			g2.drawString(text, x, y);
-			text= "即便它明白，再吃下去，它就要逃脫不了大二的聖誕節魔咒了...";
-			y+=gamePanel.tileSize/2;
-			g2.drawString(text, x, y);
-			text="究竟把美食當作靈魂伴侶的"+gamePanel.player.playerName+"會在這裡遇到什麼冒險呢.......";
-			y+=gamePanel.tileSize/2;
-			g2.drawString(text, x, y);
-			
-			x=gamePanel.tileSize*5+45;
-			y+=gamePanel.tileSize-10;
-			g2.drawImage(gamePanel.player.down1, x, y, gamePanel.tileSize*4,gamePanel.tileSize*4,null);
-			
-			text="遊戲解說";
-			x=getXForCenterText(text);
-			y+=gamePanel.tileSize*5+10;
-			g2.drawString(text, x, y);
-			if(commandNum==0) {
-				g2.drawString(">", x-gamePanel.tileSize, y);
-			}
-			
-			text="回上一頁";
-			x=getXForCenterText(text);
-			y+=gamePanel.tileSize/2+10;
-			g2.drawString(text, x, y);
-			if(commandNum==1) {
-				g2.drawString(">", x-gamePanel.tileSize, y);
-			}
-			
-			
 	
-		}
-		else if(titleScreenState==2) {
-			g2.setColor(new Color(255,236,241));
-			g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
-			
-			g2.setFont(g2.getFont().deriveFont(Font.BOLD,35));
-			String text="台南美食地圖";
-			int x=getXForCenterText(text);
-			int y=gamePanel.tileSize+20;
-			
-			//shadow
-			g2.setColor(Color.PINK);
-			g2.drawString(text, x+2, y+2);
-			
-			//main color
-			g2.setColor(Color.black);
-			g2.drawString(text, x, y);
-			
-			g2.setColor(Color.black);
-			g2.setFont(g2.getFont().deriveFont(Font.PLAIN,20));
-			text="早上好 "+gamePanel.player.playerName+" 現在你有初始基金1000元";
-			x=gamePanel.tileSize;
-			y+=gamePanel.tileSize;
-			g2.drawString(text, x, y);
-			text="你可以透過Ｗ、Ｓ、Ａ、Ｄ鍵或上、下、左、右鍵在地圖中移動";
-			y+=gamePanel.tileSize;
-			g2.drawString(text, x, y);
-			text="按下Enter鍵可以與場上人物對話以及進入店面";
-			y+=gamePanel.tileSize;
-			g2.drawString(text, x, y);
-			text="Ｐ鍵可以暫停遊戲";
-			y+=gamePanel.tileSize;
-			g2.drawString(text, x, y);
-			text="Ｃ鍵可以獲得你目前的遊戲資訊";
-			y+=gamePanel.tileSize;
-			g2.drawString(text, x, y);
-			text="而作為一隻美食熊熊，口袋裡有足夠的錢是必須的";
-			y+=gamePanel.tileSize;
-			g2.drawString(text, x, y);
-			text="地圖中有隱藏熊熊最愛的";
-			y+=gamePanel.tileSize;
-			g2.drawString(text, x, y);
-			g2.drawImage(gamePanel.objects[0].down2, x+gamePanel.tileSize*5-15, y-20,gamePanel.tileSize/2,gamePanel.tileSize/2,null);
-			text="吃下它會增加你的錢錢";
-			g2.drawString(text, x+gamePanel.tileSize*5+15, y);
-			text="還可以按下Ｋ鍵來噴出熊熊大火攻擊綿羊";
-			y+=gamePanel.tileSize;
-			g2.drawString(text, x, y);
-			g2.drawImage(gamePanel.monster[0].down2, x+gamePanel.tileSize*7+30, y-20,gamePanel.tileSize/2,gamePanel.tileSize/2,null);
-			text="獲得錢錢！";
-			g2.drawString(text, x+gamePanel.tileSize*8+14, y);
-			
-			text="開始遊戲";
-			x=getXForCenterText(text);
-			y+=gamePanel.tileSize+5;
-			g2.drawString(text, x, y);
-			if(commandNum==0) {
-				g2.drawString(">", x-gamePanel.tileSize, y);
-			}
-			
-			text="回上一頁";
-			x=getXForCenterText(text);
-			y+=gamePanel.tileSize/2+10;
-			g2.drawString(text, x, y);
-			if(commandNum==1) {
-				g2.drawString(">", x-gamePanel.tileSize, y);
-			}
-			
-			
-		}
-		else if(titleScreenState == 9){
-			// don't draw g2
-			gamePanel.setVisible(false);
-			
-		}
-
-	}
 	public void drawPauseScreen() {
 		int x=gamePanel.tileSize*5+gamePanel.tileSize/2;
 		int y=gamePanel.tileSize*4;
@@ -361,7 +174,7 @@ public class UI {
 		int y=frameY+gamePanel.tileSize;
 		
 		//information
-		g2.drawString("玩家 "+gamePanel.player.playerName, x, y);
+		g2.drawString("玩家 "+gamePanel.player.getPlayerName(), x, y);
 		y+=gamePanel.tileSize;
 		g2.drawString("持有金額："+gamePanel.player.hasMoney+" 元", x, y);
 		y+=gamePanel.tileSize;
@@ -370,93 +183,9 @@ public class UI {
 		g2.drawString("拾獲蜂蜜數："+gamePanel.player.getHoney+" 罐", x, y);
 		y+=gamePanel.tileSize;
 		g2.drawString("擊死綿羊數："+gamePanel.player.killSheep+" 隻", x, y);
+    }
 
 
-		
-	}
-	public void drawStoreScreen(int i) {
-		
-		if(storeScreenState==0) {
-			//create a frame
-			final int frameX=gamePanel.tileSize*3+10;
-			final int frameY=gamePanel.tileSize*3;
-			final int frameWidth=gamePanel.tileSize*9;
-			final int frameHeight=gamePanel.tileSize*5;
-			drawSubWindow(frameX, frameY, frameWidth, frameHeight,255,236,241,250,2);
-			
-			g2.setColor(Color.BLACK);
-			g2.setFont(g2.getFont().deriveFont(18F));
-			int x=frameX+20;
-			int y=frameY+gamePanel.tileSize;
-			String text="歡迎光臨 "+gamePanel.store[i].name;
-			g2.drawString(text, x, y);
-			
-			text="探索這間台南美食需要 "+gamePanel.store[i].cost+" 元";
-			y+=gamePanel.tileSize;
-			g2.drawString(text, x, y);
-			
-			
-			g2.setFont(g2.getFont().deriveFont(16F));
-			text="好的，我要吃掉它";
-			x=getXForCenterText(text);
-			y+=gamePanel.tileSize+10;
-			g2.drawString(text, x, y);
-			if(commandNum==0) {
-				g2.drawString(">", x-gamePanel.tileSize, y);
-			}
-			
-			text="算了我要減肥";
-			x=getXForCenterText(text);
-			y+=gamePanel.tileSize-5;
-			g2.drawString(text, x, y);
-			if(commandNum==1) {
-				g2.drawString(">", x-gamePanel.tileSize, y);
-			}
-		}
-		else if(storeScreenState==1) {
-			//create a frame
-			final int frameX=gamePanel.tileSize/2;
-			final int frameY=gamePanel.tileSize/2;
-			final int frameWidth=gamePanel.tileSize*14+48;
-			final int frameHeight=gamePanel.tileSize*10+48;
-			drawSubWindow(frameX, frameY, frameWidth, frameHeight,255,236,241,250,2);
-			
-			String text;
-			g2.setColor(Color.BLACK);
-			g2.setFont(g2.getFont().deriveFont(18F));
-			int x=frameX+20;
-			int y=frameY+gamePanel.tileSize-10;
-			
-			g2.drawString(gamePanel.store[i].name, x, y);
-			y+=gamePanel.tileSize/2;
-			
-			g2.setFont(g2.getFont().deriveFont(16F));
-			for(String line:gamePanel.store[i].about.split("\n")) {
-				g2.drawString(line, x, y);
-				y+=20;
-			}
-			for(String line:gamePanel.store[i].item.split("\n")) {
-				g2.drawString(line, x, y);
-				y+=20;
-			}
-			for(String line:gamePanel.store[i].info.split("\n")) {
-				g2.drawString(line, x, y);
-				y+=20;
-			}
-			g2.drawImage(gamePanel.store[i].photo1, gamePanel.store[i].photoX, gamePanel.store[i].photoY,null);
-			
-			g2.setFont(g2.getFont().deriveFont(17F));
-			text="謝謝光臨";
-			x=gamePanel.tileSize*13;
-			y=gamePanel.tileSize*10;
-			g2.drawString(text, x, y);
-
-			
-		}
-		
-		
-		
-	}
 	public void drawFinishScreen() {
 		g2.setColor(new Color(255,236,241));
 		g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
@@ -495,7 +224,7 @@ public class UI {
 		x=gamePanel.tileSize;
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD,18));
 		y+=gamePanel.tileSize+20;
-		g2.drawString("玩家 "+gamePanel.player.playerName, x, y);
+		g2.drawString("玩家 "+gamePanel.player.getPlayerName(), x, y);
 		y+=gamePanel.tileSize;
 		g2.drawString("持有金額："+gamePanel.player.hasMoney+" 元", x, y);
 		y+=gamePanel.tileSize;
@@ -532,12 +261,364 @@ public class UI {
 		g2.drawRoundRect(x+5, y+5, width-10, height-10, 25, 25);
 		
 	}
-	public int getXForCenterText(String text) {
-		int textlength=(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-		int x=gamePanel.screenWidth/2-textlength/2;
-		return x;
-	}
 	
+
+
+    public void drawTitleScreen() {
+
+        if (titleScreenState == 0) {
+            g2.setColor(new Color(255, 236, 241));
+            g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
+
+            //logo image
+            int x = gamePanel.tileSize * 3;
+            int y = gamePanel.tileSize;
+            g2.drawImage(logo, x, y, gamePanel.tileSize * 10, gamePanel.tileSize * 6, null);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD));
+            String text = "台南美食地圖";
+            x = getXForCenterText(text);
+            y += gamePanel.tileSize * 7 + 15;
+
+            //shadow
+            g2.setColor(Color.PINK);
+            g2.drawString(text, x + 2, y + 2);
+
+            //main color
+            g2.setColor(Color.black);
+            g2.drawString(text, x, y);
+
+            //menu
+            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 22));
+            text = "進入遊戲";
+            x = getXForCenterText(text);
+            y += gamePanel.tileSize + 20;
+            g2.drawString(text, x, y);
+            if (commandNum == 0) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
+
+            text = "離開";
+            x = getXForCenterText(text);
+            y += gamePanel.tileSize / 2 + 10;
+            g2.drawString(text, x, y);
+            if (commandNum == 1) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
+
+            x = gamePanel.tileSize;
+            y -= gamePanel.tileSize / 2;
+            g2.drawImage(ig, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+
+            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 16));
+            text = "yumyum_tb";
+            y += gamePanel.tileSize;
+            g2.drawString(text, x + gamePanel.tileSize, y - 18);
+            text = "此遊戲的店家資訊皆是來自這個美食帳，歡迎前去看看！";
+            y += gamePanel.tileSize / 3;
+            g2.drawString(text, x + 5, y);
+
+        } else if (titleScreenState == 1) {
+            g2.setColor(new Color(255, 236, 241));
+            g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 35));
+            String text = "台南美食地圖";
+            int x = getXForCenterText(text);
+            int y = gamePanel.tileSize + 20;
+
+            //shadow
+            g2.setColor(Color.PINK);
+            g2.drawString(text, x + 2, y + 2);
+
+            //main color
+            g2.setColor(Color.black);
+            g2.drawString(text, x, y);
+
+            g2.setColor(Color.black);
+            //引言
+            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 18));
+            text = "從前從前，在遠的要命王國裡，住著一隻喜愛吃東西的泰迪熊 " + gamePanel.player.getPlayerName() + " ";
+            x = gamePanel.tileSize * 1;
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            text = "它聽說台南有著很多很多的美食，於是它決定來到這個傳說中的美食之都";
+            y += gamePanel.tileSize / 2;
+            g2.drawString(text, x, y);
+            text = "比起當coding熊熊，它更喜歡當一隻美食熊熊";
+            y += gamePanel.tileSize / 2;
+            g2.drawString(text, x, y);
+            text = "即便它明白，再吃下去，它就要逃脫不了大二的聖誕節魔咒了...";
+            y += gamePanel.tileSize / 2;
+            g2.drawString(text, x, y);
+            text = "究竟把美食當作靈魂伴侶的" + gamePanel.player.getPlayerName() + "會在這裡遇到什麼冒險呢.......";
+            y += gamePanel.tileSize / 2;
+            g2.drawString(text, x, y);
+
+            x = gamePanel.tileSize * 5 + 45;
+            y += gamePanel.tileSize - 10;
+            g2.drawImage(gamePanel.player.down1, x, y, gamePanel.tileSize * 4, gamePanel.tileSize * 4, null);
+
+            text = "遊戲解說";
+            x = getXForCenterText(text);
+            y += gamePanel.tileSize * 5 + 10;
+            g2.drawString(text, x, y);
+            if (commandNum == 0) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
+
+            text = "回上一頁";
+            x = getXForCenterText(text);
+            y += gamePanel.tileSize / 2 + 10;
+            g2.drawString(text, x, y);
+            if (commandNum == 1) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
+
+
+        } else if (titleScreenState == 2) {
+            g2.setColor(new Color(255, 236, 241));
+            g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 35));
+            String text = "台南美食地圖";
+            int x = getXForCenterText(text);
+            int y = gamePanel.tileSize + 20;
+
+            //shadow
+            g2.setColor(Color.PINK);
+            g2.drawString(text, x + 2, y + 2);
+
+            //main color
+            g2.setColor(Color.black);
+            g2.drawString(text, x, y);
+
+            g2.setColor(Color.black);
+            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
+            text = "早上好 " + gamePanel.player.getPlayerName() + " 現在你有初始基金1000元";
+            x = gamePanel.tileSize;
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            text = "你可以透過Ｗ、Ｓ、Ａ、Ｄ鍵或上、下、左、右鍵在地圖中移動";
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            text = "按下Enter鍵可以與場上人物對話以及進入店面";
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            text = "Ｐ鍵可以暫停遊戲";
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            text = "Ｃ鍵可以獲得你目前的遊戲資訊";
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            text = "而作為一隻美食熊熊，口袋裡有足夠的錢是必須的";
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            text = "地圖中有隱藏熊熊最愛的";
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            g2.drawImage(gamePanel.objects[0].down2, x + gamePanel.tileSize * 5 - 15, y - 20, gamePanel.tileSize / 2, gamePanel.tileSize / 2, null);
+            text = "吃下它會增加你的錢錢";
+            g2.drawString(text, x + gamePanel.tileSize * 5 + 15, y);
+            text = "還可以按下Ｋ鍵來噴出熊熊大火攻擊綿羊";
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            g2.drawImage(gamePanel.monster[0].down2, x + gamePanel.tileSize * 7 + 30, y - 20, gamePanel.tileSize / 2, gamePanel.tileSize / 2, null);
+            text = "獲得錢錢！";
+            g2.drawString(text, x + gamePanel.tileSize * 8 + 14, y);
+
+            text = "開始遊戲";
+            x = getXForCenterText(text);
+            y += gamePanel.tileSize + 5;
+            g2.drawString(text, x, y);
+            if (commandNum == 0) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
+
+            text = "回上一頁";
+            x = getXForCenterText(text);
+            y += gamePanel.tileSize / 2 + 10;
+            g2.drawString(text, x, y);
+            if (commandNum == 1) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
+
+
+        } else if (titleScreenState == 9) {
+
+            timeStoper++;
+
+            g2.setColor(Color.WHITE);
+            g2.fillRoundRect(gamePanel.tileSize * 3 + 5, gamePanel.tileSize * 5 + 5, gamePanel.tileSize * 10 - 10, gamePanel.tileSize * 3 / 2 - 10, 20, 20);
+
+            /*g2.setColor(new Color(203, 67, 53, 100));
+            g2.setStroke(new BasicStroke(3));
+            g2.drawRoundRect(gamePanel.tileSize * 3 + 5, gamePanel.tileSize * 5 + 5, gamePanel.tileSize * 10 - 10, gamePanel.tileSize * 3 / 2 - 10, 20, 20);
+*/
+
+            //new Color(203, 67, 53, 100)
+
+			g2.setColor(   new Color(255, 218, 220));
+			g2.setStroke(new BasicStroke(3));
+			g2.drawRoundRect(gamePanel.tileSize * 3, gamePanel.tileSize * 5, gamePanel.tileSize * 10, gamePanel.tileSize *3/2, 20, 20);
+
+
+
+            if (gamePanel.player.getPlayerName().length() > 1) {
+                header = "在遊戲開始之前，先設定玩家名稱吧！";
+            }
+            g2.setColor(Color.BLACK);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40));
+            int x = getXForCenterText(header);
+            int y = gamePanel.tileSize * 4;
+            g2.drawString(header, x, y);
+
+
+            String text = gamePanel.player.getPlayerName();
+            int textWidth = getTextWidth(text);
+
+            if (textWidth >= gamePanel.tileSize * 7) {
+                gamePanel.player.addPlayerName(false);
+                g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 15));
+                x = gamePanel.tileSize * 10;
+                y = gamePanel.tileSize * 7;
+                g2.drawString(LengthLimitHint, x, y);
+            } else {
+                gamePanel.player.addPlayerName(true);
+            }
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 30));
+            x = gamePanel.tileSize * 3 + 10;
+            y = gamePanel.tileSize * 6;
+            g2.drawString(text, x, y);
+            if (timeStoper <= 30) {
+                g2.drawString(text + "|", x, y);
+            } else if (timeStoper >= 60) {
+                timeStoper = 0;
+            }
+
+            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
+            text = "確認";
+            x = getXForCenterText(text);
+            y = gamePanel.tileSize * 9;
+            g2.drawString(text, x, y);
+            if (commandNum == 0) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
+
+
+            text = "上一頁";
+            x = getXForCenterText(text);
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            if (commandNum == 1) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
+
+
+        }
+
+    }
+
+    public void drawStoreScreen(int i) {
+
+        if (storeScreenState == 0) {
+            //create a frame
+            final int frameX = gamePanel.tileSize * 3 + 10;
+            final int frameY = gamePanel.tileSize * 3;
+            final int frameWidth = gamePanel.tileSize * 9;
+            final int frameHeight = gamePanel.tileSize * 5;
+            drawSubWindow(frameX, frameY, frameWidth, frameHeight, 255, 236, 241, 250, 2);
+
+            g2.setColor(Color.BLACK);
+            g2.setFont(g2.getFont().deriveFont(18F));
+            int x = frameX + 20;
+            int y = frameY + gamePanel.tileSize;
+            String text = "歡迎光臨 " + gamePanel.store[i].name;
+            g2.drawString(text, x, y);
+
+            text = "探索這間台南美食需要 " + gamePanel.store[i].cost + " 元";
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+
+
+            g2.setFont(g2.getFont().deriveFont(16F));
+            text = "好的，我要吃掉它";
+            x = getXForCenterText(text);
+            y += gamePanel.tileSize + 10;
+            g2.drawString(text, x, y);
+            if (commandNum == 0) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
+
+            text = "算了我要減肥";
+            x = getXForCenterText(text);
+            y += gamePanel.tileSize - 5;
+            g2.drawString(text, x, y);
+            if (commandNum == 1) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
+        } else if (storeScreenState == 1) {
+            //create a frame
+            final int frameX = gamePanel.tileSize / 2;
+            final int frameY = gamePanel.tileSize / 2;
+            final int frameWidth = gamePanel.tileSize * 14 + 48;
+            final int frameHeight = gamePanel.tileSize * 10 + 48;
+            drawSubWindow(frameX, frameY, frameWidth, frameHeight, 255, 236, 241, 250, 2);
+
+            String text;
+            g2.setColor(Color.BLACK);
+            g2.setFont(g2.getFont().deriveFont(18F));
+            int x = frameX + 20;
+            int y = frameY + gamePanel.tileSize - 10;
+
+            g2.drawString(gamePanel.store[i].name, x, y);
+            y += gamePanel.tileSize / 2;
+
+            g2.setFont(g2.getFont().deriveFont(16F));
+            for (String line : gamePanel.store[i].about.split("\n")) {
+                g2.drawString(line, x, y);
+                y += 20;
+            }
+            for (String line : gamePanel.store[i].item.split("\n")) {
+                g2.drawString(line, x, y);
+                y += 20;
+            }
+            for (String line : gamePanel.store[i].info.split("\n")) {
+                g2.drawString(line, x, y);
+                y += 20;
+            }
+            g2.drawImage(gamePanel.store[i].photo1, gamePanel.store[i].photoX, gamePanel.store[i].photoY, null);
+
+            g2.setFont(g2.getFont().deriveFont(17F));
+            text = "謝謝光臨";
+            x = gamePanel.tileSize * 13;
+            y = gamePanel.tileSize * 10;
+            g2.drawString(text, x, y);
+
+
+        }
+
+
+    }
+    
+    
+    //////////////////////////////////////////////////////// Methods ///////////////////////////////////////////////////////
+
+
+    public int getXForCenterText(String text) {
+        int textlength = getTextWidth(text);
+        int x = gamePanel.screenWidth / 2 - textlength / 2;
+        return x;
+    }
+
+    public int getTextWidth(String text) {
+        return (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+    }
+
+    public void changeHeaderTo(String str) {
+        header = str;
+    }
 
 }
 

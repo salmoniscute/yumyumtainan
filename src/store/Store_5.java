@@ -2,6 +2,7 @@ package store;
 
 import main.GamePanel;
 
+
 public class Store_5 extends Store_super{
 
 	public Store_5(GamePanel gp) {
@@ -47,7 +48,6 @@ public class Store_5 extends Store_super{
 				+ "評分：🌕🌕🌕🌕🌗";
 		
 	}
-	
 	
 
 }

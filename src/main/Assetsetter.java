@@ -20,6 +20,7 @@ import store.Store_8;
 import store.Store_9;
 
 public class Assetsetter {
+
 	
 	GamePanel gamePanel;
 	
@@ -82,6 +83,7 @@ public class Assetsetter {
 		gamePanel.store[14]=new Store_15(gamePanel);
 		
 	}
+
 
 }
 

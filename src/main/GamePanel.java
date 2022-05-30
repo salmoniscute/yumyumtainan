@@ -1,14 +1,12 @@
 package main;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import javax.swing.JPanel;
+import javax.swing.*;
+
 import entity.Entity;
 import entity.Player;
 import store.Store_super;
@@ -116,9 +114,10 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		while(gameThread != null){
 
+
             currentTime = System.nanoTime();
 
-            if(currentTime - lastTime >= drawInterval) {
+            if (currentTime - lastTime >= drawInterval) {
 
                 update();
 
@@ -127,6 +126,7 @@ public class GamePanel extends JPanel implements Runnable{
                 lastTime = currentTime;
             }
         }
+
 	}
 	
 	public void update() {
@@ -241,5 +241,6 @@ public class GamePanel extends JPanel implements Runnable{
 	public void stopMusic() {
 		sound.stop();
 	}
+
 
 }

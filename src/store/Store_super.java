@@ -10,6 +10,7 @@ import main.GamePanel;
 import main.UtilityTool;
 
 public class Store_super {
+
 	
 	GamePanel gamePanel;
 	
@@ -73,4 +74,5 @@ public class Store_super {
 			return image;
 			
 	}
+
 }

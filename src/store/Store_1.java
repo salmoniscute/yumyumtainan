@@ -48,7 +48,4 @@ public class Store_1 extends Store_super {
 				+ "評分：🌕🌕🌕🌕🌑";
 		
 	}
-	
-	
-
 }
