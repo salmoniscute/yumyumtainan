@@ -46,18 +46,22 @@ public class MON_task extends Entity {
 
         if (actionLockCounter == 60) {
             Random random = new Random();
-            int i = random.nextInt(100) + 1;
-            if (i <= 25) {
-                direction = "up";
-            }
-            if (i > 25 && i <= 50) {
-                direction = "down";
-            }
-            if (i > 50 && i <= 75) {
-                direction = "left";
-            }
-            if (i > 75 && i <= 100) {
-                direction = "right";
+            int i = random.nextInt(4) + 1;
+            switch (i) {
+                case 1:
+                    direction = "up";
+                    break;
+                case 2:
+                    direction = "down";
+                    break;
+                case 3:
+                    direction = "left";
+                    break;
+                case 4:
+                    direction = "right";
+                    break;
+                default:
+                    break;
             }
             actionLockCounter = 0;
         }
