@@ -12,7 +12,9 @@ public class Sound {
     URL soundURL[] = new URL[30];
 
     public Sound() {
+
         soundURL[0] = getClass().getResource("/sound/theme.wav");
+
     }
 
     public void setFile(int i) {
