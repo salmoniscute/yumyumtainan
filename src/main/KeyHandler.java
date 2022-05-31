@@ -34,22 +34,20 @@ public class KeyHandler implements KeyListener {
 
         int code = e.getKeyCode();
 
+        if(code == KeyEvent.VK_ESCAPE){ System.exit(0); }
+
         //title state
         if (gamePanel.gameState == gamePanel.titleState) {
             titleState(code);
         }
-
-
         //play state
         else if (gamePanel.gameState == gamePanel.playState) {
             playState(code);
         }
-
         //pause state
         else if (gamePanel.gameState == gamePanel.pauseState) {
             pauseState(code);
         }
-
         //dialogue state
         else if (gamePanel.gameState == gamePanel.dialogueState) {
             dialogueState(code);
@@ -57,7 +55,9 @@ public class KeyHandler implements KeyListener {
         //character state
         else if (gamePanel.gameState == gamePanel.characterState) {
             characterState(code);
-        } else if (gamePanel.gameState == gamePanel.storeState) {
+        }
+        // Store State
+        else if (gamePanel.gameState == gamePanel.storeState) {
             storeState(code, storeNum);
         }
 
