@@ -76,7 +76,7 @@ public class Entity {
         if (dialogueIndex == 6) {
             gamePanel.player.setPlayerMoney("+", 100);
         }
-        gamePanel.ui.currentDialogue = dialogues[dialogueIndex];
+        gamePanel.ui.setCurrentDialogue(dialogues[dialogueIndex]);
         dialogueIndex++;
 
         //面對面講話

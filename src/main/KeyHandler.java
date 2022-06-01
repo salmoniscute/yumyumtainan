@@ -97,88 +97,88 @@ public class KeyHandler implements KeyListener {
             ctrl = true;
         }
 
-        if (gamePanel.ui.titleScreenState == 0) {
+        if (gamePanel.ui.getTitleScreenState() == 0) {
 
             if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
-                gamePanel.ui.commandNum--;
-                if (gamePanel.ui.commandNum < 0) {
-                    gamePanel.ui.commandNum = 1;
+                gamePanel.ui.setCommandNum("-", 1);
+                if (gamePanel.ui.getCommandNum() < 0) {
+                    gamePanel.ui.setCommandNum(1);
                 }
                 gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
-                gamePanel.ui.commandNum++;
-                if (gamePanel.ui.commandNum > 1) {
-                    gamePanel.ui.commandNum = 0;
+                gamePanel.ui.setCommandNum("+", 1);
+                if (gamePanel.ui.getCommandNum() > 1) {
+                    gamePanel.ui.setCommandNum(0);
                 }
                 gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_ENTER) {
-                if (gamePanel.ui.commandNum == 0) {
-                    //gamePanel.ui.titleScreenState=1;
-                    gamePanel.ui.titleScreenState = 9;
+                if (gamePanel.ui.getCommandNum() == 0) {
+                    //gamePanel.ui.setTitleScreenState()=1;
+                    gamePanel.ui.setTitleScreenState(9);
                 }
-                if (gamePanel.ui.commandNum == 1) {
+                if (gamePanel.ui.getCommandNum() == 1) {
                     System.exit(0);
                 }
                 gamePanel.playSE(1);
             }
         }
-        else if (gamePanel.ui.titleScreenState == 1) {
+        else if (gamePanel.ui.getTitleScreenState() == 1) {
             if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
-                gamePanel.ui.commandNum--;
-                if (gamePanel.ui.commandNum < 0) {
-                    gamePanel.ui.commandNum = 1;
+                gamePanel.ui.setCommandNum("-", 1);
+                if (gamePanel.ui.getCommandNum() < 0) {
+                    gamePanel.ui.setCommandNum(1);
                 }
                 gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
-                gamePanel.ui.commandNum++;
-                if (gamePanel.ui.commandNum > 1) {
-                    gamePanel.ui.commandNum = 0;
+                gamePanel.ui.setCommandNum("+", 1);
+                if (gamePanel.ui.getCommandNum() > 1) {
+                    gamePanel.ui.setCommandNum(0);
                 }
                 gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_ENTER) {
-                if (gamePanel.ui.commandNum == 0) {
-                    gamePanel.ui.titleScreenState = 2;
+                if (gamePanel.ui.getCommandNum() == 0) {
+                    gamePanel.ui.setTitleScreenState(2);
 
                 }
-                if (gamePanel.ui.commandNum == 1) {
-                    gamePanel.ui.titleScreenState = 9;
-                    gamePanel.ui.commandNum = 0;
+                if (gamePanel.ui.getCommandNum() == 1) {
+                    gamePanel.ui.setTitleScreenState(9);
+                    gamePanel.ui.setCommandNum(0);
                 }
                 gamePanel.playSE(1);
             }
         }
-        else if (gamePanel.ui.titleScreenState == 2) {
+        else if (gamePanel.ui.getTitleScreenState() == 2) {
             if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
-                gamePanel.ui.commandNum--;
-                if (gamePanel.ui.commandNum < 0) {
-                    gamePanel.ui.commandNum = 1;
+                gamePanel.ui.setCommandNum("-", 1);
+                if (gamePanel.ui.getCommandNum() < 0) {
+                    gamePanel.ui.setCommandNum(1);
                 }
                 gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
-                gamePanel.ui.commandNum++;
-                if (gamePanel.ui.commandNum > 1) {
-                    gamePanel.ui.commandNum = 0;
+                gamePanel.ui.setCommandNum("+", 1);
+                if (gamePanel.ui.getCommandNum() > 1) {
+                    gamePanel.ui.setCommandNum(0);
                 }
                 gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_ENTER) {
-                if (gamePanel.ui.commandNum == 0) {
+                if (gamePanel.ui.getCommandNum() == 0) {
                     gamePanel.setGameState(gamePanel.playState);
                     gamePanel.npc[0].setDialogue();
                 }
-                if (gamePanel.ui.commandNum == 1) {
-                    gamePanel.ui.titleScreenState = 1;
-                    gamePanel.ui.commandNum = 0;
+                if (gamePanel.ui.getCommandNum() == 1) {
+                    gamePanel.ui.setTitleScreenState(1);
+                    gamePanel.ui.setCommandNum(0);
                 }
                 gamePanel.playSE(1);
             }
         }
-        else if (gamePanel.ui.titleScreenState == 9) {
+        else if (gamePanel.ui.getTitleScreenState() == 9) {
 
             /////////// Key input for player name ///////////
             inputToName(code);
@@ -186,32 +186,32 @@ public class KeyHandler implements KeyListener {
 
             //////////////  options  ///////////////////////
             if (code == KeyEvent.VK_UP) {
-                gamePanel.ui.commandNum--;
-                if (gamePanel.ui.commandNum < 0) {
-                    gamePanel.ui.commandNum = 1;
+                gamePanel.ui.setCommandNum("-", 1);
+                if (gamePanel.ui.getCommandNum() < 0) {
+                    gamePanel.ui.setCommandNum(1);
                 }
                 gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_DOWN) {
-                gamePanel.ui.commandNum++;
-                if (gamePanel.ui.commandNum > 1) {
-                    gamePanel.ui.commandNum = 0;
+                gamePanel.ui.setCommandNum("+", 1);
+                if (gamePanel.ui.getCommandNum() > 1) {
+                    gamePanel.ui.setCommandNum(0);
                 }
                 gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_ENTER) {
 
-                if (gamePanel.ui.commandNum == 0) {
+                if (gamePanel.ui.getCommandNum() == 0) {
                     if (gamePanel.player.getPlayerName().length() == 0) {
                         gamePanel.ui.changeHeaderTo("姓名欄不能是空的喔！");
                     }
                     if (gamePanel.player.getPlayerName().length() > 0) {
-                        gamePanel.ui.titleScreenState = 1;
+                        gamePanel.ui.setTitleScreenState(1);
                     }
                 }
-                if (gamePanel.ui.commandNum == 1) {
-                    gamePanel.ui.titleScreenState = 0;
-                    gamePanel.ui.commandNum = 0;
+                if (gamePanel.ui.getCommandNum() == 1) {
+                    gamePanel.ui.setTitleScreenState(0);
+                    gamePanel.ui.setCommandNum(0);
                 }
                 gamePanel.playSE(1);
             }
@@ -287,43 +287,43 @@ public class KeyHandler implements KeyListener {
 
     public void storeState(int code, int i) {
 
-        if (gamePanel.ui.storeScreenState == 0) {
+        if (gamePanel.ui.getStoreScreenState() == 0) {
 
             if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
-                gamePanel.ui.commandNum--;
-                if (gamePanel.ui.commandNum < 0) {
-                    gamePanel.ui.commandNum = 1;
+                gamePanel.ui.setCommandNum("-", 1);
+                if (gamePanel.ui.getCommandNum() < 0) {
+                    gamePanel.ui.setCommandNum(1);
                 }
                 gamePanel.playSE(1);
             }
 
             if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
-                gamePanel.ui.commandNum++;
-                if (gamePanel.ui.commandNum > 1) {
-                    gamePanel.ui.commandNum = 0;
+                gamePanel.ui.setCommandNum("+", 1);
+                if (gamePanel.ui.getCommandNum() > 1) {
+                    gamePanel.ui.setCommandNum(0);
                 }
                 gamePanel.playSE(1);
             }
 
             if (code == KeyEvent.VK_ENTER) {
-                if (gamePanel.ui.commandNum == 0) {
-                    gamePanel.ui.storeScreenState = 1;
+                if (gamePanel.ui.getCommandNum() == 0) {
+                    gamePanel.ui.setStoreScreenState(1);
                     gamePanel.player.setPlayerMoney("-", gamePanel.store[i].cost);
                     gamePanel.player.setStoreCount("+", 1);
                     gamePanel.playSE(6); // cashier sound
                 }
-                if (gamePanel.ui.commandNum == 1) {
+                if (gamePanel.ui.getCommandNum() == 1) {
                     gamePanel.setGameState(gamePanel.playState);
-                    gamePanel.ui.commandNum = 0;
+                    gamePanel.ui.setCommandNum(0);
                     gamePanel.playSE(5); // close door sound
                 }
             }
 
-        } else if (gamePanel.ui.storeScreenState == 1) {
+        } else if (gamePanel.ui.getStoreScreenState() == 1) {
             if (code == KeyEvent.VK_ENTER) {
                 gamePanel.setGameState(gamePanel.playState);
-                gamePanel.ui.commandNum = 0;
-                gamePanel.ui.storeScreenState = 0;
+                gamePanel.ui.setCommandNum(0);
+                gamePanel.ui.setStoreScreenState(0);
                 gamePanel.playSE(5); // close door sound
             }
         }

@@ -14,13 +14,13 @@ public class UI {
     public boolean messageOn;
     public String message = "";
     //int messageCounter=0;
-    public boolean gameFinished = false;
-    public String currentDialogue = "";
-    public int commandNum = 0;
-    public int titleScreenState = 0;
-    public int storeScreenState = 0;
-    public int storeNum = 0;
-    public int timeStoper = 0;
+    private boolean gameFinished = false;
+    private String currentDialogue = "";
+    private int commandNum = 0;
+    private int titleScreenState = 0;
+    private int storeScreenState = 0;
+    private int storeNum = 0;
+    private int timeStopper = 0;
     private String header = "在遊戲開始之前，先設定玩家名稱吧！";
 
     ////////////////////////////////////////////// Constructor /////////////////////////////////////////////
@@ -458,7 +458,7 @@ public class UI {
 
         } else if (titleScreenState == 9) {
 
-            timeStoper++;
+            timeStopper++;
 
             g2.setColor(Color.WHITE);
             g2.fillRoundRect(gamePanel.tileSize * 3 + 5, gamePanel.tileSize * 5 + 5, gamePanel.tileSize * 10 - 10, gamePanel.tileSize * 3 / 2 - 10, 20, 20);
@@ -502,10 +502,10 @@ public class UI {
             x = gamePanel.tileSize * 3 + 10;
             y = gamePanel.tileSize * 6;
             g2.drawString(text, x, y);
-            if (timeStoper <= 30) {
+            if (timeStopper <= 30) {
                 g2.drawString(text + "|", x, y);
-            } else if (timeStoper >= 60) {
-                timeStoper = 0;
+            } else if (timeStopper >= 60) {
+                timeStopper = 0;
             }
 
             g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
@@ -632,6 +632,61 @@ public class UI {
         header = str;
     }
 
+
+    /////////////////////////////////////////////// Encapsulation  ////////////////////////////////////////////////
+
+
+    //////////////// Dialogue
+    public void setCurrentDialogue(String str){
+        currentDialogue = str;
+    }
+
+
+    /////////////// Command number
+    public void setCommandNum(int i){
+        commandNum = i;
+    }
+    public void setCommandNum(String sign, int i){
+        if(sign == "+"){
+            commandNum += i;
+            return;
+        }
+        if(sign == "-"){
+            commandNum -= i;
+            return;
+        }
+    }
+    public int getCommandNum(){
+        return commandNum;
+    }
+
+
+    ///////////////////////// Title Screen State
+    public void setTitleScreenState(int i) {
+        titleScreenState = i;
+    }
+    public int getTitleScreenState(){
+        return titleScreenState;
+    }
+
+
+    //////////////////////// Store Screen State
+    public void setStoreScreenState(int i) {
+        storeScreenState = i;
+    }
+    public int getStoreScreenState(){
+        return storeScreenState;
+    }
+
+    ///////////////////////////////// TimeStopper
+    public void setTimeStopper(int i){
+        timeStopper = i;
+    }
+
+    //////////////////////////////// Store Number
+    public void setStoreNum(int i){
+        storeNum = i;
+    }
 }
 
 

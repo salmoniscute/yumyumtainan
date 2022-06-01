@@ -14,15 +14,17 @@ public class Player extends Entity {
 
     KeyHandler keyHandler;
 
-    //player state
+
+    public final int screenX;
+    public final int screenY;
+
+
+    /////////////player state
     private String playerName = "";
     private int playerMoney = 0;
     private int getHoney = 0;
     private int killSheep = 0;
     private int enterStore = 0;
-
-    public final int screenX;
-    public final int screenY;
     private boolean canAddPlayerName = true;
 
 
@@ -305,7 +307,7 @@ public class Player extends Entity {
             gamePanel.playSE(l);
 
             gamePanel.setGameState(gamePanel.storeState);
-            gamePanel.ui.storeNum = i;
+            gamePanel.ui.setStoreNum(i);
             gamePanel.keyHandler.setStoreNum(i);
         }
 
@@ -411,7 +413,7 @@ public class Player extends Entity {
 
     public void addPlayerName(String str) {
         if (!canAddPlayerName) return;
-        gamePanel.ui.timeStoper = 0;
+        gamePanel.ui.setTimeStopper(0);
         playerName += str;
         playerName = playerName.substring(0, 1).toUpperCase() + playerName.substring(1);
         for (int i = 0; i < playerName.length(); i++) {
@@ -431,7 +433,7 @@ public class Player extends Entity {
 
     public void backSpaceName() {
         if (playerName.length() == 0) return;
-        gamePanel.ui.timeStoper = 0;
+        gamePanel.ui.setTimeStopper(0);
         playerName = playerName.substring(0, playerName.length() - 1);
 
     }
