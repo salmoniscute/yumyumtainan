@@ -14,6 +14,8 @@ import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
 
+    ////////////////////////////////////////////  Attribute /////////////////////////////////////////////////
+
     //screen setting
     final int originalTileSize = 16;
     final int scale = 3;
@@ -44,6 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker collisionChecker = new CollisionChecker(this);
 
     public Sound sound = new Sound();
+    public Sound music = new Sound();
 
     public Assetsetter assetsetter = new Assetsetter(this);
 
@@ -72,7 +75,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int finishState = 6;
 
 
-    ///////////
+    ////////////////////////////////////////////  Constructor /////////////////////////////////////////////////
 
     public GamePanel() {
 
@@ -83,6 +86,8 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
 
     }
+
+    /////////////////////////////////////////// Methods ////////////////////////////////////////////////////////
 
     public void setUpGame() {
 
@@ -231,13 +236,13 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void playMusic(int i) {
-        sound.setFile(i);
-        sound.play();
-        sound.loop();
+        music.setFile(i);
+        music.play();
+        music.loop();
     }
 
-    public void stopMusic(int i) {
-        sound.stop();
+    public void stopMusic() {
+        music.stop();
     }
 
     public void playSE(int i){

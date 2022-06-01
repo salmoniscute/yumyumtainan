@@ -23,7 +23,6 @@ public class UI {
     public int storeNum = 0;
     public int timeStoper = 0;
     private String header = "在遊戲開始之前，先設定玩家名稱吧！";
-    private String LengthLimitHint = "名字太長囉!!";
 
     ////////////////////////////////////////////// Constructor /////////////////////////////////////////////
     public UI(GamePanel gp) {
@@ -78,6 +77,7 @@ public class UI {
             drawStoreScreen(storeNum);
         }
         if (gamePanel.player.hasMoney < 0) {
+            gamePanel.music.stop();
             gamePanel.ui.gameFinished = true;
             gamePanel.gameState = gamePanel.finishState;
             drawFinishScreen();
@@ -494,7 +494,7 @@ public class UI {
                 g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 15));
                 x = gamePanel.tileSize * 10;
                 y = gamePanel.tileSize * 7;
-                g2.drawString(LengthLimitHint, x, y);
+                g2.drawString("名字太長囉!!", x, y);
             } else {
                 gamePanel.player.addPlayerName(true);
             }
