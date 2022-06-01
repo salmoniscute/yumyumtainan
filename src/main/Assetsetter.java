@@ -57,9 +57,9 @@ public class Assetsetter {
     }
 
     public void setStore() {
-
         gamePanel.store[0] = new Store(gamePanel);
-        gamePanel.store[0].setAll("| 葉明致麵舖 |", 170, 18, 26, gamePanel.tileSize * 6, gamePanel.tileSize * 6, "/store/store1", "/store/house1");
+        gamePanel.store[0].setAll("| 葉明致麵舖 |", 170, 18, 26, gamePanel.tileSize * 6, gamePanel.tileSize * 6, "/store/house1");
+        gamePanel.store[0].loadPhoto(0);
         gamePanel.store[0].setStoreInfo(
                 "隱身在巷內的超美麵鋪，屋內採天花板挑高、許多木製及金屬裝潢的歐式老工業風。\n"
                 + "在如此漂亮的店裡吃著平價美味的麵實在是很特別的體驗，很推薦各位來看看～",
@@ -81,7 +81,8 @@ public class Assetsetter {
                 + "評分：🌕🌕🌕🌕🌑");
 
         gamePanel.store[1] = new Store(gamePanel);
-        gamePanel.store[1].setAll("| 鳳姐鴨肉飯 |", 200, 25, 22, "/store/store2", "/store/house1");
+        gamePanel.store[1].setAll("| 鳳姐鴨肉飯 |", 200, 25, 22, "/store/house1");
+        gamePanel.store[1].loadPhoto(1);
         gamePanel.store[1].setStoreInfo(
                 "終於來踩點這家夯到不行的鴨肉飯了( ´▽` )ﾉ而且當天超幸運，排了超久的隊還好有排到鴨腿飯！\n"
                         + "（真的差一點就要向隅了）到底是否如傳聞中好吃呢～一起來看看吧！",
@@ -109,7 +110,8 @@ public class Assetsetter {
 
 
         gamePanel.store[2] = new Store(gamePanel);
-        gamePanel.store[2].setAll("| 二空涼麵 |", 120, 25, 24, "x", 10, "/store/store3", "/store/house1");
+        gamePanel.store[2].setAll("| 二空涼麵 |", 120, 25, 24, "x", 10, "/store/house1");
+        gamePanel.store[2].loadPhoto(2);
         gamePanel.store[2].setStoreInfo(
                 "佇立在玉井老街盡頭的小店，店內牆上裝飾著滿滿從前顧客來店內用餐的老照片，\n"
                         + "空間雖小但很溫馨。"
@@ -135,7 +137,8 @@ public class Assetsetter {
 
 
         gamePanel.store[3] = new Store(gamePanel);
-        gamePanel.store[3].setAll("| 最初的地方 |", 250, 27, 21, "/store/store4", "/store/house1");
+        gamePanel.store[3].setAll("| 最初的地方 |", 250, 27, 21, "/store/house1");
+        gamePanel.store[3].loadPhoto(3);
         gamePanel.store[3].setStoreInfo(
                 "這次來到了隱藏在小巷內的夯夯咖啡廳最初的地方，二樓是有點像是和房的裝潢，\n"
                         + "有榻榻米和暖和的日光，超適合三五好友來放鬆聊天～（不限時喔！）",
@@ -163,7 +166,7 @@ public class Assetsetter {
 
 
         gamePanel.store[4] = new Store(gamePanel);
-        gamePanel.store[4].setAll("| 湧飯 |", 170, 26, 19, "/store/store5", "/store/house1");
+        gamePanel.store[4].setAll("| 湧飯 |", 170, 26, 19, "/store/house1");
         gamePanel.store[4].setStoreInfo(
                 "位在公園北路的小小店面，販售的是好吃健康的海南雞飯，cp值個人覺得蠻高的！",
 
@@ -186,7 +189,7 @@ public class Assetsetter {
 
 
         gamePanel.store[5] = new Store(gamePanel);
-        gamePanel.store[5].setAll("| 開元路紅燒土魠魚羹  |", 150, 28, 19, "y", 20,  "/store/store6", "/store/house2");
+        gamePanel.store[5].setAll("| 開元路紅燒土魠魚羹  |", 150, 28, 19, "y", 20, "/store/house2");
         gamePanel.store[5].setStoreInfo(
                 "之前因為害特斯拉總是當機而爆紅的土魠魚羹店，其實已經是在地屹立不搖30年的老店，\n"
                         + "用餐人潮總是絡繹不絕，不過好在翻桌速度也非常快！",
@@ -213,7 +216,7 @@ public class Assetsetter {
 
 
         gamePanel.store[6] = new Store(gamePanel);
-        gamePanel.store[6].setAll("| 唐家泡菜館  |", 200, 30, 20, "x", 20, "/store/store7", "/store/house2");
+        gamePanel.store[6].setAll("| 唐家泡菜館  |", 200, 30, 20, "x", 20, "/store/house2");
         gamePanel.store[6].setStoreInfo(
                 "在台南小有名氣的唐家泡菜館，熱愛泡菜的Bear 終於終於來踩點了\n"
                         + "離成大校區不遠！騎腳踏車十分鐘內到。\n"
@@ -238,7 +241,7 @@ public class Assetsetter {
 
 
         gamePanel.store[7] = new Store(gamePanel);
-        gamePanel.store[7].setAll("| 叔炸甜不辣媽 |", 100, 24, 27, "/store/store8", "/store/house2");
+        gamePanel.store[7].setAll("| 叔炸甜不辣媽 |", 100, 24, 27, "/store/house2");
         gamePanel.store[7].setStoreInfo(
                 "位在中西區的超可愛文青風炸甜不辣專賣店，除了基本的椒鹽口味，\n"
                         + "還有很多創意口味像是巧克力、炙燒起司等等，是下午茶跟宵夜的好選擇！",
@@ -258,7 +261,7 @@ public class Assetsetter {
 
 
         gamePanel.store[8] = new Store(gamePanel);
-        gamePanel.store[8].setAll("| shweshwe隨隨東南亞主題小店 |", 160, 26, 26, "xy", 10, 8, "/store/store9", "/store/house2");
+        gamePanel.store[8].setAll("| shweshwe隨隨東南亞主題小店 |", 160, 26, 26, "xy", 10, 8, "/store/house2");
         gamePanel.store[8].setStoreInfo(
                 "座落在青年路上的可愛小店，採開放式座位，\n"
                         + "店外種植了許多綠植還有裝飾茅草，可以感受到島嶼風情。\n"
@@ -287,7 +290,7 @@ public class Assetsetter {
 
 
         gamePanel.store[9] = new Store(gamePanel);
-        gamePanel.store[9].setAll("| 覺丸拉麵 |", 220, 27, 28, "/store/store10", "/store/house2");
+        gamePanel.store[9].setAll("| 覺丸拉麵 |", 220, 27, 28, "/store/house2");
         gamePanel.store[9].setStoreInfo(
                 "店內位子蠻少的，用餐時段常常要等。\n"
                         + "位子是圍繞著廚房的吧台，所以可以看到製作一碗拉麵的過程，蠻特別且公開透明的用餐環境！",
@@ -310,7 +313,7 @@ public class Assetsetter {
 
 
         gamePanel.store[10] = new Store(gamePanel);
-        gamePanel.store[10].setAll("| 皮嚓先生 |", 200, 21, 24, "/store/store11", "/store/house3");
+        gamePanel.store[10].setAll("| 皮嚓先生 |", 200, 21, 24, "/store/house3");
         gamePanel.store[10].setStoreInfo(
                 "位在中西區小巷內超可愛的義式料理，從裝飾看得出來店長很喜歡貓跟多肉植物啊～\n"
                         + "以價位跟味道來說，完全是會想再二訪三訪的店！",
@@ -337,7 +340,7 @@ public class Assetsetter {
 
 
         gamePanel.store[11] = new Store(gamePanel);
-        gamePanel.store[11].setAll("| 古城豆花庄 |", 110, 19, 24,"x", -20,  "/store/store12", "/store/house3");
+        gamePanel.store[11].setAll("| 古城豆花庄 |", 110, 19, 24,"x", -20, "/store/house3");
         gamePanel.store[11].setStoreInfo(
                 "講到台南的宵夜場絕對不會少了這家吧～\n"
                         + "不論是想吃甜的鹹的、冷的熱的，在古城豆花庄通通都找得到！",
@@ -360,7 +363,7 @@ public class Assetsetter {
 
 
         gamePanel.store[12] = new Store(gamePanel);
-        gamePanel.store[12].setAll("| 雙生綠豆沙牛奶 |", 80, 20, 22, "/store/store13", "/store/house3");
+        gamePanel.store[12].setAll("| 雙生綠豆沙牛奶 |", 80, 20, 22, "/store/house3");
         gamePanel.store[12].setStoreInfo(
                 "來台南基本上不會錯過的一家店～很多時候要喝到一杯綠豆沙牛奶得排隊抽號碼牌！\n"
                         + "不過這次去五分鐘內就美食到手了，當天是週五差不多下午三點半給各位參考！",
@@ -380,7 +383,7 @@ public class Assetsetter {
                         + "評分：🌕🌕🌕🌕🌗");
 
         gamePanel.store[13] = new Store(gamePanel);
-        gamePanel.store[13].setAll("| 保安路米糕 |", 50, 17, 23, "/store/store14", "/store/house3");
+        gamePanel.store[13].setAll("| 保安路米糕 |", 50, 17, 23, "/store/house3");
         gamePanel.store[13].setStoreInfo(
                 "保安路米糕是在美食集中區台南國華街的傳統小吃，\n"
                         + "究竟是什麼懷舊古早味的魅力讓這家小小的店，\n"
@@ -404,7 +407,7 @@ public class Assetsetter {
 
 
         gamePanel.store[14] = new Store(gamePanel);
-        gamePanel.store[14].setAll("| 福記肉圓 |", 60, 16, 25, gamePanel.tileSize * 8, gamePanel.tileSize * 5 + 25, "/store/store15", "/store/house3");
+        gamePanel.store[14].setAll("| 福記肉圓 |", 60, 16, 25, gamePanel.tileSize * 8, gamePanel.tileSize * 5 + 25, "/store/house3");
         gamePanel.store[14].setStoreInfo(
                 "這家是Bear踏溯台南的時候慕名前去嚐鮮的～\n"
                         + "所以離成大有點距離，建議搭乘大眾運輸工具或騎機車前往！\n"

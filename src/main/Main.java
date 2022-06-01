@@ -21,6 +21,10 @@ public class Main {
         gamePanel.setUpGame();
         gamePanel.startGameThread();
 
+        for(int i = 4; i < gamePanel.store.length; i++){
+            gamePanel.store[i].loadPhoto(i);
+        }
+
     }
 
 }

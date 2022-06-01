@@ -16,7 +16,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     ////////////////////////////////////////////  Attribute /////////////////////////////////////////////////
 
-    //////////////////////////////screen setting (All final)
+    ////////////////////////// screen setting (All final)
     final int originalTileSize = 16;
     final int scale = 3;
 
@@ -90,7 +90,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setUpGame() {
 
-
         gameState = loadingState;
 
         assetsetter.setObject();
@@ -102,7 +101,6 @@ public class GamePanel extends JPanel implements Runnable {
         playMusic(0);
 
         gameState = titleState;
-
     }
 
     public void startGameThread() {
