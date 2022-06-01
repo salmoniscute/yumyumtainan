@@ -128,9 +128,9 @@ public class UI {
     }
 
     public void drawPauseScreen() {
-        int x = gamePanel.tileSize * 5 + gamePanel.tileSize / 2;
+        int x = gamePanel.tileSize * 4 + gamePanel.tileSize / 2;
         int y = gamePanel.tileSize * 4;
-        g2.drawImage(logo, x, y, gamePanel.tileSize * 5, gamePanel.tileSize * 3, null);
+        g2.drawImage(logo, x, y, gamePanel.tileSize * 7, gamePanel.tileSize * 3, null);
 
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 40F));
         String text = "PAUSED";
