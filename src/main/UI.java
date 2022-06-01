@@ -49,37 +49,37 @@ public class UI {
         g2.setFont(arial_40);
         g2.setColor(Color.white);
         //loading state
-        if (gamePanel.gameState == gamePanel.loadingState) {
+        if (gamePanel.getGameState() == gamePanel.loadingState) {
             drawLoadingScreen();
         }
         //title state
-        if (gamePanel.gameState == gamePanel.titleState) {
+        if (gamePanel.getGameState() == gamePanel.titleState) {
             drawTitleScreen();
         }
         //play state
-        if (gamePanel.gameState == gamePanel.playState) {
+        if (gamePanel.getGameState() == gamePanel.playState) {
             //play
         }
         //pause state
-        if (gamePanel.gameState == gamePanel.pauseState) {
+        if (gamePanel.getGameState() == gamePanel.pauseState) {
             drawPauseScreen();
         }
         //dialogue
-        if (gamePanel.gameState == gamePanel.dialogueState) {
+        if (gamePanel.getGameState() == gamePanel.dialogueState) {
             drawDialogueScreen();
         }
         //character screen
-        if (gamePanel.gameState == gamePanel.characterState) {
+        if (gamePanel.getGameState() == gamePanel.characterState) {
             drawCharacterScreen();
         }
         //store screen
-        if (gamePanel.gameState == gamePanel.storeState) {
+        if (gamePanel.getGameState() == gamePanel.storeState) {
             drawStoreScreen(storeNum);
         }
         if (gamePanel.player.hasMoney < 0) {
             gamePanel.music.stop();
             gamePanel.ui.gameFinished = true;
-            gamePanel.gameState = gamePanel.finishState;
+            gamePanel.setGameState(gamePanel.finishState);
             drawFinishScreen();
             gamePanel.playSE(9); // close door sound
         }

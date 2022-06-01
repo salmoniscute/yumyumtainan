@@ -16,7 +16,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     ////////////////////////////////////////////  Attribute /////////////////////////////////////////////////
 
-    //screen setting
+    //////////////////////////////screen setting (All final)
     final int originalTileSize = 16;
     final int scale = 3;
 
@@ -33,11 +33,10 @@ public class GamePanel extends JPanel implements Runnable {
     public final int worldWidth = tileSize * maxWorldCOL;
     public final int worldHeight = tileSize * maxWorldRow;
 
+    //////////////////////////////////////////// FPS
+    final int FPS = 60;
 
-    //FPS
-    int FPS = 60;
-
-    ////system
+    //////////////////////////////////////////// System
 
     TileManager tileManager = new TileManager(this);
 
@@ -54,7 +53,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread gameThread;
 
-    ////entity and object
+    //////////////////////////////////// Entities and Objects
 
     public Player player = new Player(this, keyHandler);
     public Entity npc[] = new Entity[10];
@@ -63,8 +62,8 @@ public class GamePanel extends JPanel implements Runnable {
     ArrayList<Entity> entityList = new ArrayList<>();
     public Store_super store[] = new Store_super[15];
 
-    //game state
-    public int gameState;
+    //////////////////////////////////////// Game State
+    private int gameState;
     public final int loadingState = -1;
     public final int titleState = 0;
     public final int playState = 1;
@@ -241,15 +240,20 @@ public class GamePanel extends JPanel implements Runnable {
         music.loop();
     }
 
-    public void stopMusic() {
-        music.stop();
-    }
-
     public void playSE(int i){
         sound.setFile(i);
         sound.play();
     }
 
+    /////////////////////////////////////////////// Encapsulation /////////////////////////////////////////////////
 
 
+    //////////////////// Game State
+    public void setGameState (int state) {
+        gameState = state;
+    }
+
+    public int getGameState() {
+        return gameState;
+    }
 }

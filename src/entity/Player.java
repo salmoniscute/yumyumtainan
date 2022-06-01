@@ -98,16 +98,16 @@ public class Player extends Entity {
 
         if (attacking) {
             attacking();
-        } else if (keyHandler.downPressed || keyHandler.upPressed ||
-                keyHandler.leftPressed || keyHandler.rightPressed || keyHandler.enterPressed)
+        } else if (keyHandler.downPressed() || keyHandler.upPressed() ||
+                keyHandler.leftPressed() || keyHandler.rightPressed() || keyHandler.enterPressed())
             {
-                if (keyHandler.upPressed) {
+                if (keyHandler.upPressed()) {
                     direction = "up";
-                } else if (keyHandler.downPressed) {
+                } else if (keyHandler.downPressed()) {
                     direction = "down";
-                } else if (keyHandler.rightPressed) {
+                } else if (keyHandler.rightPressed()) {
                     direction = "right";
-                } else if (keyHandler.leftPressed) {
+                } else if (keyHandler.leftPressed()) {
                     direction = "left";
             }
 
@@ -123,7 +123,7 @@ public class Player extends Entity {
 
             //check store collision
             int storeIndex = gamePanel.collisionChecker.checkStore(this, true);
-            if (keyHandler.enterPressed == true) {
+            if (keyHandler.enterPressed() == true) {
                 openStore(storeIndex);
             }
 
@@ -137,7 +137,7 @@ public class Player extends Entity {
 
             //
 
-            if (collisionOn == false && keyHandler.enterPressed == false) {
+            if (collisionOn == false && keyHandler.enterPressed() == false) {
                 switch (direction) {
                     case "up": {
                         worldY -= speed;
@@ -158,7 +158,7 @@ public class Player extends Entity {
                 }
 
             }
-            gamePanel.keyHandler.enterPressed = false;
+            gamePanel.keyHandler.setEnterPressed(false);
 
             spriteCounter++;
             if (spriteCounter > 20) {
@@ -260,17 +260,17 @@ public class Player extends Entity {
 
     public void interactNPC(int i) {
 
-        if (gamePanel.keyHandler.enterPressed == true) {
+        if (gamePanel.keyHandler.enterPressed() == true) {
             if (i != 999) {
                 gamePanel.playSE(1);
-                gamePanel.gameState = gamePanel.dialogueState;
+                gamePanel.setGameState(gamePanel.dialogueState);
                 gamePanel.npc[i].speak();
             }
 			/*else {
 					attacking=true;
 			}*/
         }
-        gamePanel.keyHandler.enterPressed = false;
+        gamePanel.keyHandler.setEnterPressed(false);
     }
 
     public void damageMonster(int i) {
@@ -304,9 +304,9 @@ public class Player extends Entity {
             int l = random.nextInt(2) + 3;
             gamePanel.playSE(l);
 
-            gamePanel.gameState = gamePanel.storeState;
+            gamePanel.setGameState(gamePanel.storeState);
             gamePanel.ui.storeNum = i;
-            gamePanel.keyHandler.storeNum = i;
+            gamePanel.keyHandler.setStoreNum(i);
         }
 
     }

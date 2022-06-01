@@ -6,6 +6,8 @@ import main.GamePanel;
 
 public class NPC_cadre extends Entity {
 
+    ////////////////////////////////////////////// Constructor //////////////////////////////////////////////
+
     public NPC_cadre(GamePanel gp) {
         super(gp);
         direction = "down";
@@ -18,10 +20,10 @@ public class NPC_cadre extends Entity {
         solidArea.height = 32;
         getNPCImage();
         setDialogue();
-
-
     }
 
+
+    ///////////////////////////////////////////// Methods ////////////////////////////////////////////////
     public void getNPCImage() {
 
         down2 = setup("/cadre/r.front1", gamePanel.tileSize, gamePanel.tileSize);

@@ -11,8 +11,13 @@ public class KeyHandler implements KeyListener {
     GamePanel gamePanel;
 
 
-    public boolean upPressed, downPressed, rightPressed, leftPressed, enterPressed, attackPressed;
-    public int storeNum = 0;
+    private boolean upPressed;
+    private boolean downPressed;
+    private boolean rightPressed;
+    private boolean leftPressed;
+    private boolean enterPressed;
+    private boolean attackPressed;
+    private int storeNum = 0;
     private boolean ctrl = false;
 
 
@@ -39,27 +44,27 @@ public class KeyHandler implements KeyListener {
         if(code == KeyEvent.VK_ESCAPE){ System.exit(0); }
 
         //title state
-        if (gamePanel.gameState == gamePanel.titleState) {
+        if (gamePanel.getGameState() == gamePanel.titleState) {
             titleState(code);
         }
         //play state
-        else if (gamePanel.gameState == gamePanel.playState) {
+        else if (gamePanel.getGameState() == gamePanel.playState) {
             playState(code);
         }
         //pause state
-        else if (gamePanel.gameState == gamePanel.pauseState) {
+        else if (gamePanel.getGameState() == gamePanel.pauseState) {
             pauseState(code);
         }
         //dialogue state
-        else if (gamePanel.gameState == gamePanel.dialogueState) {
+        else if (gamePanel.getGameState() == gamePanel.dialogueState) {
             dialogueState(code);
         }
         //character state
-        else if (gamePanel.gameState == gamePanel.characterState) {
+        else if (gamePanel.getGameState() == gamePanel.characterState) {
             characterState(code);
         }
         // Store State
-        else if (gamePanel.gameState == gamePanel.storeState) {
+        else if (gamePanel.getGameState() == gamePanel.storeState) {
             storeState(code, storeNum);
         }
 
@@ -165,7 +170,7 @@ public class KeyHandler implements KeyListener {
             }
             if (code == KeyEvent.VK_ENTER) {
                 if (gamePanel.ui.commandNum == 0) {
-                    gamePanel.gameState = gamePanel.playState;
+                    gamePanel.setGameState(gamePanel.playState);
                     gamePanel.npc[0].setDialogue();
                 }
                 if (gamePanel.ui.commandNum == 1) {
@@ -235,7 +240,7 @@ public class KeyHandler implements KeyListener {
         }
 
         if (code == KeyEvent.VK_P) {
-            gamePanel.gameState = gamePanel.pauseState;
+            gamePanel.setGameState(gamePanel.pauseState);
         }
 
         if (code == KeyEvent.VK_ENTER) {
@@ -248,7 +253,7 @@ public class KeyHandler implements KeyListener {
 
         }
         if (code == KeyEvent.VK_C) {
-            gamePanel.gameState = gamePanel.characterState;
+            gamePanel.setGameState(gamePanel.characterState);
             gamePanel.playSE(1);
         }
 
@@ -259,7 +264,7 @@ public class KeyHandler implements KeyListener {
     public void pauseState(int code) {
 
         if (code == KeyEvent.VK_P) {
-            gamePanel.gameState = gamePanel.playState;
+            gamePanel.setGameState(gamePanel.playState);
             gamePanel.playSE(1);
         }
 
@@ -269,14 +274,14 @@ public class KeyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_ENTER) {
             gamePanel.playSE(1);
-            gamePanel.gameState = gamePanel.playState;
+            gamePanel.setGameState(gamePanel.playState);
         }
     }
 
     public void characterState(int code) {
 
         if (code == KeyEvent.VK_C) {
-            gamePanel.gameState = gamePanel.playState;
+            gamePanel.setGameState(gamePanel.playState);
             gamePanel.playSE(1);
         }
 
@@ -310,7 +315,7 @@ public class KeyHandler implements KeyListener {
                     gamePanel.playSE(6); // cashier sound
                 }
                 if (gamePanel.ui.commandNum == 1) {
-                    gamePanel.gameState = gamePanel.playState;
+                    gamePanel.setGameState(gamePanel.playState);
                     gamePanel.ui.commandNum = 0;
                     gamePanel.playSE(5); // close door sound
                 }
@@ -318,7 +323,7 @@ public class KeyHandler implements KeyListener {
 
         } else if (gamePanel.ui.storeScreenState == 1) {
             if (code == KeyEvent.VK_ENTER) {
-                gamePanel.gameState = gamePanel.playState;
+                gamePanel.setGameState(gamePanel.playState);
                 gamePanel.ui.commandNum = 0;
                 gamePanel.ui.storeScreenState = 0;
                 gamePanel.playSE(5); // close door sound
@@ -465,6 +470,61 @@ public class KeyHandler implements KeyListener {
                 break;
         }
     }
+
+    ///////////////////////////////////////////// Encapsulation ///////////////////////////////////////////
+
+    ///////////////////////////// Pressed
+    public boolean upPressed() {
+        return upPressed;
+    }
+    public boolean downPressed() {
+        return downPressed;
+    }
+    public boolean leftPressed() {
+        return leftPressed;
+    }
+    public boolean rightPressed() {
+        return rightPressed;
+    }
+    public boolean enterPressed() {
+        return enterPressed;
+    }
+    public boolean attackPressed() {
+        return attackPressed;
+    }
+
+    public void setUpPressed(boolean b) {
+        upPressed = b;
+    }
+    public void setDownPressed(boolean b) {
+        downPressed = b;
+    }
+    public void setLeftPressed(boolean b) {
+        leftPressed = b;
+    }
+    public void setRightPressed(boolean b) {
+        rightPressed = b;
+    }
+    public void setEnterPressed(boolean b) {
+        enterPressed = b;
+    }
+    public void setAttackPressed(boolean b) {
+        attackPressed = b;
+    }
+
+    ///////////////////////////////// Store Number
+
+    public int getStoreNum(){
+        return storeNum;
+    }
+
+    public void setStoreNum(int i){
+        storeNum = i;
+    }
+
+
+
+
 
 
 }
