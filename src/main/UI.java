@@ -197,7 +197,7 @@ public class UI {
 
         int x = gamePanel.tileSize * 4;
         int y = gamePanel.tileSize - 10;
-        g2.drawImage(logo, x, y, gamePanel.tileSize * 5 / 2, gamePanel.tileSize * 3 / 2, null);
+        g2.drawImage(logo, x, y, gamePanel.tileSize * 6 / 2, gamePanel.tileSize * 3 / 2, null);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 35));
         String text = "台南美食地圖";
         x = getXForCenterText(text) + 60;
@@ -284,9 +284,9 @@ public class UI {
             g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
 
             //logo image
-            int x = gamePanel.tileSize * 3;
+            int x = gamePanel.tileSize ;
             int y = gamePanel.tileSize;
-            g2.drawImage(logo, x, y, gamePanel.tileSize * 10, gamePanel.tileSize * 6, null);
+            g2.drawImage(logo, x, y, gamePanel.tileSize * 14, gamePanel.tileSize * 6, null);
 
             g2.setFont(g2.getFont().deriveFont(Font.BOLD));
             String text = "台南美食地圖";
