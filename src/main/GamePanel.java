@@ -9,7 +9,7 @@ import javax.swing.*;
 
 import entity.Entity;
 import entity.Player;
-import store.Store_super;
+import store.Store;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Entity objects[] = new Entity[10];
     public Entity monster[] = new Entity[10];
     ArrayList<Entity> entityList = new ArrayList<>();
-    public Store_super store[] = new Store_super[15];
+    public Store store[] = new Store[15];
 
     //////////////////////////////////////// Game State
     private int gameState;
