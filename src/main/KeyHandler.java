@@ -1,9 +1,7 @@
 package main;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Random;
 
 
 public class KeyHandler implements KeyListener {
@@ -310,8 +308,8 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_ENTER) {
                 if (gamePanel.ui.commandNum == 0) {
                     gamePanel.ui.storeScreenState = 1;
-                    gamePanel.player.hasMoney -= gamePanel.store[i].cost;
-                    gamePanel.player.enterStore++;
+                    gamePanel.player.setPlayerMoney("-", gamePanel.store[i].cost);
+                    gamePanel.player.setStoreCount("+", 1);
                     gamePanel.playSE(6); // cashier sound
                 }
                 if (gamePanel.ui.commandNum == 1) {
@@ -489,34 +487,11 @@ public class KeyHandler implements KeyListener {
     public boolean enterPressed() {
         return enterPressed;
     }
-    public boolean attackPressed() {
-        return attackPressed;
-    }
-
-    public void setUpPressed(boolean b) {
-        upPressed = b;
-    }
-    public void setDownPressed(boolean b) {
-        downPressed = b;
-    }
-    public void setLeftPressed(boolean b) {
-        leftPressed = b;
-    }
-    public void setRightPressed(boolean b) {
-        rightPressed = b;
-    }
     public void setEnterPressed(boolean b) {
         enterPressed = b;
     }
-    public void setAttackPressed(boolean b) {
-        attackPressed = b;
-    }
 
     ///////////////////////////////// Store Number
-
-    public int getStoreNum(){
-        return storeNum;
-    }
 
     public void setStoreNum(int i){
         storeNum = i;

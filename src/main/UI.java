@@ -3,7 +3,6 @@ package main;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Random;
 import javax.imageio.ImageIO;
 
 public class UI {
@@ -76,7 +75,7 @@ public class UI {
         if (gamePanel.getGameState() == gamePanel.storeState) {
             drawStoreScreen(storeNum);
         }
-        if (gamePanel.player.hasMoney < 0) {
+        if (gamePanel.player.getPlayerMoney() < 0) {
             gamePanel.music.stop();
             gamePanel.ui.gameFinished = true;
             gamePanel.setGameState(gamePanel.finishState);
@@ -180,13 +179,13 @@ public class UI {
         //information
         g2.drawString("玩家 " + gamePanel.player.getPlayerName(), x, y);
         y += gamePanel.tileSize;
-        g2.drawString("持有金額：" + gamePanel.player.hasMoney + " 元", x, y);
+        g2.drawString("持有金額：" + gamePanel.player.getPlayerMoney() + " 元", x, y);
         y += gamePanel.tileSize;
-        g2.drawString("探索美食次數：" + gamePanel.player.enterStore + " 次", x, y);
+        g2.drawString("探索美食次數：" + gamePanel.player.getStoreCount() + " 次", x, y);
         y += gamePanel.tileSize;
-        g2.drawString("拾獲蜂蜜數：" + gamePanel.player.getHoney + " 罐", x, y);
+        g2.drawString("拾獲蜂蜜數：" + gamePanel.player.getHoney() + " 罐", x, y);
         y += gamePanel.tileSize;
-        g2.drawString("擊死綿羊數：" + gamePanel.player.killSheep + " 隻", x, y);
+        g2.drawString("擊死綿羊數：" + gamePanel.player.getSheepCount() + " 隻", x, y);
     }
 
 
@@ -230,13 +229,13 @@ public class UI {
         y += gamePanel.tileSize + 20;
         g2.drawString("玩家 " + gamePanel.player.getPlayerName(), x, y);
         y += gamePanel.tileSize;
-        g2.drawString("持有金額：" + gamePanel.player.hasMoney + " 元", x, y);
+        g2.drawString("持有金額：" + gamePanel.player.getPlayerMoney() + " 元", x, y);
         y += gamePanel.tileSize;
-        g2.drawString("探索美食次數：" + gamePanel.player.enterStore + " 次", x, y);
+        g2.drawString("探索美食次數：" + gamePanel.player.getStoreCount() + " 次", x, y);
         y += gamePanel.tileSize;
-        g2.drawString("拾獲蜂蜜數：" + gamePanel.player.getHoney + " 罐", x, y);
+        g2.drawString("拾獲蜂蜜數：" + gamePanel.player.getHoney() + " 罐", x, y);
         y += gamePanel.tileSize;
-        g2.drawString("擊死綿羊數：" + gamePanel.player.killSheep + " 隻", x, y);
+        g2.drawString("擊死綿羊數：" + gamePanel.player.getSheepCount() + " 隻", x, y);
 
 
         g2.drawImage(gamePanel.player.down1, gamePanel.tileSize * 8, gamePanel.tileSize * 8, gamePanel.tileSize * 3, gamePanel.tileSize * 3, null);

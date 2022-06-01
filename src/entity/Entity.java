@@ -71,10 +71,10 @@ public class Entity {
             dialogueIndex = 0;
         }
         if (dialogueIndex == 1) {
-            gamePanel.player.hasMoney -= 550;
+            gamePanel.player.setPlayerMoney("-", 550);
         }
         if (dialogueIndex == 6) {
-            gamePanel.player.hasMoney += 100;
+            gamePanel.player.setPlayerMoney("+", 100);
         }
         gamePanel.ui.currentDialogue = dialogues[dialogueIndex];
         dialogueIndex++;

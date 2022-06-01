@@ -16,10 +16,10 @@ public class Player extends Entity {
 
     //player state
     private String playerName = "";
-    public int hasMoney = 0;
-    public int getHoney = 0;
-    public int killSheep = 0;
-    public int enterStore = 0;
+    private int playerMoney = 0;
+    private int getHoney = 0;
+    private int killSheep = 0;
+    private int enterStore = 0;
 
     public final int screenX;
     public final int screenY;
@@ -59,7 +59,7 @@ public class Player extends Entity {
         speed = 4;
         direction = "down";
 
-        hasMoney = 1000;
+        playerMoney = 1000;
 
     }
 
@@ -246,7 +246,7 @@ public class Player extends Entity {
             switch (objectName) {
                 case "honey": {
                     gamePanel.playSE(7); // make money sound
-                    hasMoney += 100;
+                    playerMoney += 100;
                     gamePanel.objects[index] = null;
                     getHoney++;
                     break;
@@ -285,7 +285,7 @@ public class Player extends Entity {
                 if (gamePanel.monster[i].life <= 0) {
                     gamePanel.playSE(7); // make money sound
                     gamePanel.monster[i].dying = true;
-                    hasMoney += 200;
+                    playerMoney += 200;
                     killSheep++;
                 }
             }
@@ -401,7 +401,10 @@ public class Player extends Entity {
     }
 
 
-    /////////////////////////////////////////////// Player Name 封裝 ////////////////////////////////////////////////
+    /////////////////////////////////////////////// Encapsulation  ////////////////////////////////////////////////
+
+
+    //////////////////////////// Player Name
     public String getPlayerName() {
         return playerName;
     }
@@ -434,7 +437,53 @@ public class Player extends Entity {
     }
 
 
-    /////////////////////////////////////////?//////////
+    ////////////////////////////////////// Player Money
+    public void setPlayerMoney(String sign, int money) {
+        if(sign == "+"){
+            playerMoney += money;
+            return;
+        }
+        if(sign == "-"){
+            playerMoney -= money;
+            return;
+        }
+    }
+
+    public int getPlayerMoney(){
+        return playerMoney;
+    }
+
+
+    ////////////////////////////////////// Honey
+
+    public int getHoney(){
+        return getHoney;
+    }
+
+    /////////////////////////////////////// Sheep count
+
+    public int getSheepCount(){
+        return killSheep;
+    }
+
+    /////////////////////////////////////// Store count
+    public void setStoreCount(String sign, int i){
+        if(sign == "+"){
+          enterStore += i;
+          return;
+        }
+        if(sign == "-"){
+            enterStore -= i;
+            return;
+        }
+
+    }
+
+    public int getStoreCount(){
+        return enterStore;
+    }
+
+
 }
 
 
