@@ -47,9 +47,9 @@ public class TileManager {
 
         try {
             tile[index] = new Tile();
-            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tiles/" + imageName + ".png"));
-            tile[index].image = utilityTool.scaleImage(tile[index].image, gamePanel.tileSize, gamePanel.tileSize);
-            tile[index].collision = collision;
+            tile[index].setTileImage(ImageIO.read(getClass().getResourceAsStream("/tiles/" + imageName + ".png")));
+            tile[index].setTileImage(utilityTool.scaleImage(tile[index].getTileImage(), gamePanel.tileSize, gamePanel.tileSize));
+            tile[index].setTileCollision(collision);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -122,7 +122,7 @@ public class TileManager {
                     && worldY + gamePanel.tileSize > gamePanel.player.worldY - gamePanel.player.screenY
                     && worldY - gamePanel.tileSize < gamePanel.player.worldY + gamePanel.player.screenY) {
 
-                g2.drawImage(tile[tileNum].image, screenX, screenY, null);
+                g2.drawImage(tile[tileNum].getTileImage(), screenX, screenY, null);
             }
 
 
