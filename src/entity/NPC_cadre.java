@@ -77,6 +77,7 @@ public class NPC_cadre extends Entity {
 
     public void speak() {
         super.speak();
+        gamePanel.playSE(2);
     }
 
 }

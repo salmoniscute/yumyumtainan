@@ -3,6 +3,7 @@ package main;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 
 
 public class KeyHandler implements KeyListener {
@@ -306,12 +307,13 @@ public class KeyHandler implements KeyListener {
                     gamePanel.ui.storeScreenState = 1;
                     gamePanel.player.hasMoney -= gamePanel.store[i].cost;
                     gamePanel.player.enterStore++;
+                    gamePanel.playSE(6); // cashier sound
                 }
                 if (gamePanel.ui.commandNum == 1) {
                     gamePanel.gameState = gamePanel.playState;
                     gamePanel.ui.commandNum = 0;
+                    gamePanel.playSE(5); // close door sound
                 }
-                gamePanel.playSE(1);
             }
 
         } else if (gamePanel.ui.storeScreenState == 1) {
@@ -319,7 +321,7 @@ public class KeyHandler implements KeyListener {
                 gamePanel.gameState = gamePanel.playState;
                 gamePanel.ui.commandNum = 0;
                 gamePanel.ui.storeScreenState = 0;
-                gamePanel.playSE(1);
+                gamePanel.playSE(5); // close door sound
             }
         }
 

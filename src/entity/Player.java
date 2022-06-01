@@ -3,6 +3,7 @@ package entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 import main.GamePanel;
 import main.KeyHandler;
@@ -244,6 +245,7 @@ public class Player extends Entity {
             String objectName = gamePanel.objects[index].name;
             switch (objectName) {
                 case "honey": {
+                    gamePanel.playSE(7); // make money sound
                     hasMoney += 100;
                     gamePanel.objects[index] = null;
                     getHoney++;
@@ -275,11 +277,13 @@ public class Player extends Entity {
 
         if (i != 999) {
             if (gamePanel.monster[i].invincible == false) {
+                gamePanel.playSE(8); // Attack sound
                 gamePanel.monster[i].life -= 1;
                 gamePanel.monster[i].invincible = true;
                 gamePanel.monster[i].damageReaction();
 
                 if (gamePanel.monster[i].life <= 0) {
+                    gamePanel.playSE(7); // make money sound
                     gamePanel.monster[i].dying = true;
                     hasMoney += 200;
                     killSheep++;
@@ -294,6 +298,12 @@ public class Player extends Entity {
     public void openStore(int i) {
 
         if (i != 999) {
+
+            //Open door sound
+            Random random = new Random();
+            int l = random.nextInt(2) + 3;
+            gamePanel.playSE(l);
+
             gamePanel.gameState = gamePanel.storeState;
             gamePanel.ui.storeNum = i;
             gamePanel.keyHandler.storeNum = i;

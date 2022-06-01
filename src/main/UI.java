@@ -3,6 +3,7 @@ package main;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Random;
 import javax.imageio.ImageIO;
 
 public class UI {
@@ -79,9 +80,8 @@ public class UI {
         if (gamePanel.player.hasMoney < 0) {
             gamePanel.ui.gameFinished = true;
             gamePanel.gameState = gamePanel.finishState;
-            gamePanel.stopMusic();
             drawFinishScreen();
-
+            gamePanel.playSE(9); // close door sound
         }
 
 /////////////////////////////////////// Drawing Different State ///////////////////////////////////////////
@@ -535,6 +535,7 @@ public class UI {
     public void drawStoreScreen(int i) {
 
         if (storeScreenState == 0) {
+
             //create a frame
             final int frameX = gamePanel.tileSize * 3 + 10;
             final int frameY = gamePanel.tileSize * 3;
