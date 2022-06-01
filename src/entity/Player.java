@@ -95,23 +95,19 @@ public class Player extends Entity {
 
     public void update() {
 
-        if (attacking == true) {
+        if (attacking) {
             attacking();
-        } else if (keyHandler.downPressed == true || keyHandler.upPressed == true ||
-                keyHandler.leftPressed == true || keyHandler.rightPressed == true || keyHandler.enterPressed == true) {
-            if (keyHandler.upPressed == true) {
-                direction = "up";
-
-            } else if (keyHandler.downPressed == true) {
-                direction = "down";
-
-            } else if (keyHandler.rightPressed == true) {
-                direction = "right";
-
-            } else if (keyHandler.leftPressed == true) {
-                direction = "left";
-
-
+        } else if (keyHandler.downPressed || keyHandler.upPressed ||
+                keyHandler.leftPressed || keyHandler.rightPressed || keyHandler.enterPressed)
+            {
+                if (keyHandler.upPressed) {
+                    direction = "up";
+                } else if (keyHandler.downPressed) {
+                    direction = "down";
+                } else if (keyHandler.rightPressed) {
+                    direction = "right";
+                } else if (keyHandler.leftPressed) {
+                    direction = "left";
             }
 
             //check tile collision
@@ -264,10 +260,9 @@ public class Player extends Entity {
 
         if (gamePanel.keyHandler.enterPressed == true) {
             if (i != 999) {
-
+                gamePanel.playSE(1);
                 gamePanel.gameState = gamePanel.dialogueState;
                 gamePanel.npc[i].speak();
-
             }
 			/*else {
 					attacking=true;

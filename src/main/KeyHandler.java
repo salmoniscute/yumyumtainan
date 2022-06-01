@@ -12,6 +12,7 @@ public class KeyHandler implements KeyListener {
 
     public boolean upPressed, downPressed, rightPressed, leftPressed, enterPressed, attackPressed;
     public int storeNum = 0;
+    private boolean ctrl = false;
 
 
     /////////////////////////////////////////////// constructor ////////////////////////////////////////////
@@ -72,22 +73,25 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
             downPressed = false;
-
         }
         if (code == KeyEvent.VK_A || code == KeyEvent.VK_LEFT) {
             leftPressed = false;
-
         }
         if (code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT) {
             rightPressed = false;
-
+        }
+        if(code == KeyEvent.VK_CONTROL) {
+            ctrl = false;
         }
     }
 
 
-    ////////////////////////////////////////////// Different Gamestates ///////////////////////////////////////////
+    ////////////////////////////////////////////// Different Game States ///////////////////////////////////////////
 
     public void titleState(int code) {
+        if(code == KeyEvent.VK_CONTROL){
+            ctrl = true;
+        }
 
         if (gamePanel.ui.titleScreenState == 0) {
 
@@ -96,12 +100,14 @@ public class KeyHandler implements KeyListener {
                 if (gamePanel.ui.commandNum < 0) {
                     gamePanel.ui.commandNum = 1;
                 }
+                gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
                 gamePanel.ui.commandNum++;
                 if (gamePanel.ui.commandNum > 1) {
                     gamePanel.ui.commandNum = 0;
                 }
+                gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_ENTER) {
                 if (gamePanel.ui.commandNum == 0) {
@@ -111,20 +117,23 @@ public class KeyHandler implements KeyListener {
                 if (gamePanel.ui.commandNum == 1) {
                     System.exit(0);
                 }
-
+                gamePanel.playSE(1);
             }
-        } else if (gamePanel.ui.titleScreenState == 1) {
+        }
+        else if (gamePanel.ui.titleScreenState == 1) {
             if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
                 gamePanel.ui.commandNum--;
                 if (gamePanel.ui.commandNum < 0) {
                     gamePanel.ui.commandNum = 1;
                 }
+                gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
                 gamePanel.ui.commandNum++;
                 if (gamePanel.ui.commandNum > 1) {
                     gamePanel.ui.commandNum = 0;
                 }
+                gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_ENTER) {
                 if (gamePanel.ui.commandNum == 0) {
@@ -135,19 +144,23 @@ public class KeyHandler implements KeyListener {
                     gamePanel.ui.titleScreenState = 9;
                     gamePanel.ui.commandNum = 0;
                 }
+                gamePanel.playSE(1);
             }
-        } else if (gamePanel.ui.titleScreenState == 2) {
+        }
+        else if (gamePanel.ui.titleScreenState == 2) {
             if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
                 gamePanel.ui.commandNum--;
                 if (gamePanel.ui.commandNum < 0) {
                     gamePanel.ui.commandNum = 1;
                 }
+                gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
                 gamePanel.ui.commandNum++;
                 if (gamePanel.ui.commandNum > 1) {
                     gamePanel.ui.commandNum = 0;
                 }
+                gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_ENTER) {
                 if (gamePanel.ui.commandNum == 0) {
@@ -156,11 +169,12 @@ public class KeyHandler implements KeyListener {
                 }
                 if (gamePanel.ui.commandNum == 1) {
                     gamePanel.ui.titleScreenState = 1;
-
                     gamePanel.ui.commandNum = 0;
                 }
+                gamePanel.playSE(1);
             }
-        } else if (gamePanel.ui.titleScreenState == 9) {
+        }
+        else if (gamePanel.ui.titleScreenState == 9) {
 
             /////////// Key input for player name ///////////
             inputToName(code);
@@ -172,12 +186,14 @@ public class KeyHandler implements KeyListener {
                 if (gamePanel.ui.commandNum < 0) {
                     gamePanel.ui.commandNum = 1;
                 }
+                gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_DOWN) {
                 gamePanel.ui.commandNum++;
                 if (gamePanel.ui.commandNum > 1) {
                     gamePanel.ui.commandNum = 0;
                 }
+                gamePanel.playSE(1);
             }
             if (code == KeyEvent.VK_ENTER) {
 
@@ -189,12 +205,11 @@ public class KeyHandler implements KeyListener {
                         gamePanel.ui.titleScreenState = 1;
                     }
                 }
-
                 if (gamePanel.ui.commandNum == 1) {
                     gamePanel.ui.titleScreenState = 0;
-
                     gamePanel.ui.commandNum = 0;
                 }
+                gamePanel.playSE(1);
             }
 
         }
@@ -205,27 +220,27 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
             upPressed = true;
         }
+
         if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
             downPressed = true;
-
         }
+
         if (code == KeyEvent.VK_A || code == KeyEvent.VK_LEFT) {
             leftPressed = true;
-
         }
+
         if (code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT) {
             rightPressed = true;
-
         }
+
         if (code == KeyEvent.VK_P) {
             gamePanel.gameState = gamePanel.pauseState;
-
         }
 
         if (code == KeyEvent.VK_ENTER) {
             enterPressed = true;
-
         }
+
         if (code == KeyEvent.VK_K) {
             attackPressed = true;
             gamePanel.player.attacking = true;
@@ -233,7 +248,7 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_C) {
             gamePanel.gameState = gamePanel.characterState;
-
+            gamePanel.playSE(1);
         }
 
 
@@ -244,7 +259,7 @@ public class KeyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_P) {
             gamePanel.gameState = gamePanel.playState;
-
+            gamePanel.playSE(1);
         }
 
     }
@@ -252,6 +267,7 @@ public class KeyHandler implements KeyListener {
     public void dialogueState(int code) {
 
         if (code == KeyEvent.VK_ENTER) {
+            gamePanel.playSE(1);
             gamePanel.gameState = gamePanel.playState;
         }
     }
@@ -260,7 +276,7 @@ public class KeyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_C) {
             gamePanel.gameState = gamePanel.playState;
-
+            gamePanel.playSE(1);
         }
 
     }
@@ -274,13 +290,17 @@ public class KeyHandler implements KeyListener {
                 if (gamePanel.ui.commandNum < 0) {
                     gamePanel.ui.commandNum = 1;
                 }
+                gamePanel.playSE(1);
             }
+
             if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
                 gamePanel.ui.commandNum++;
                 if (gamePanel.ui.commandNum > 1) {
                     gamePanel.ui.commandNum = 0;
                 }
+                gamePanel.playSE(1);
             }
+
             if (code == KeyEvent.VK_ENTER) {
                 if (gamePanel.ui.commandNum == 0) {
                     gamePanel.ui.storeScreenState = 1;
@@ -291,15 +311,15 @@ public class KeyHandler implements KeyListener {
                     gamePanel.gameState = gamePanel.playState;
                     gamePanel.ui.commandNum = 0;
                 }
-
-
+                gamePanel.playSE(1);
             }
+
         } else if (gamePanel.ui.storeScreenState == 1) {
             if (code == KeyEvent.VK_ENTER) {
                 gamePanel.gameState = gamePanel.playState;
                 gamePanel.ui.commandNum = 0;
                 gamePanel.ui.storeScreenState = 0;
-
+                gamePanel.playSE(1);
             }
         }
 
@@ -425,6 +445,10 @@ public class KeyHandler implements KeyListener {
                 gamePanel.player.addPlayerName("\t");
                 break;
             case KeyEvent.VK_BACK_SPACE:
+                if(ctrl){
+                    gamePanel.player.clearPlayerName();
+                    break;
+                }
                 gamePanel.player.backSpaceName();
                 break;
 			/*case KeyEvent.VK_ADD: gamePanel.player.addPlayerName("+"); break;

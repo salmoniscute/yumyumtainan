@@ -79,6 +79,7 @@ public class UI {
         if (gamePanel.player.hasMoney < 0) {
             gamePanel.ui.gameFinished = true;
             gamePanel.gameState = gamePanel.finishState;
+            gamePanel.stopMusic();
             drawFinishScreen();
 
         }

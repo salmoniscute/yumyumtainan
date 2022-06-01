@@ -14,6 +14,17 @@ public class Sound {
     public Sound() {
 
         soundURL[0] = getClass().getResource("/sound/theme.wav");
+        soundURL[1] = getClass().getResource("/sound/option.wav");
+        soundURL[2] = getClass().getResource("/sound/theme.wav");
+        soundURL[3] = getClass().getResource("/sound/theme.wav");
+        soundURL[4] = getClass().getResource("/sound/theme.wav");
+        soundURL[5] = getClass().getResource("/sound/theme.wav");
+        soundURL[6] = getClass().getResource("/sound/theme.wav");
+        soundURL[7] = getClass().getResource("/sound/theme.wav");
+        soundURL[8] = getClass().getResource("/sound/theme.wav");
+        soundURL[9] = getClass().getResource("/sound/theme.wav");
+        soundURL[10] = getClass().getResource("/sound/theme.wav");
+
 
     }
 
@@ -22,8 +33,6 @@ public class Sound {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
-
-
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -37,7 +46,6 @@ public class Sound {
 
     public void loop() {
         clip.loop(clip.LOOP_CONTINUOUSLY);
-
     }
 
     public void stop() {
