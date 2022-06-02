@@ -25,4 +25,15 @@ public class OBJ_food extends Entity {
 
     }
 
+    //////////////////////////////////////////////////  Useless //////////////////////////////////////////////////////
+
+    @Override
+    public void setAction() {}
+
+    @Override
+    public void damageReaction() {}
+
+    @Override
+    public void setDialogue() {}
+
 }

@@ -69,8 +69,13 @@ public class MON_task extends Entity {
 
     public void damageReaction() {
         actionLockCounter = 0;
-        direction = gamePanel.player.direction;
+        direction = gamePanel.player.getDirection();
     }
+
+
+    /////////////////////////////////////////////////////// Useless ///////////////////////////////////////////////////
+    @Override
+    public void setDialogue() {}
 
 }
 

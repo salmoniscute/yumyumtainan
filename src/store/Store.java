@@ -64,8 +64,8 @@ public class Store {
     public void draw(Graphics2D g2) {
 
         BufferedImage image = storeImage;
-        int screenX = worldX - gamePanel.player.worldX + gamePanel.player.screenX;
-        int screenY = worldY - gamePanel.player.worldY + gamePanel.player.screenY;
+        int screenX = worldX - gamePanel.player.getWorld("x") + gamePanel.player.screenX;
+        int screenY = worldY - gamePanel.player.getWorld("y") + gamePanel.player.screenY;
         g2.drawImage(image, screenX, screenY, null);
 
     }

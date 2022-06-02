@@ -20,7 +20,7 @@ public class Player extends Entity {
 
 
     /////////////player state
-    private String playerName = "";
+    private String name = "";
     private int playerMoney = 0;
     private int getHoney = 0;
     private int killSheep = 0;
@@ -55,14 +55,14 @@ public class Player extends Entity {
 
     }
 
+    /////////////////////////////////////////////////// Methods ///////////////////////////////////////////////////
+
     public void setDefaultValues() {
         worldX = gamePanel.tileSize * 23;
         worldY = gamePanel.tileSize * 21;
         speed = 4;
         direction = "down";
-
         playerMoney = 1000;
-
     }
 
     public void getPlayerImage() {
@@ -94,8 +94,6 @@ public class Player extends Entity {
 
 
     }
-
-
     public void update() {
 
         if (attacking) {
@@ -407,19 +405,19 @@ public class Player extends Entity {
 
 
     //////////////////////////// Player Name
-    public String getPlayerName() {
-        return playerName;
+    public String getPLayerName() {
+        return name;
     }
 
     public void addPlayerName(String str) {
         if (!canAddPlayerName) return;
         gamePanel.ui.setTimeStopper(0);
-        playerName += str;
-        playerName = playerName.substring(0, 1).toUpperCase() + playerName.substring(1);
-        for (int i = 0; i < playerName.length(); i++) {
-            int whiteSpaceIndex = playerName.indexOf(" ", i);
-            if (whiteSpaceIndex + 2 >= playerName.length()) break;
-            playerName = playerName.substring(0, whiteSpaceIndex + 1) + playerName.substring(whiteSpaceIndex + 1, whiteSpaceIndex + 2).toUpperCase() + playerName.substring(whiteSpaceIndex + 2);
+        name += str;
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
+        for (int i = 0; i < name.length(); i++) {
+            int whiteSpaceIndex = name.indexOf(" ", i);
+            if (whiteSpaceIndex + 2 >= name.length()) break;
+            name = name.substring(0, whiteSpaceIndex + 1) + name.substring(whiteSpaceIndex + 1, whiteSpaceIndex + 2).toUpperCase() + name.substring(whiteSpaceIndex + 2);
         }
     }
 
@@ -428,13 +426,13 @@ public class Player extends Entity {
     }
 
     public void clearPlayerName() {
-        playerName = "";
+        name = "";
     }
 
-    public void backSpaceName() {
-        if (playerName.length() == 0) return;
+    public void backSpacePlayerName() {
+        if (name.length() == 0) return;
         gamePanel.ui.setTimeStopper(0);
-        playerName = playerName.substring(0, playerName.length() - 1);
+        name = name.substring(0, name.length() - 1);
 
     }
 
@@ -450,23 +448,22 @@ public class Player extends Entity {
             return;
         }
     }
-
     public int getPlayerMoney(){
         return playerMoney;
     }
 
 
     ////////////////////////////////////// Honey
-
     public int getHoney(){
         return getHoney;
     }
 
-    /////////////////////////////////////// Sheep count
 
+    /////////////////////////////////////// Sheep count
     public int getSheepCount(){
         return killSheep;
     }
+
 
     /////////////////////////////////////// Store count
     public void setStoreCount(String sign, int i){
@@ -478,12 +475,24 @@ public class Player extends Entity {
             enterStore -= i;
             return;
         }
-
     }
 
     public int getStoreCount(){
         return enterStore;
     }
+
+
+
+
+    /////////////////////////////////////////////////////// Useless /////////////////////////////////////////////////
+    @Override
+    public void setAction() {}
+
+    @Override
+    public void damageReaction() {}
+
+    @Override
+    public void setDialogue() {}
 
 
 }

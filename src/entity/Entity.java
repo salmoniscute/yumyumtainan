@@ -12,23 +12,23 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.UtilityTool;
 
-public class Entity {
+abstract public class Entity {
 
 
     GamePanel gamePanel;
-    public BufferedImage up1, up2, up3, down1, down2, down3, right1, right2, right3, left1, left2, left3;
-    public BufferedImage attackUp1, attackDown1, attackLeft1, attackRight1;
-    public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
-    public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
-    public int solidAreaDefaultX, solidAreaDefaultY;
-    String dialogues[] = new String[20];
+    protected BufferedImage up1, up2, up3, down1, down2, down3, right1, right2, right3, left1, left2, left3;
+    protected BufferedImage attackUp1, attackDown1, attackLeft1, attackRight1;
+    protected Rectangle solidArea = new Rectangle(0, 0, 48, 48);
+    protected Rectangle attackArea = new Rectangle(0, 0, 0, 0);
+    protected int solidAreaDefaultX, solidAreaDefaultY;
+    protected String dialogues[] = new String[20];
     public BufferedImage image;
-    public boolean collision = false;
-    public int type = 0;//0=player,1=npc,2=monster
+    protected boolean collision = false;
+    protected int type = 0;//0=player,1=npc,2=monster
 
     //state
-    public int worldX, worldY;
-    public String direction = "down";
+    protected int worldX, worldY;
+    protected String direction = "down";
     public int spriteNum = 1;
     int dialogueIndex = 0;
     public boolean attacking = false;
@@ -57,14 +57,11 @@ public class Entity {
         this.gamePanel = gp;
     }
 
-    public void setAction() {
-    }
+    public abstract void setAction();
 
-    public void damageReaction() {
-    }
+    public abstract void damageReaction();
 
-    public void setDialogue() {
-    }
+    public abstract void setDialogue();
 
     public void speak() {
         if (dialogues[dialogueIndex] == null) {
@@ -289,8 +286,72 @@ public class Entity {
             e.printStackTrace();
         }
         return image;
-
     }
 
+    /////////////////////////////////////////////// Encapsulation ///////////////////////////////////////////////
+
+    ////////////////////////// Solid Area
+    public Rectangle getSolidArea(){
+        return solidArea;
+    }
+
+    ////////////////////////// up down left right image
+    public BufferedImage getDirectionImage (String name){
+        switch (name) {
+            case "up1" : return up1;
+            case "up2" : return up2;
+            case "up3" : return up3;
+            case "down1" : return down1;
+            case "down2" : return down2;
+            case "down3" : return down3;
+            case "left1" : return left1;
+            case "left2" : return left2;
+            case "left3" : return left3;
+            case "right1" : return right1;
+            case "right2" : return right2;
+            case "right3" : return right3;
+            default : return null;
+        }
+    }
+
+    /////////////////////////// SolidArea default value
+    public int getSolidAreaDefault (String str){
+        if(str == "x"){
+            return solidAreaDefaultX;
+        }
+        if (str == "y"){
+            return solidAreaDefaultY;
+        }
+        return 0;
+    }
+
+    /////////////////////////// Collision
+    public boolean getCollision(){
+        return collision;
+    }
+
+    /////////////////////////// World X Y
+    public int getWorld(String xOry) {
+        if(xOry == "x"){
+            return worldX;
+        }
+        if(xOry == "y"){
+            return worldY;
+        }
+        return 0;
+    }
+    public void setWorld(String xOry, int i){
+        if(xOry == "x"){
+            worldX = i;
+        }
+        if(xOry == "y"){
+            worldY = i;
+        }
+    }
+
+    ///////////////////////////////////// direction
+    public String getDirection() {
+        return direction;
+    }
 
 }

@@ -202,10 +202,10 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_ENTER) {
 
                 if (gamePanel.ui.getCommandNum() == 0) {
-                    if (gamePanel.player.getPlayerName().length() == 0) {
+                    if (gamePanel.player.getPLayerName().length() == 0) {
                         gamePanel.ui.changeHeaderTo("姓名欄不能是空的喔！");
                     }
-                    if (gamePanel.player.getPlayerName().length() > 0) {
+                    if (gamePanel.player.getPLayerName().length() > 0) {
                         gamePanel.ui.setTitleScreenState(1);
                     }
                 }
@@ -454,7 +454,7 @@ public class KeyHandler implements KeyListener {
                     gamePanel.player.clearPlayerName();
                     break;
                 }
-                gamePanel.player.backSpaceName();
+                gamePanel.player.backSpacePlayerName();
                 break;
 			/*case KeyEvent.VK_ADD: gamePanel.player.addPlayerName("+"); break;
 			case KeyEvent.VK_ASTERISK: gamePanel.player.addPlayerName("*"); break;

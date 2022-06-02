@@ -67,7 +67,7 @@ public class NPC_cadre extends Entity {
     }
 
     public void setDialogue() {
-        dialogues[0] = "總召:\n嗨 " + gamePanel.player.getPlayerName() + "！\n很高興認識你。\n之後有活動的話一定要來參加喔！";
+        dialogues[0] = "總召:\n嗨 " + gamePanel.player.getPLayerName() + "！\n很高興認識你。\n之後有活動的話一定要來參加喔！";
         dialogues[1] = "總召:\n歡迎參加系上活動。\n請支付550元工人費用。";
         dialogues[2] = "總召:\n怎麼了嗎？\n雖然有些事我沒必要一一告訴你，\n但對於活動有任何疑問還是歡迎來問我。";
         dialogues[3] = "總召:\n明天就是二驗了，記得各組進度要到70趴！\n加油！";
@@ -82,6 +82,13 @@ public class NPC_cadre extends Entity {
         gamePanel.playSE(2);
     }
 
+
+
+
+    ///////////////////////////////////////////////// Useless /////////////////////////////////////////////////////
+
+    @Override
+    public void damageReaction() {}
 }
 
 

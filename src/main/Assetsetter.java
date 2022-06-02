@@ -17,41 +17,41 @@ public class Assetsetter {
     public void setObject() {
 
         gamePanel.objects[0] = new OBJ_food(gamePanel);
-        gamePanel.objects[0].worldX = 28 * gamePanel.tileSize;
-        gamePanel.objects[0].worldY = 16 * gamePanel.tileSize;
+        gamePanel.objects[0].setWorld("x", 28 * gamePanel.tileSize);
+        gamePanel.objects[0].setWorld("y",  16 * gamePanel.tileSize);
 
         gamePanel.objects[1] = new OBJ_food(gamePanel);
-        gamePanel.objects[1].worldX = 30 * gamePanel.tileSize;
-        gamePanel.objects[1].worldY = 22 * gamePanel.tileSize;
+        gamePanel.objects[1].setWorld("x",  30 * gamePanel.tileSize);
+        gamePanel.objects[1].setWorld("y",  22 * gamePanel.tileSize);
 
     }
 
     public void setNPC() {
         gamePanel.npc[0] = new NPC_cadre(gamePanel);
-        gamePanel.npc[0].worldX = gamePanel.tileSize * 20;
-        gamePanel.npc[0].worldY = gamePanel.tileSize * 20;
+        gamePanel.npc[0].setWorld("x", gamePanel.tileSize * 20);
+        gamePanel.npc[0].setWorld("y",  gamePanel.tileSize * 20);
 
     }
 
     public void setMonster() {
         gamePanel.monster[0] = new MON_task(gamePanel);
-        gamePanel.monster[0].worldX = gamePanel.tileSize * 35;
-        gamePanel.monster[0].worldY = gamePanel.tileSize * 40;
+        gamePanel.monster[0].setWorld("x", gamePanel.tileSize * 35);
+        gamePanel.monster[0].setWorld("y",  gamePanel.tileSize * 40);
         gamePanel.monster[1] = new MON_task(gamePanel);
-        gamePanel.monster[1].worldX = gamePanel.tileSize * 35;
-        gamePanel.monster[1].worldY = gamePanel.tileSize * 42;
+        gamePanel.monster[1].setWorld("x", gamePanel.tileSize * 35);
+        gamePanel.monster[1].setWorld("y",  gamePanel.tileSize * 42);
         gamePanel.monster[2] = new MON_task(gamePanel);
-        gamePanel.monster[2].worldX = gamePanel.tileSize * 35;
-        gamePanel.monster[2].worldY = gamePanel.tileSize * 43;
+        gamePanel.monster[2].setWorld("x", gamePanel.tileSize * 35);
+        gamePanel.monster[2].setWorld("y",  gamePanel.tileSize * 43);
         gamePanel.monster[3] = new MON_task(gamePanel);
-        gamePanel.monster[3].worldX = gamePanel.tileSize * 35;
-        gamePanel.monster[3].worldY = gamePanel.tileSize * 44;
+        gamePanel.monster[3].setWorld("x", gamePanel.tileSize * 35);
+        gamePanel.monster[3].setWorld("y",  gamePanel.tileSize * 44);
         gamePanel.monster[4] = new MON_task(gamePanel);
-        gamePanel.monster[4].worldX = gamePanel.tileSize * 35;
-        gamePanel.monster[4].worldY = gamePanel.tileSize * 45;
+        gamePanel.monster[4].setWorld("x",  gamePanel.tileSize * 35);
+        gamePanel.monster[4].setWorld("y",  gamePanel.tileSize * 45);
         gamePanel.monster[5] = new MON_task(gamePanel);
-        gamePanel.monster[5].worldX = gamePanel.tileSize * 20;
-        gamePanel.monster[5].worldY = gamePanel.tileSize * 21;
+        gamePanel.monster[5].setWorld("x", gamePanel.tileSize * 20);
+        gamePanel.monster[5].setWorld("y",  gamePanel.tileSize * 21);
 
 
     }

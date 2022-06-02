@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 
 public class UI {
 
+    ////////////////////////////////////////////////// Attribute /////////////////////////////////////////////////
     GamePanel gamePanel;
     Font arial_40, arial_80B;
     Graphics2D g2;
@@ -114,15 +115,15 @@ public class UI {
         y += gamePanel.tileSize - 5;
         x = gamePanel.tileSize * 3 + 15;
 
-        g2.drawImage(gamePanel.npc[0].down2, x, y, null);
+        g2.drawImage(gamePanel.npc[0].getDirectionImage("down2"), x, y, null);
         x += gamePanel.tileSize * 2;
-        g2.drawImage(gamePanel.objects[0].down2, x, y, null);
+        g2.drawImage(gamePanel.objects[0].getDirectionImage("down2"), x, y, null);
         x += gamePanel.tileSize * 2;
-        g2.drawImage(gamePanel.player.down1, x, y, null);
+        g2.drawImage(gamePanel.player.getDirectionImage("down1"), x, y, null);
         x += gamePanel.tileSize * 2;
-        g2.drawImage(gamePanel.objects[0].down2, x, y, null);
+        g2.drawImage(gamePanel.objects[0].getDirectionImage("down2"), x, y, null);
         x += gamePanel.tileSize * 2;
-        g2.drawImage(gamePanel.monster[0].down2, x, y, null);
+        g2.drawImage(gamePanel.monster[0].getDirectionImage("down2"), x, y, null);
 
     }
 
@@ -177,7 +178,7 @@ public class UI {
         int y = frameY + gamePanel.tileSize;
 
         //information
-        g2.drawString("玩家 " + gamePanel.player.getPlayerName(), x, y);
+        g2.drawString("玩家 " + gamePanel.player.getPLayerName(), x, y);
         y += gamePanel.tileSize;
         g2.drawString("持有金額：" + gamePanel.player.getPlayerMoney() + " 元", x, y);
         y += gamePanel.tileSize;
@@ -227,7 +228,7 @@ public class UI {
         x = gamePanel.tileSize;
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 18));
         y += gamePanel.tileSize + 20;
-        g2.drawString("玩家 " + gamePanel.player.getPlayerName(), x, y);
+        g2.drawString("玩家 " + gamePanel.player.getPLayerName(), x, y);
         y += gamePanel.tileSize;
         g2.drawString("持有金額：" + gamePanel.player.getPlayerMoney() + " 元", x, y);
         y += gamePanel.tileSize;
@@ -238,7 +239,7 @@ public class UI {
         g2.drawString("擊死綿羊數：" + gamePanel.player.getSheepCount() + " 隻", x, y);
 
 
-        g2.drawImage(gamePanel.player.down1, gamePanel.tileSize * 8, gamePanel.tileSize * 8, gamePanel.tileSize * 3, gamePanel.tileSize * 3, null);
+        g2.drawImage(gamePanel.player.getDirectionImage("down1"), gamePanel.tileSize * 8, gamePanel.tileSize * 8, gamePanel.tileSize * 3, gamePanel.tileSize * 3, null);
         //	g2.drawImage(, gamePanel.tileSize*9, gamePanel.tileSize*8, gamePanel.tileSize*3, gamePanel.tileSize*3,  null);
 
 
@@ -350,7 +351,7 @@ public class UI {
             g2.setColor(Color.black);
             //引言
             g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 18));
-            text = "從前從前，在遠的要命王國裡，住著一隻喜愛吃東西的泰迪熊 " + gamePanel.player.getPlayerName() + " ";
+            text = "從前從前，在遠的要命王國裡，住著一隻喜愛吃東西的泰迪熊 " + gamePanel.player.getPLayerName() + " ";
             x = gamePanel.tileSize * 1;
             y += gamePanel.tileSize;
             g2.drawString(text, x, y);
@@ -363,13 +364,13 @@ public class UI {
             text = "即便它明白，再吃下去，它就要逃脫不了大二的聖誕節魔咒了...";
             y += gamePanel.tileSize / 2;
             g2.drawString(text, x, y);
-            text = "究竟把美食當作靈魂伴侶的" + gamePanel.player.getPlayerName() + "會在這裡遇到什麼冒險呢.......";
+            text = "究竟把美食當作靈魂伴侶的" + gamePanel.player.getPLayerName() + "會在這裡遇到什麼冒險呢.......";
             y += gamePanel.tileSize / 2;
             g2.drawString(text, x, y);
 
             x = gamePanel.tileSize * 5 + 45;
             y += gamePanel.tileSize - 10;
-            g2.drawImage(gamePanel.player.down1, x, y, gamePanel.tileSize * 4, gamePanel.tileSize * 4, null);
+            g2.drawImage(gamePanel.player.getDirectionImage("down1"), x, y, gamePanel.tileSize * 4, gamePanel.tileSize * 4, null);
 
             text = "遊戲解說";
             x = getXForCenterText(text);
@@ -407,7 +408,7 @@ public class UI {
 
             g2.setColor(Color.black);
             g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
-            text = "早上好 " + gamePanel.player.getPlayerName() + " 現在你有初始基金1000元";
+            text = "早上好 " + gamePanel.player.getPLayerName() + " 現在你有初始基金1000元";
             x = gamePanel.tileSize;
             y += gamePanel.tileSize;
             g2.drawString(text, x, y);
@@ -429,13 +430,13 @@ public class UI {
             text = "地圖中有隱藏熊熊最愛的";
             y += gamePanel.tileSize;
             g2.drawString(text, x, y);
-            g2.drawImage(gamePanel.objects[0].down2, x + gamePanel.tileSize * 5 - 15, y - 20, gamePanel.tileSize / 2, gamePanel.tileSize / 2, null);
+            g2.drawImage(gamePanel.objects[0].getDirectionImage("down2"), x + gamePanel.tileSize * 5 - 15, y - 20, gamePanel.tileSize / 2, gamePanel.tileSize / 2, null);
             text = "吃下它會增加你的錢錢";
             g2.drawString(text, x + gamePanel.tileSize * 5 + 15, y);
             text = "還可以按下Ｋ鍵來噴出熊熊大火攻擊綿羊";
             y += gamePanel.tileSize;
             g2.drawString(text, x, y);
-            g2.drawImage(gamePanel.monster[0].down2, x + gamePanel.tileSize * 7 + 30, y - 20, gamePanel.tileSize / 2, gamePanel.tileSize / 2, null);
+            g2.drawImage(gamePanel.monster[0].getDirectionImage("down2"), x + gamePanel.tileSize * 7 + 30, y - 20, gamePanel.tileSize / 2, gamePanel.tileSize / 2, null);
             text = "獲得錢錢！";
             g2.drawString(text, x + gamePanel.tileSize * 8 + 14, y);
 
@@ -475,7 +476,7 @@ public class UI {
             g2.drawRoundRect(gamePanel.tileSize * 3, gamePanel.tileSize * 5, gamePanel.tileSize * 10, gamePanel.tileSize * 3 / 2, 20, 20);
 
 
-            if (gamePanel.player.getPlayerName().length() > 1) {
+            if (gamePanel.player.getPLayerName().length() > 1) {
                 header = "在遊戲開始之前，先設定玩家名稱吧！";
             }
             g2.setColor(Color.BLACK);
@@ -485,7 +486,7 @@ public class UI {
             g2.drawString(header, x, y);
 
 
-            String text = gamePanel.player.getPlayerName();
+            String text = gamePanel.player.getPLayerName();
             int textWidth = getTextWidth(text);
 
             if (textWidth >= gamePanel.tileSize * 7) {
