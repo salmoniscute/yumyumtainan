@@ -83,7 +83,6 @@ public class Store {
             e.printStackTrace();
         }
         return image;
-
     }
 
     public void setAll(String name, int cost, int worldX, int worldY, String path_storeImage) {
@@ -109,7 +108,7 @@ public class Store {
     }
 
     public void setAll(String name, int cost, int worldX, int worldY, String which, int modify, String path_storeImage) {
-        if(which == "x"){
+        if (which == "x") {
             this.name = name;
             this.cost = cost;
             this.worldX = gamePanel.tileSize * worldX;
@@ -120,7 +119,7 @@ public class Store {
             this.storeImage = setup(path_storeImage, imageWidth, imageHeight);
             return;
         }
-        if(which == "y"){
+        if (which == "y") {
             this.name = name;
             this.cost = cost;
             this.worldX = gamePanel.tileSize * worldX;
@@ -134,7 +133,7 @@ public class Store {
         return;
     }
 
-    public void setAll(String name, int cost, int worldX, int worldY,String which, int modifyX, int modifyY, String path_storeImage) {
+    public void setAll(String name, int cost, int worldX, int worldY, String which, int modifyX, int modifyY, String path_storeImage) {
         if (which == "xy") {
             this.name = name;
             this.cost = cost;
@@ -147,7 +146,7 @@ public class Store {
         }
     }
 
-    public void loadPhoto(int i){
-        this.photo1 = setup("/store/store" + (i+1), photoWidth, photoHeight);
+    public void loadPhoto(int i) {
+        this.photo1 = setup("/store/store" + (i + 1), photoWidth, photoHeight);
     }
 }
