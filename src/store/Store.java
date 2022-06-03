@@ -39,18 +39,18 @@ public class Store {
     public Store(GamePanel gp) {
         this.gamePanel = gp;
 
-        solidArea.x = 10;
-        solidArea.y = 10;
+        solidArea.x = 35;
+        solidArea.y = 35;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         solidArea.width = 76;
-        solidArea.height = 70;
+        solidArea.height = 109;
 
         collision = true;
 
         photoWidth = gamePanel.tileSize * 4;
         photoHeight = gamePanel.tileSize * 5;
-        imageWidth = gamePanel.tileSize * 2;
+        imageWidth = gamePanel.tileSize * 3;
         imageHeight = imageWidth;
 
     }

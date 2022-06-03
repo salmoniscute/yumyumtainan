@@ -12,12 +12,12 @@ public class NPC_cadre extends Entity {
         super(gp);
         direction = "down";
         speed = 1;
-        solidArea.x = 8;
+        solidArea.x = 10;
         solidArea.y = 16;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        solidArea.width = 32;
-        solidArea.height = 32;
+        solidArea.width = 28;
+        solidArea.height = 24;
         getNPCImage();
         setDialogue();
     }

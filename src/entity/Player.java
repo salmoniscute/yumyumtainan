@@ -39,15 +39,15 @@ public class Player extends Entity {
         screenY = gp.screenHeight / 2 - gp.tileSize / 2;
 
         solidArea = new Rectangle();
-        solidArea.x = 8;
-        solidArea.y = 16;
+        solidArea.x = 16;
+        solidArea.y = 20;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        solidArea.width = 32;
-        solidArea.height = 32;
+        solidArea.width = 16;
+        solidArea.height = 20;
 
-        attackArea.width = 36;
-        attackArea.height = 36;
+        attackArea.width = 40;
+        attackArea.height = 40;
 
         setDefaultValues();
         getPlayerImage();
@@ -58,8 +58,8 @@ public class Player extends Entity {
     /////////////////////////////////////////////////// Methods ///////////////////////////////////////////////////
 
     public void setDefaultValues() {
-        worldX = gamePanel.tileSize * 23;
-        worldY = gamePanel.tileSize * 21;
+        worldX = gamePanel.tileSize * 9;
+        worldY = gamePanel.tileSize * 19;
         speed = 4;
         direction = "down";
         playerMoney = 1000;

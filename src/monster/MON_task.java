@@ -17,10 +17,10 @@ public class MON_task extends Entity {
         speed = 6;
         type = 2;
 
-        solidArea.x = 3;
-        solidArea.y = 18;
-        solidArea.width = 42;
-        solidArea.height = 30;
+        solidArea.x =8;
+        solidArea.y = 12;
+        solidArea.width = 32;
+        solidArea.height = 24;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         maxLife = 20;

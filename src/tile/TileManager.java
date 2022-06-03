@@ -29,12 +29,12 @@ public class TileManager {
 
     public void getTileImage() {
 
-        setup(0, "00", false);
+        setup(0, "00", true);
         setup(1, "01", true);
         setup(2, "02", true);
-        setup(3, "03", false);
+        setup(3, "03", true);
         setup(4, "04", true);
-        setup(5, "05", false);
+        setup(5, "05", true);
         setup(6, "06", true);
         setup(7, "07", true);
         setup(8, "08", true);
