@@ -17,7 +17,7 @@ public class MON_task extends Entity {
         speed = 6;
         type = 2;
 
-        solidArea.x =8;
+        solidArea.x = 8;
         solidArea.y = 12;
         solidArea.width = 32;
         solidArea.height = 24;
@@ -69,13 +69,40 @@ public class MON_task extends Entity {
 
     public void damageReaction() {
         actionLockCounter = 0;
-        direction = gamePanel.player.getDirection();
+        if (!direction.equals(gamePanel.player.getDirection())) {
+            direction = gamePanel.player.getDirection();
+            return;
+        }
+        if (gamePanel.player.getDirection().equals("left") || gamePanel.player.getDirection().equals("right")) {
+            switch (new Random().nextInt(2)) {
+                case 0:
+                    direction = "up";
+                    break;
+                case 1:
+                    direction = "down";
+                    break;
+                default:
+                    break;
+            }
+        } else if (gamePanel.player.getDirection().equals("up") || gamePanel.player.getDirection().equals("down")) {
+            switch (new Random().nextInt(2)) {
+                case 0:
+                    direction = "right";
+                    break;
+                case 1:
+                    direction = "left";
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
 
     /////////////////////////////////////////////////////// Useless ///////////////////////////////////////////////////
     @Override
-    public void setDialogue() {}
+    public void setDialogue() {
+    }
 
 }
 

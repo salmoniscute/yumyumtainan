@@ -94,21 +94,21 @@ public class Player extends Entity {
 
 
     }
+
     public void update() {
 
         if (attacking) {
             attacking();
         } else if (keyHandler.downPressed() || keyHandler.upPressed() ||
-                keyHandler.leftPressed() || keyHandler.rightPressed() || keyHandler.enterPressed())
-            {
-                if (keyHandler.upPressed()) {
-                    direction = "up";
-                } else if (keyHandler.downPressed()) {
-                    direction = "down";
-                } else if (keyHandler.rightPressed()) {
-                    direction = "right";
-                } else if (keyHandler.leftPressed()) {
-                    direction = "left";
+                keyHandler.leftPressed() || keyHandler.rightPressed() || keyHandler.enterPressed()) {
+            if (keyHandler.upPressed()) {
+                direction = "up";
+            } else if (keyHandler.downPressed()) {
+                direction = "down";
+            } else if (keyHandler.rightPressed()) {
+                direction = "right";
+            } else if (keyHandler.leftPressed()) {
+                direction = "left";
             }
 
             //check tile collision
@@ -123,7 +123,7 @@ public class Player extends Entity {
 
             //check store collision
             int storeIndex = gamePanel.collisionChecker.checkStore(this, true);
-            if (keyHandler.enterPressed() == true) {
+            if (keyHandler.enterPressed()) {
                 openStore(storeIndex);
             }
 
@@ -137,7 +137,7 @@ public class Player extends Entity {
 
             //
 
-            if (collisionOn == false && keyHandler.enterPressed() == false) {
+            if (!collisionOn && !keyHandler.enterPressed()) {
                 switch (direction) {
                     case "up": {
                         worldY -= speed;
@@ -276,7 +276,7 @@ public class Player extends Entity {
     public void damageMonster(int i) {
 
         if (i != 999) {
-            if (gamePanel.monster[i].invincible == false) {
+            if (!gamePanel.monster[i].invincible) {
                 gamePanel.playSE(8); // Attack sound
                 gamePanel.monster[i].life -= 1;
                 gamePanel.monster[i].invincible = true;
@@ -439,60 +439,62 @@ public class Player extends Entity {
 
     ////////////////////////////////////// Player Money
     public void setPlayerMoney(String sign, int money) {
-        if(sign == "+"){
+        if (sign == "+") {
             playerMoney += money;
             return;
         }
-        if(sign == "-"){
+        if (sign == "-") {
             playerMoney -= money;
             return;
         }
     }
-    public int getPlayerMoney(){
+
+    public int getPlayerMoney() {
         return playerMoney;
     }
 
 
     ////////////////////////////////////// Honey
-    public int getHoney(){
+    public int getHoney() {
         return getHoney;
     }
 
 
     /////////////////////////////////////// Sheep count
-    public int getSheepCount(){
+    public int getSheepCount() {
         return killSheep;
     }
 
 
     /////////////////////////////////////// Store count
-    public void setStoreCount(String sign, int i){
-        if(sign == "+"){
-          enterStore += i;
-          return;
+    public void setStoreCount(String sign, int i) {
+        if (sign == "+") {
+            enterStore += i;
+            return;
         }
-        if(sign == "-"){
+        if (sign == "-") {
             enterStore -= i;
             return;
         }
     }
 
-    public int getStoreCount(){
+    public int getStoreCount() {
         return enterStore;
     }
 
 
-
-
     /////////////////////////////////////////////////////// Useless /////////////////////////////////////////////////
     @Override
-    public void setAction() {}
+    public void setAction() {
+    }
 
     @Override
-    public void damageReaction() {}
+    public void damageReaction() {
+    }
 
     @Override
-    public void setDialogue() {}
+    public void setDialogue() {
+    }
 
 
 }
