@@ -239,11 +239,27 @@ public class UI {
         g2.drawString("擊死綿羊數：" + gamePanel.player.getSheepCount() + " 隻", x, y);
 
 
+
         g2.drawImage(gamePanel.player.getDirectionImage("down1"), gamePanel.tileSize * 8, gamePanel.tileSize * 8, gamePanel.tileSize * 3, gamePanel.tileSize * 3, null);
         //	g2.drawImage(, gamePanel.tileSize*9, gamePanel.tileSize*8, gamePanel.tileSize*3, gamePanel.tileSize*3,  null);
 
+        /*text = "重新開始";
+        x = getXForCenterText(text);
+        y = gamePanel.tileSize * 10;
+        g2.drawString(text, x, y);
+        if (commandNum == 0) {
+            g2.drawString(">", x - gamePanel.tileSize, y);
+        }
 
+        text = "離開";
+        x = getXForCenterText(text);
+        y += gamePanel.tileSize / 2 + 10;
+        g2.drawString(text, x, y);
+        if (commandNum == 1) {
+            g2.drawString(">", x - gamePanel.tileSize, y);
+        }*/
         gamePanel.gameThread = null;
+        gamePanel.music.stop();
 
     }
 

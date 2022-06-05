@@ -133,28 +133,18 @@ public class Player extends Entity {
             interactNPC(npcIndex);
 
             //check monster collision
-            int monsterIndex = gamePanel.collisionChecker.checkEntity(this, gamePanel.monster);
+            //int monsterIndex = gamePanel.collisionChecker.checkEntity(this, gamePanel.monster);
 
             //
 
             if (!collisionOn && !keyHandler.enterPressed()) {
                 switch (direction) {
-                    case "up": {
-                        worldY -= speed;
-                        break;
-                    }
-                    case "down": {
-                        worldY += speed;
-                        break;
-                    }
-                    case "left": {
-                        worldX -= speed;
-                        break;
-                    }
-                    case "right": {
-                        worldX += speed;
-                        break;
-                    }
+                    case "up" -> worldY -= speed;
+
+                    case "down" -> worldY += speed;
+
+                    case "left" -> worldX -= speed;
+                    case "right" -> worldX += speed;
                 }
 
             }
