@@ -11,11 +11,7 @@ public class UI {
     GamePanel gamePanel;
     Font arial_40, arial_80B;
     Graphics2D g2;
-    BufferedImage logo, ig, money;
-    public boolean messageOn;
-    public String message = "";
-    //int messageCounter=0;
-    private boolean gameFinished = false;
+    BufferedImage logo, ig;
     private String currentDialogue = "";
     private int commandNum = 0;
     private int titleScreenState = 0;
@@ -77,8 +73,6 @@ public class UI {
             drawStoreScreen(storeNum);
         }
         if (gamePanel.player.getPlayerMoney() < 0) {
-            //gamePanel.music.stop();
-            gamePanel.ui.gameFinished = true;
             gamePanel.setGameState(gamePanel.finishState);
             drawFinishScreen();
         }
