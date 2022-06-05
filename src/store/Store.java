@@ -4,37 +4,36 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.UtilityTool;
 
 public class Store {
-
-
     GamePanel gamePanel;
 
-    public String name = "";
-    public int cost = 0;
+    private String name = "";
+    private int cost = 0;
 
-    public BufferedImage storeImage;
-    public BufferedImage photo1;
-    public int photoX, photoY;
+    private BufferedImage storeImage;
+    private BufferedImage photo1;
+    private int photoX, photoY;
 
-    public boolean collision = false;
+    private final boolean collision;
 
-    public int worldX, worldY;
-    public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
-    public int solidAreaDefaultX, solidAreaDefaultY;
+    private int worldX, worldY;
+    public final Rectangle solidArea = new Rectangle(0, 0, 48, 48);
+    public final int solidAreaDefaultX, solidAreaDefaultY;
 
-    public String about = "";
-    public String item = "";
-    public String info = "";
+    private String about = "";
+    private String item = "";
+    private String info = "";
 
-    public int photoWidth;
-    public int photoHeight;
-    public int imageWidth;
-    public int imageHeight;
+    private final int photoWidth;
+    private final int photoHeight;
+    private final int imageWidth;
+    private final int imageHeight;
 
     public Store(GamePanel gp) {
         this.gamePanel = gp;
@@ -76,10 +75,9 @@ public class Store {
         BufferedImage image = null;
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(imagePath + ".png")));
             image = utilityTool.scaleImage(image, width, height);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return image;
@@ -148,4 +146,57 @@ public class Store {
     public void loadPhoto(int i) {
         this.photo1 = setup("/store/store" + (i + 1), photoWidth, photoHeight);
     }
+
+
+    ///////////////////////////////////////////// Encapsulation ///////////////////////////////////////////////////
+
+    ////////////////////// Name
+    public String getName(){
+        return name;
+    }
+
+    ////////////////////// Cost
+    public int getCost(){
+        return cost;
+    }
+
+    ////////////////////// Photo1
+    public BufferedImage getPhoto1(){
+        return photo1;
+    }
+
+    ////////////////////// Photo Position
+    public int getPhotoX(){
+        return photoX;
+    }
+    public int getPhotoY(){
+        return photoY;
+    }
+
+    /////////////////////// Collision
+    public boolean getCollision(){
+        return collision;
+    }
+
+    ////////////////////// World Position
+    public int getWorldX(){
+        return worldX;
+    }
+    public int getWorldY(){
+        return worldY;
+    }
+
+    //////////////////////// About
+    public String getAbout(){
+        return about;
+    }
+    public String getItem(){
+        return item;
+    }
+    public String getInfo(){
+        return info;
+    }
+
+
+
 }

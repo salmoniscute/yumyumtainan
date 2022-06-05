@@ -547,10 +547,10 @@ public class UI {
             g2.setFont(g2.getFont().deriveFont(18F));
             int x = frameX + 20;
             int y = frameY + gamePanel.tileSize;
-            String text = "歡迎光臨 " + gamePanel.store[i].name;
+            String text = "歡迎光臨 " + gamePanel.store[i].getName();
             g2.drawString(text, x, y);
 
-            text = "探索這間台南美食需要 " + gamePanel.store[i].cost + " 元";
+            text = "探索這間台南美食需要 " + gamePanel.store[i].getCost() + " 元";
             y += gamePanel.tileSize;
             g2.drawString(text, x, y);
 
@@ -585,23 +585,23 @@ public class UI {
             int x = frameX + 20;
             int y = frameY + gamePanel.tileSize - 10;
 
-            g2.drawString(gamePanel.store[i].name, x, y);
+            g2.drawString(gamePanel.store[i].getName(), x, y);
             y += gamePanel.tileSize / 2;
 
             g2.setFont(g2.getFont().deriveFont(16F));
-            for (String line : gamePanel.store[i].about.split("\n")) {
+            for (String line : gamePanel.store[i].getAbout().split("\n")) {
                 g2.drawString(line, x, y);
                 y += 20;
             }
-            for (String line : gamePanel.store[i].item.split("\n")) {
+            for (String line : gamePanel.store[i].getItem().split("\n")) {
                 g2.drawString(line, x, y);
                 y += 20;
             }
-            for (String line : gamePanel.store[i].info.split("\n")) {
+            for (String line : gamePanel.store[i].getInfo().split("\n")) {
                 g2.drawString(line, x, y);
                 y += 20;
             }
-            g2.drawImage(gamePanel.store[i].photo1, gamePanel.store[i].photoX, gamePanel.store[i].photoY, null);
+            g2.drawImage(gamePanel.store[i].getPhoto1(), gamePanel.store[i].getPhotoX(), gamePanel.store[i].getPhotoY(), null);
 
             g2.setFont(g2.getFont().deriveFont(17F));
             text = "謝謝光臨";

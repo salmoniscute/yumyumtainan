@@ -82,8 +82,7 @@ abstract public class Entity {
             case "up" -> "down";
             case "down" -> "up";
             case "left" -> "right";
-            case "right" -> "left";
-            default -> "up";
+            default -> "left";
         };
 
 
@@ -269,42 +268,29 @@ abstract public class Entity {
 
     ////////////////////////// up down left right image
     public BufferedImage getDirectionImage(String name) {
-        switch (name) {
-            case "up1":
-                return up1;
-            case "up2":
-                return up2;
-            case "up3":
-                return up3;
-            case "down1":
-                return down1;
-            case "down2":
-                return down2;
-            case "down3":
-                return down3;
-            case "left1":
-                return left1;
-            case "left2":
-                return left2;
-            case "left3":
-                return left3;
-            case "right1":
-                return right1;
-            case "right2":
-                return right2;
-            case "right3":
-                return right3;
-            default:
-                return null;
-        }
+        return switch (name) {
+            case "up1" -> up1;
+            case "up2" -> up2;
+            case "up3" -> up3;
+            case "down1" -> down1;
+            case "down2" -> down2;
+            case "down3" -> down3;
+            case "left1" -> left1;
+            case "left2" -> left2;
+            case "left3" -> left3;
+            case "right1" -> right1;
+            case "right2" -> right2;
+            case "right3" -> right3;
+            default -> null;
+        };
     }
 
     /////////////////////////// SolidArea default value
     public int getSolidAreaDefault(String str) {
-        if (str == "x") {
+        if (str.equals("x")) {
             return solidAreaDefaultX;
         }
-        if (str == "y") {
+        if (str.equals("y")) {
             return solidAreaDefaultY;
         }
         return 0;
@@ -317,10 +303,10 @@ abstract public class Entity {
 
     /////////////////////////// World X Y
     public int getWorld(String xOry) {
-        if (xOry == "x") {
+        if (xOry.equals("x")) {
             return worldX;
         }
-        if (xOry == "y") {
+        if (xOry.equals("y")) {
             return worldY;
         }
         return 0;
@@ -347,7 +333,7 @@ abstract public class Entity {
 
     //////////////////////////////////// CollisionOn
     public void setCollisionOn(boolean b) {
-        collisionOn = true;
+        collisionOn = b;
     }
 
     ///////////////////////////////////// Alive

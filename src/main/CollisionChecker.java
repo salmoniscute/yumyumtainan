@@ -131,8 +131,8 @@ public class CollisionChecker {
                 entity.getSolidArea().x = entity.getWorld("x") + entity.getSolidArea().x;
                 entity.getSolidArea().y = entity.getWorld("y") + entity.getSolidArea().y;
                 //get object's solid area position
-                gamePanel.store[i].solidArea.x += gamePanel.store[i].worldX;
-                gamePanel.store[i].solidArea.y += gamePanel.store[i].worldY;
+                gamePanel.store[i].solidArea.x += gamePanel.store[i].getWorldX();
+                gamePanel.store[i].solidArea.y += gamePanel.store[i].getWorldY();
 
                 switch (entity.getDirection()) {
                     case "up": {
@@ -154,10 +154,10 @@ public class CollisionChecker {
 
                 }
                 if (entity.getSolidArea().intersects(gamePanel.store[i].solidArea)) {
-                    if (gamePanel.store[i].collision == true) {
+                    if (gamePanel.store[i].getCollision()) {
                         entity.setCollisionOn(true);
                     }
-                    if (player == true) {
+                    if (player) {
                         index = i;
                     }
                 }

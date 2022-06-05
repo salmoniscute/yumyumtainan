@@ -47,19 +47,13 @@ public class NPC_cadre extends Entity {
 
         if (actionLockCounter == 120) {
             Random random = new Random();
-            int i = random.nextInt(100) + 1;
-            if (i <= 25) {
-                direction = "up";
-            }
-            if (i > 25 && i < -50) {
-                direction = "down";
-            }
-            if (i > 50 && i <= 75) {
-                direction = "left";
-            }
-            if (i > 75 && i <= 100) {
-                direction = "right";
-            }
+            int i = random.nextInt(4);
+            direction = switch(i) {
+                case 0 -> "up";
+                case 1 -> "down";
+                case 2 -> "left";
+                default -> "right";
+            };
             actionLockCounter = 0;
         }
 

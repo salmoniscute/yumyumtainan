@@ -14,7 +14,6 @@ public class KeyHandler implements KeyListener {
     private boolean rightPressed;
     private boolean leftPressed;
     private boolean enterPressed;
-    private boolean attackPressed;
     private int storeNum = 0;
     private boolean ctrl = false;
 
@@ -245,7 +244,6 @@ public class KeyHandler implements KeyListener {
         }
 
         if (code == KeyEvent.VK_K) {
-            attackPressed = true;
             gamePanel.player.setAttacking(true);
 
         }
@@ -307,7 +305,7 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_ENTER) {
                 if (gamePanel.ui.getCommandNum() == 0) {
                     gamePanel.ui.setStoreScreenState(1);
-                    gamePanel.player.setPlayerMoney("-", gamePanel.store[i].cost);
+                    gamePanel.player.setPlayerMoney("-", gamePanel.store[i].getCost());
                     gamePanel.player.setStoreCount("+", 1);
                     gamePanel.playSE(6); // cashier sound
                 }
@@ -334,137 +332,53 @@ public class KeyHandler implements KeyListener {
     private void inputToName(int code) {
 
         switch (code) {
-            case KeyEvent.VK_A:
-                gamePanel.player.addPlayerName("a");
-                break;
-            case KeyEvent.VK_B:
-                gamePanel.player.addPlayerName("b");
-                break;
-            case KeyEvent.VK_C:
-                gamePanel.player.addPlayerName("c");
-                break;
-            case KeyEvent.VK_D:
-                gamePanel.player.addPlayerName("d");
-                break;
-            case KeyEvent.VK_E:
-                gamePanel.player.addPlayerName("e");
-                break;
-            case KeyEvent.VK_F:
-                gamePanel.player.addPlayerName("f");
-                break;
-            case KeyEvent.VK_G:
-                gamePanel.player.addPlayerName("g");
-                break;
-            case KeyEvent.VK_H:
-                gamePanel.player.addPlayerName("h");
-                break;
-            case KeyEvent.VK_I:
-                gamePanel.player.addPlayerName("i");
-                break;
-            case KeyEvent.VK_J:
-                gamePanel.player.addPlayerName("j");
-                break;
-            case KeyEvent.VK_K:
-                gamePanel.player.addPlayerName("k");
-                break;
-            case KeyEvent.VK_L:
-                gamePanel.player.addPlayerName("l");
-                break;
-            case KeyEvent.VK_M:
-                gamePanel.player.addPlayerName("m");
-                break;
-            case KeyEvent.VK_N:
-                gamePanel.player.addPlayerName("n");
-                break;
-            case KeyEvent.VK_O:
-                gamePanel.player.addPlayerName("o");
-                break;
-            case KeyEvent.VK_P:
-                gamePanel.player.addPlayerName("p");
-                break;
-            case KeyEvent.VK_Q:
-                gamePanel.player.addPlayerName("q");
-                break;
-            case KeyEvent.VK_R:
-                gamePanel.player.addPlayerName("r");
-                break;
-            case KeyEvent.VK_S:
-                gamePanel.player.addPlayerName("s");
-                break;
-            case KeyEvent.VK_T:
-                gamePanel.player.addPlayerName("t");
-                break;
-            case KeyEvent.VK_U:
-                gamePanel.player.addPlayerName("u");
-                break;
-            case KeyEvent.VK_V:
-                gamePanel.player.addPlayerName("v");
-                break;
-            case KeyEvent.VK_W:
-                gamePanel.player.addPlayerName("w");
-                break;
-            case KeyEvent.VK_X:
-                gamePanel.player.addPlayerName("x");
-                break;
-            case KeyEvent.VK_Y:
-                gamePanel.player.addPlayerName("y");
-                break;
-            case KeyEvent.VK_Z:
-                gamePanel.player.addPlayerName("z");
-                break;
-            case KeyEvent.VK_SPACE:
-                gamePanel.player.addPlayerName(" ");
-                break;
-            case KeyEvent.VK_0:
-                gamePanel.player.addPlayerName("0");
-                break;
-            case KeyEvent.VK_1:
-                gamePanel.player.addPlayerName("1");
-                break;
-            case KeyEvent.VK_2:
-                gamePanel.player.addPlayerName("2");
-                break;
-            case KeyEvent.VK_3:
-                gamePanel.player.addPlayerName("3");
-                break;
-            case KeyEvent.VK_4:
-                gamePanel.player.addPlayerName("4");
-                break;
-            case KeyEvent.VK_5:
-                gamePanel.player.addPlayerName("5");
-                break;
-            case KeyEvent.VK_6:
-                gamePanel.player.addPlayerName("6");
-                break;
-            case KeyEvent.VK_7:
-                gamePanel.player.addPlayerName("7");
-                break;
-            case KeyEvent.VK_8:
-                gamePanel.player.addPlayerName("8");
-                break;
-            case KeyEvent.VK_9:
-                gamePanel.player.addPlayerName("9");
-                break;
-            case KeyEvent.VK_TAB:
-                gamePanel.player.addPlayerName("\t");
-                break;
-            case KeyEvent.VK_BACK_SPACE:
+            case KeyEvent.VK_A -> gamePanel.player.addPlayerName("a");
+            case KeyEvent.VK_B -> gamePanel.player.addPlayerName("b");
+            case KeyEvent.VK_C -> gamePanel.player.addPlayerName("c");
+            case KeyEvent.VK_D -> gamePanel.player.addPlayerName("d");
+            case KeyEvent.VK_E -> gamePanel.player.addPlayerName("e");
+            case KeyEvent.VK_F -> gamePanel.player.addPlayerName("f");
+            case KeyEvent.VK_G -> gamePanel.player.addPlayerName("g");
+            case KeyEvent.VK_H -> gamePanel.player.addPlayerName("h");
+            case KeyEvent.VK_I -> gamePanel.player.addPlayerName("i");
+            case KeyEvent.VK_J -> gamePanel.player.addPlayerName("j");
+            case KeyEvent.VK_K -> gamePanel.player.addPlayerName("k");
+            case KeyEvent.VK_L -> gamePanel.player.addPlayerName("l");
+            case KeyEvent.VK_M -> gamePanel.player.addPlayerName("m");
+            case KeyEvent.VK_N -> gamePanel.player.addPlayerName("n");
+            case KeyEvent.VK_O -> gamePanel.player.addPlayerName("o");
+            case KeyEvent.VK_P -> gamePanel.player.addPlayerName("p");
+            case KeyEvent.VK_Q -> gamePanel.player.addPlayerName("q");
+            case KeyEvent.VK_R -> gamePanel.player.addPlayerName("r");
+            case KeyEvent.VK_S -> gamePanel.player.addPlayerName("s");
+            case KeyEvent.VK_T -> gamePanel.player.addPlayerName("t");
+            case KeyEvent.VK_U -> gamePanel.player.addPlayerName("u");
+            case KeyEvent.VK_V -> gamePanel.player.addPlayerName("v");
+            case KeyEvent.VK_W -> gamePanel.player.addPlayerName("w");
+            case KeyEvent.VK_X -> gamePanel.player.addPlayerName("x");
+            case KeyEvent.VK_Y -> gamePanel.player.addPlayerName("y");
+            case KeyEvent.VK_Z -> gamePanel.player.addPlayerName("z");
+            case KeyEvent.VK_SPACE -> gamePanel.player.addPlayerName(" ");
+            case KeyEvent.VK_0 -> gamePanel.player.addPlayerName("0");
+            case KeyEvent.VK_1 -> gamePanel.player.addPlayerName("1");
+            case KeyEvent.VK_2 -> gamePanel.player.addPlayerName("2");
+            case KeyEvent.VK_3 -> gamePanel.player.addPlayerName("3");
+            case KeyEvent.VK_4 -> gamePanel.player.addPlayerName("4");
+            case KeyEvent.VK_5 -> gamePanel.player.addPlayerName("5");
+            case KeyEvent.VK_6 -> gamePanel.player.addPlayerName("6");
+            case KeyEvent.VK_7 -> gamePanel.player.addPlayerName("7");
+            case KeyEvent.VK_8 -> gamePanel.player.addPlayerName("8");
+            case KeyEvent.VK_9 -> gamePanel.player.addPlayerName("9");
+            case KeyEvent.VK_TAB -> gamePanel.player.addPlayerName("\t");
+            case KeyEvent.VK_BACK_SPACE -> {
                 if (ctrl) {
                     gamePanel.player.clearPlayerName();
                     break;
                 }
                 gamePanel.player.backSpacePlayerName();
-                break;
-			/*case KeyEvent.VK_ADD: gamePanel.player.addPlayerName("+"); break;
-			case KeyEvent.VK_ASTERISK: gamePanel.player.addPlayerName("*"); break;
-			case KeyEvent.VK_BRACELEFT: gamePanel.player.addPlayerName("{"); break;
-			case KeyEvent.VK_BRACERIGHT: gamePanel.player.addPlayerName("}"); break;
-			case KeyEvent.VK_DECIMAL: gamePanel.player.addPlayerName("."); break;
-			case KeyEvent.VK_DIVIDE: gamePanel.player.addPlayerName("/"); break;
-			case KeyEvent.VK_DOLLAR: gamePanel.player.addPlayerName("$"); break;*/
-
-            default:
-                break;
+            }
+            default -> {
+            }
         }
     }
 
