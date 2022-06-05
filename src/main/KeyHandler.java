@@ -39,7 +39,9 @@ public class KeyHandler implements KeyListener {
 
         int code = e.getKeyCode();
 
-        if(code == KeyEvent.VK_ESCAPE){ System.exit(0); }
+        if (code == KeyEvent.VK_ESCAPE) {
+            System.exit(0);
+        }
 
         //title state
         if (gamePanel.getGameState() == gamePanel.titleState) {
@@ -84,7 +86,7 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT) {
             rightPressed = false;
         }
-        if(code == KeyEvent.VK_CONTROL) {
+        if (code == KeyEvent.VK_CONTROL) {
             ctrl = false;
         }
     }
@@ -93,7 +95,7 @@ public class KeyHandler implements KeyListener {
     ////////////////////////////////////////////// Different Game States ///////////////////////////////////////////
 
     public void titleState(int code) {
-        if(code == KeyEvent.VK_CONTROL){
+        if (code == KeyEvent.VK_CONTROL) {
             ctrl = true;
         }
 
@@ -123,8 +125,7 @@ public class KeyHandler implements KeyListener {
                 }
                 gamePanel.playSE(1);
             }
-        }
-        else if (gamePanel.ui.getTitleScreenState() == 1) {
+        } else if (gamePanel.ui.getTitleScreenState() == 1) {
             if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
                 gamePanel.ui.setCommandNum("-", 1);
                 if (gamePanel.ui.getCommandNum() < 0) {
@@ -150,8 +151,7 @@ public class KeyHandler implements KeyListener {
                 }
                 gamePanel.playSE(1);
             }
-        }
-        else if (gamePanel.ui.getTitleScreenState() == 2) {
+        } else if (gamePanel.ui.getTitleScreenState() == 2) {
             if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
                 gamePanel.ui.setCommandNum("-", 1);
                 if (gamePanel.ui.getCommandNum() < 0) {
@@ -177,8 +177,7 @@ public class KeyHandler implements KeyListener {
                 }
                 gamePanel.playSE(1);
             }
-        }
-        else if (gamePanel.ui.getTitleScreenState() == 9) {
+        } else if (gamePanel.ui.getTitleScreenState() == 9) {
 
             /////////// Key input for player name ///////////
             inputToName(code);
@@ -247,7 +246,7 @@ public class KeyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_K) {
             attackPressed = true;
-            gamePanel.player.attacking = true;
+            gamePanel.player.setAttacking(true);
 
         }
         if (code == KeyEvent.VK_C) {
@@ -450,7 +449,7 @@ public class KeyHandler implements KeyListener {
                 gamePanel.player.addPlayerName("\t");
                 break;
             case KeyEvent.VK_BACK_SPACE:
-                if(ctrl){
+                if (ctrl) {
                     gamePanel.player.clearPlayerName();
                     break;
                 }
@@ -475,31 +474,32 @@ public class KeyHandler implements KeyListener {
     public boolean upPressed() {
         return upPressed;
     }
+
     public boolean downPressed() {
         return downPressed;
     }
+
     public boolean leftPressed() {
         return leftPressed;
     }
+
     public boolean rightPressed() {
         return rightPressed;
     }
+
     public boolean enterPressed() {
         return enterPressed;
     }
+
     public void setEnterPressed(boolean b) {
         enterPressed = b;
     }
 
     ///////////////////////////////// Store Number
 
-    public void setStoreNum(int i){
+    public void setStoreNum(int i) {
         storeNum = i;
     }
-
-
-
-
 
 
 }

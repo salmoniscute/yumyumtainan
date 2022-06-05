@@ -107,8 +107,8 @@ public class Store {
         this.storeImage = setup(path_storeImage, imageWidth, imageHeight);
     }
 
-    public void setAll(String name, int cost, int worldX, int worldY, String which, int modify, String path_storeImage) {
-        if (which == "x") {
+    public void setAll(String name, int cost, int worldX, int worldY, String xOry, int modify, String path_storeImage) {
+        if (xOry.equals("x")) {
             this.name = name;
             this.cost = cost;
             this.worldX = gamePanel.tileSize * worldX;
@@ -119,7 +119,7 @@ public class Store {
             this.storeImage = setup(path_storeImage, imageWidth, imageHeight);
             return;
         }
-        if (which == "y") {
+        if (xOry.equals("y")) {
             this.name = name;
             this.cost = cost;
             this.worldX = gamePanel.tileSize * worldX;
@@ -133,15 +133,14 @@ public class Store {
         return;
     }
 
-    public void setAll(String name, int cost, int worldX, int worldY, String which, int modifyX, int modifyY, String path_storeImage) {
-        if (which == "xy") {
+    public void setAll(String name, int cost, int worldX, int worldY, String xOry, int modifyX, int modifyY, String path_storeImage) {
+        if (xOry.equals("xy")) {
             this.name = name;
             this.cost = cost;
             this.worldX = gamePanel.tileSize * worldX;
             this.worldY = gamePanel.tileSize * worldY;
             this.photoX = gamePanel.tileSize * 8 + modifyX;
             this.photoY = gamePanel.tileSize * 6 + modifyY;
-            //this.photo1 = setup(path_photo1, photoWidth, photoHeight);
             this.storeImage = setup(path_storeImage, imageWidth, imageHeight);
         }
     }

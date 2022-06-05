@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
 import javax.imageio.ImageIO;
 
@@ -21,42 +22,42 @@ abstract public class Entity {
     protected Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     protected Rectangle attackArea = new Rectangle(0, 0, 0, 0);
     protected int solidAreaDefaultX, solidAreaDefaultY;
-    protected String dialogues[] = new String[20];
-    public BufferedImage image;
+    protected String[] dialogues = new String[20];
     protected boolean collision = false;
     protected int type = 0;//0=player,1=npc,2=monster
 
     //state
     protected int worldX, worldY;
     protected String direction = "down";
-    public int spriteNum = 1;
-    int dialogueIndex = 0;
-    public boolean attacking = false;
-    public boolean collisionOn = false;
-    public boolean invincible = false;
-    public boolean alive = true;
-    public boolean dying = false;
-    public boolean hpBarOn = false;
+    protected int spriteNum = 1;
+    protected int dialogueIndex = 0;
+    protected boolean attacking = false;
+    protected boolean collisionOn = false;
+    protected boolean invincible = false;
+    protected boolean alive = true;
+    protected boolean dying = false;
+    protected boolean hpBarOn = false;
 
     //counter
-    public int spriteCounter = 0;
-    public int actionLockCounter = 0;
-    public int invincibleCounter = 0;
-    int dyingCounter = 0;
-    int hpBarCounter = 0;
+    protected int spriteCounter = 0;
+    protected int actionLockCounter = 0;
+    protected int invincibleCounter = 0;
+    protected int dyingCounter = 0;
+    protected int hpBarCounter = 0;
     //character
-    public String name;
-    public int speed;
+    protected String name;
+    protected int speed;
 
     //monster
-    public int maxLife;
-    public int life;
+    protected int maxLife;
+    protected int life;
 
-
+    ////////////////////////////////////////////// Constructor //////////////////////////////////////////////////////
     public Entity(GamePanel gp) {
         this.gamePanel = gp;
     }
 
+    /////////////////////////////////////////////// Methods //////////////////////////////////////////////////////
     public abstract void setAction();
 
     public abstract void damageReaction();
@@ -77,24 +78,13 @@ abstract public class Entity {
         dialogueIndex++;
 
         //面對面講話
-        switch (gamePanel.player.direction) {
-            case "up": {
-                direction = "down";
-                break;
-            }
-            case "down": {
-                direction = "up";
-                break;
-            }
-            case "left": {
-                direction = "right";
-                break;
-            }
-            case "right": {
-                direction = "left";
-                break;
-            }
-        }
+        direction = switch (gamePanel.player.direction) {
+            case "up" -> "down";
+            case "down" -> "up";
+            case "left" -> "right";
+            case "right" -> "left";
+            default -> "up";
+        };
 
 
     }
@@ -109,26 +99,14 @@ abstract public class Entity {
         gamePanel.collisionChecker.checkStore(this, false);
         gamePanel.collisionChecker.checkObject(this, false);
 
-        if (collisionOn == false) {
+        if (!collisionOn) {
             switch (direction) {
-                case "up": {
-                    worldY -= speed;
-                    break;
-                }
-                case "down": {
-                    worldY += speed;
-                    break;
-                }
-                case "left": {
-                    worldX -= speed;
-                    break;
-                }
-                case "right": {
-                    worldX += speed;
-                    break;
-                }
+                case "up" -> worldY -= speed;
+                case "down" -> worldY += speed;
+                case "left" -> worldX -= speed;
+                case "right" -> worldX += speed;
+                default -> {}
             }
-
         }
 
         spriteCounter++;
@@ -140,7 +118,7 @@ abstract public class Entity {
             }
             spriteCounter = 0;
         }
-        if (invincible == true) {
+        if (invincible) {
             invincibleCounter++;
             if (invincibleCounter > 40) {
                 invincible = false;
@@ -161,47 +139,41 @@ abstract public class Entity {
                 && worldY - gamePanel.tileSize < gamePanel.player.worldY + gamePanel.player.screenY) {
 
             switch (direction) {
-                case "up": {
+                case "up" -> {
                     if (spriteNum == 1) {
                         image = up2;
                     }
                     if (spriteNum == 2) {
                         image = up3;
                     }
-
-                    break;
                 }
-                case "down": {
+                case "down" -> {
                     if (spriteNum == 1) {
                         image = down2;
                     }
                     if (spriteNum == 2) {
                         image = down3;
                     }
-                    break;
                 }
-                case "left": {
+                case "left" -> {
                     if (spriteNum == 1) {
                         image = left2;
                     }
                     if (spriteNum == 2) {
                         image = left3;
                     }
-                    break;
                 }
-                case "right": {
+                case "right" -> {
                     if (spriteNum == 1) {
                         image = right2;
                     }
                     if (spriteNum == 2) {
                         image = right3;
                     }
-                    break;
                 }
-
             }
             //monster hp bar
-            if (type == 2 && hpBarOn == true) {
+            if (type == 2 && hpBarOn) {
 
                 double oneScale = (double) gamePanel.tileSize / maxLife;
                 double hpBarValue = oneScale * life;
@@ -219,12 +191,12 @@ abstract public class Entity {
 
             }
             //緩衝
-            if (invincible == true) {
+            if (invincible) {
                 hpBarOn = true;
                 hpBarCounter = 0;
                 changeAlpha(g2, 0.4f);
             }
-            if (dying == true) {
+            if (dying) {
                 dyingAnimation(g2);
             }
             g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
@@ -279,7 +251,7 @@ abstract public class Entity {
         BufferedImage image = null;
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(imagePath + ".png")));
             image = utilityTool.scaleImage(image, width, height);
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -291,60 +263,74 @@ abstract public class Entity {
     /////////////////////////////////////////////// Encapsulation ///////////////////////////////////////////////
 
     ////////////////////////// Solid Area
-    public Rectangle getSolidArea(){
+    public Rectangle getSolidArea() {
         return solidArea;
     }
 
     ////////////////////////// up down left right image
-    public BufferedImage getDirectionImage (String name){
+    public BufferedImage getDirectionImage(String name) {
         switch (name) {
-            case "up1" : return up1;
-            case "up2" : return up2;
-            case "up3" : return up3;
-            case "down1" : return down1;
-            case "down2" : return down2;
-            case "down3" : return down3;
-            case "left1" : return left1;
-            case "left2" : return left2;
-            case "left3" : return left3;
-            case "right1" : return right1;
-            case "right2" : return right2;
-            case "right3" : return right3;
-            default : return null;
+            case "up1":
+                return up1;
+            case "up2":
+                return up2;
+            case "up3":
+                return up3;
+            case "down1":
+                return down1;
+            case "down2":
+                return down2;
+            case "down3":
+                return down3;
+            case "left1":
+                return left1;
+            case "left2":
+                return left2;
+            case "left3":
+                return left3;
+            case "right1":
+                return right1;
+            case "right2":
+                return right2;
+            case "right3":
+                return right3;
+            default:
+                return null;
         }
     }
 
     /////////////////////////// SolidArea default value
-    public int getSolidAreaDefault (String str){
-        if(str == "x"){
+    public int getSolidAreaDefault(String str) {
+        if (str == "x") {
             return solidAreaDefaultX;
         }
-        if (str == "y"){
+        if (str == "y") {
             return solidAreaDefaultY;
         }
         return 0;
     }
 
     /////////////////////////// Collision
-    public boolean getCollision(){
+    public boolean getCollision() {
         return collision;
     }
 
     /////////////////////////// World X Y
     public int getWorld(String xOry) {
-        if(xOry == "x"){
+        if (xOry == "x") {
             return worldX;
         }
-        if(xOry == "y"){
+        if (xOry == "y") {
             return worldY;
         }
         return 0;
     }
-    public void setWorld(String xOry, int i){
-        if(xOry == "x"){
+
+    public void setWorld(String xOry, int i) {
+        if (xOry.equals("x")) {
             worldX = i;
         }
-        if(xOry == "y"){
+        if (xOry.equals("y")) {
             worldY = i;
         }
     }
@@ -354,4 +340,28 @@ abstract public class Entity {
         return direction;
     }
 
+    //////////////////////////////////// Attacking
+    public void setAttacking(boolean b) {
+        attacking = b;
+    }
+
+    //////////////////////////////////// CollisionOn
+    public void setCollisionOn(boolean b) {
+        collisionOn = true;
+    }
+
+    ///////////////////////////////////// Alive
+    public boolean isAlive() {
+        return alive;
+    }
+
+    ///////////////////////////////////// Dying
+    public boolean isDying() {
+        return dying;
+    }
+
+    ///////////////////////////////////// Speed
+    public int getSpeed() {
+        return speed;
+    }
 }
