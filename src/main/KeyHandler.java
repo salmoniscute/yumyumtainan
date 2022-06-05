@@ -68,6 +68,7 @@ public class KeyHandler implements KeyListener {
         }
         else if(gamePanel.getGameState() == gamePanel.finishState){
             finishState(code);
+            gamePanel.ui.setTitleScreenState(0);
         }
 
     }
@@ -235,8 +236,8 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_ENTER) {
             if (gamePanel.ui.getCommandNum() == 0) {
-                //gamePanel.ui.setTitleScreenState()=1;
-               // gamePanel.ui.setTitleScreenState();
+               gamePanel.setGameState(0);
+               gamePanel.reStart();
             }
             if (gamePanel.ui.getCommandNum() == 1) {
                 System.exit(0);

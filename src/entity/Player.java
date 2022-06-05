@@ -63,6 +63,9 @@ public class Player extends Entity {
         speed = 4;
         direction = "down";
         playerMoney = 1000;
+        enterStore=0;
+        getHoney=0;
+        killSheep=0;
     }
 
     public void getPlayerImage() {
@@ -133,7 +136,7 @@ public class Player extends Entity {
             interactNPC(npcIndex);
 
             //check monster collision
-            //int monsterIndex = gamePanel.collisionChecker.checkEntity(this, gamePanel.monster);
+            gamePanel.collisionChecker.checkEntity(this, gamePanel.monster);
 
             //
 

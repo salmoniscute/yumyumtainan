@@ -77,17 +77,17 @@ public class UI {
             drawStoreScreen(storeNum);
         }
         if (gamePanel.player.getPlayerMoney() < 0) {
-            gamePanel.music.stop();
+            //gamePanel.music.stop();
             gamePanel.ui.gameFinished = true;
             gamePanel.setGameState(gamePanel.finishState);
             drawFinishScreen();
-            gamePanel.playSE(9); // close door sound
         }
 
 /////////////////////////////////////// Drawing Different State ///////////////////////////////////////////
 
 
     }
+
 
     public void drawLoadingScreen() {
         g2.setColor(new Color(0, 0, 0));
@@ -243,8 +243,8 @@ public class UI {
         g2.drawImage(gamePanel.player.getDirectionImage("down1"), gamePanel.tileSize * 8, gamePanel.tileSize * 8, gamePanel.tileSize * 3, gamePanel.tileSize * 3, null);
         //	g2.drawImage(, gamePanel.tileSize*9, gamePanel.tileSize*8, gamePanel.tileSize*3, gamePanel.tileSize*3,  null);
 
-        /*text = "重新開始";
-        x = getXForCenterText(text);
+        text = "重新開始";
+        x = gamePanel.tileSize*13;
         y = gamePanel.tileSize * 10;
         g2.drawString(text, x, y);
         if (commandNum == 0) {
@@ -252,14 +252,14 @@ public class UI {
         }
 
         text = "離開";
-        x = getXForCenterText(text);
+
         y += gamePanel.tileSize / 2 + 10;
         g2.drawString(text, x, y);
         if (commandNum == 1) {
             g2.drawString(">", x - gamePanel.tileSize, y);
-        }*/
-        gamePanel.gameThread = null;
-        gamePanel.music.stop();
+        }
+        //gamePanel.gameThread = null;
+       // gamePanel.music.stop();
 
     }
 
