@@ -236,7 +236,7 @@ public class GamePanel extends JPanel implements Runnable {
         assetsetter.setMonster();
         assetsetter.setNPC();
         assetsetter.setObject();
-        assetsetter.setStore();
+        //assetsetter.setStore();
     }
 
     public void playMusic(int i) {

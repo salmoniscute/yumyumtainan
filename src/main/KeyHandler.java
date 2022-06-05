@@ -223,18 +223,21 @@ public class KeyHandler implements KeyListener {
 
     public void finishState(int code){
         if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
+            gamePanel.playSE(1);
             gamePanel.ui.setCommandNum("-", 1);
             if (gamePanel.ui.getCommandNum() < 0) {
                 gamePanel.ui.setCommandNum(1);
             }
         }
         if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
+            gamePanel.playSE(1);
             gamePanel.ui.setCommandNum("+", 1);
             if (gamePanel.ui.getCommandNum() > 1) {
                 gamePanel.ui.setCommandNum(0);
             }
         }
         if (code == KeyEvent.VK_ENTER) {
+            gamePanel.playSE(1);
             if (gamePanel.ui.getCommandNum() == 0) {
                gamePanel.setGameState(0);
                gamePanel.reStart();
