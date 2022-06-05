@@ -75,7 +75,11 @@ public class Assetsetter {
         gamePanel.monster[4].setWorld("y", gamePanel.tileSize * 25);
         gamePanel.monster[5] = new MON_task(gamePanel);
         gamePanel.monster[5].setWorld("x", gamePanel.tileSize * 8);
-        gamePanel.monster[5].setWorld("y", gamePanel.tileSize * 25);
+        gamePanel.monster[5].setWorld("y",  gamePanel.tileSize * 25);
+        gamePanel.monster[6] = new MON_task(gamePanel);
+        gamePanel.monster[6].setWorld("x", gamePanel.tileSize * 8);
+        gamePanel.monster[6].setWorld("y",  gamePanel.tileSize * 27);
+
 
 
     }
