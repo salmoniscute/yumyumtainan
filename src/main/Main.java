@@ -24,6 +24,9 @@ public class Main {
         for(int i = 3; i < gamePanel.store.length; i++){
             gamePanel.store[i].loadPhoto(i);
         }
+        if (gamePanel.getGameState() == gamePanel.finishState){
+
+        }
 
     }
 

@@ -81,7 +81,6 @@ public class UI {
             gamePanel.ui.gameFinished = true;
             gamePanel.setGameState(gamePanel.finishState);
             drawFinishScreen();
-            gamePanel.playSE(9); // close door sound
         }
 
 /////////////////////////////////////// Drawing Different State ///////////////////////////////////////////
